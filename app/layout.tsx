@@ -1,6 +1,7 @@
 // These styles apply to every route in the application
 import "../styles/globals.css";
 import { Roboto_Flex, Lora, Cinzel } from "next/font/google";
+import { Navbar, Footer } from "@/componentIndex";
 
 const roboto = Roboto_Flex({
   subsets: ["latin"],
@@ -22,17 +23,14 @@ const cinzel = Cinzel({
   variable: "--font-cinzel",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${roboto.variable} ${lora.variable} ${cinzel.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="en" className={`${roboto.variable} ${lora.variable} ${cinzel.variable}`}>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
