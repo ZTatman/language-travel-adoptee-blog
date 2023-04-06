@@ -1,24 +1,25 @@
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../public/finallang_favicon.ico";
 
 export default function Navbar() {
   return (
         <nav className="flex items-center justify-between flex-grow w-auto py-3 text-center border-b px-9 md:w-auto">
             <div className="flex items-center justify-center flex-shrink-0 md:mr-6">
-                <a href="/" >
+                <Link href="/" >
                     <Image src={logo} alt="Logo" width={48} height={48} />
-                </a>
+                </Link>
             </div>
             <div className="hidden text-sm md:block">
-                <a href="#" className="block mt-4 md:mr-4 text-slate-900 hover:text-slate-700 md:mt-0 md:inline-block">
+                <Link href="/about" className="block mt-4 md:mr-4 text-slate-900 hover:text-slate-700 md:mt-0 md:inline-block">
                     About
-                </a>
-                <a href="#" className="block mt-4 md:mr-4 text-slate-900 hover:text-slate-700 md:mt-0 md:inline-block">
+                </Link>
+                <Link href="/blog" className="block mt-4 md:mr-4 text-slate-900 hover:text-slate-700 md:mt-0 md:inline-block">
                     Blog
-                </a>
-                <a href="#" className="block mt-4 text-slate-900 hover:text-slate-700 md:mt-0 md:inline-block">
+                </Link>
+                <Link href="/contact" className="block mt-4 text-slate-900 hover:text-slate-700 md:mt-0 md:inline-block">
                     Contact Me
-                </a>
+                </Link>
             </div>
             <div>
                 <button className="hidden px-4 py-2 text-sm leading-none rounded text-slate-100 hover:text-white md:inline-block bg-brand">
