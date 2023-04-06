@@ -12,6 +12,9 @@ module.exports = {
         heading: ["var(--font-lora)"],
         display: ["var(--font-cinzel)"],
       },
+      colors: {
+          brand: "#1093CC",
+      },
     },
   },
   plugins: [],
