@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        // grandinho
+        xs: "425px",
+        gr: "879px",
+      },
       fontFamily: {
         sans: ["var(--font-roboto)"],
         heading: ["var(--font-lora)"],

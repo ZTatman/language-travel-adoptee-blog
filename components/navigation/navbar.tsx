@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Button from "../common/button";
+import { Button } from "../common/button";
 import logo from "../../public/finallang_favicon.ico";
 
 export default function Navbar() {
@@ -12,7 +12,7 @@ export default function Navbar() {
     setShowMenu(!showMenu);
   };
   return (
-    <React.Fragment>
+    <>
       <nav className="flex w-auto flex-grow items-center justify-between border-b-2 bg-slate-50 px-9 py-3 text-center sm:w-auto">
         <div className="flex flex-shrink-0 items-center justify-center sm:mr-6">
           <Link href="/">
@@ -25,25 +25,25 @@ export default function Navbar() {
             className="group relative mt-4 block text-zinc-700 transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
           >
             About
-            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-sky-600 transition-all duration-300 group-hover:scale-x-100"></span>
+            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-sky-600 transition-all duration-150 ease-in-out group-hover:scale-x-100"></span>
           </Link>
           <Link
             href="#"
             className="group relative mt-4 block text-zinc-700 transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
           >
             Blog
-            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-sky-600 transition-all duration-300 group-hover:scale-x-100"></span>
+            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-sky-600 transition-all duration-150 ease-in-out group-hover:scale-x-100"></span>
           </Link>
           <Link
             href="#"
-            className="group relative mt-4 block text-zinc-700 transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
+            className="group relative mt-4 block text-zinc-700 transition duration-150 ease-in-out sm:mr-6 sm:mt-0 sm:inline-block"
           >
             Contact Me
-            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-sky-600 transition-all duration-300 group-hover:scale-x-100"></span>
+            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-sky-600 transition-all duration-300 ease-in-out group-hover:scale-x-100"></span>
           </Link>
         </div>
         <div>
-          <Button className="ease text-md hidden rounded bg-sky-600 px-4 py-2 leading-none text-white transition duration-150 hover:bg-sky-700 hover:text-gray-100 sm:inline-block">
+          <Button onClick={() => console.log(":: button clicked!")} rounded filled>
             Download
           </Button>
           <button
@@ -67,18 +67,21 @@ export default function Navbar() {
       <div
         className={`${
           showMenu ? "max-h-40" : "invisible max-h-0"
-        } overflow-hidden text-center text-sm transition-all duration-500 ease-in-out sm:hidden`}
+        } text-md overflow-hidden text-center transition-all duration-300 ease-in-out sm:hidden`}
       >
-        <Link href="/about" className="block py-4 text-zinc-700 hover:bg-gray-100">
+        <Link href="/about" className="block py-4 text-zinc-700 transition duration-150 ease-in-out hover:bg-gray-100">
           About
         </Link>
-        <Link href="/blog" className="block py-4 text-zinc-700 hover:bg-gray-100">
+        <Link href="/blog" className="block py-4 text-zinc-700 transition duration-150 ease-in-out hover:bg-gray-100">
           Blog
         </Link>
-        <Link href="/contact" className="block py-4 text-zinc-700 hover:bg-gray-100">
+        <Link
+          href="/contact"
+          className="block py-4 text-zinc-700 transition duration-150 ease-in-out hover:bg-gray-100"
+        >
           Contact Me
         </Link>
       </div>
-    </React.Fragment>
+    </>
   );
 }
