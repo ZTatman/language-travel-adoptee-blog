@@ -16,7 +16,7 @@ export default function Home() {
           <div className="flex h-full items-center justify-center">
             {/* Landing Page Text */}
             <div className="px-6 text-center text-white md:px-12">
-              <h1 className="mb-3 font-display text-5xl font-bold leading-[1.15] md:text-6xl md:leading-[1.25] md:tracking-widest xl:text-7xl">
+              <h1 className="mb-3 font-display text-5xl font-bold leading-[1.15] md:text-6xl md:leading-[1.25] md:tracking-wider xl:text-7xl">
                 <span className="inline-block">Language Travel</span>
                 <br />
                 <span>Adoptee</span>
