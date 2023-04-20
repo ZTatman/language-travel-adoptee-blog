@@ -25,7 +25,7 @@ const cinzel = Cinzel({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${roboto.variable} ${lora.variable} ${cinzel.variable} m-0 h-full`}>
+    <html lang="en" className={`${roboto.variable} ${lora.variable} ${cinzel.variable} m-0 h-full bg-slate-50`}>
       <body className="m-0 h-full">
         <Navbar />
         {children}

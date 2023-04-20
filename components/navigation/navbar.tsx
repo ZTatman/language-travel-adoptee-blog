@@ -13,7 +13,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className="flex w-auto flex-grow items-center justify-between border-b-2 bg-slate-50 px-9 py-3 text-center sm:w-auto">
+      <nav className="flex w-auto flex-grow items-center justify-between border-b-2 px-9 py-3 text-center sm:w-auto">
         <div className="flex flex-shrink-0 items-center justify-center sm:mr-6">
           <Link href="/">
             <Image src={logo} alt="Logo" width={48} height={48} />
@@ -43,7 +43,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <Button onClick={() => console.log(":: button clicked!")} rounded filled>
+          <Button onClick={() => console.log(":: button clicked!")} hidden rounded filled>
             Download
           </Button>
           <button
@@ -66,7 +66,7 @@ export default function Navbar() {
       </nav>
       <div
         className={`${
-          showMenu ? "max-h-40" : "invisible max-h-0"
+          showMenu ? "max-h-44" : "invisible max-h-0"
         } text-md overflow-hidden text-center transition-all duration-300 ease-in-out sm:hidden`}
       >
         <Link href="/about" className="block py-4 text-zinc-700 transition duration-150 ease-in-out hover:bg-gray-100">
