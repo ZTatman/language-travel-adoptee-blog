@@ -8,7 +8,7 @@ export default function Home() {
     <main className="h-full">
       {/* Background Image */}
       <div
-        className="relative h-full w-full overflow-hidden bg-cover bg-center bg-no-repeat"
+        className="relative h-full w-full overflow-hidden bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
         style={{ backgroundImage: 'url("/landing.jpeg")' }}
       >
         {/* Dark Overlay */}
@@ -17,11 +17,13 @@ export default function Home() {
             {/* Landing Page Text */}
             <div className="px-6 text-center text-white md:px-12">
               <h1 className="mb-3 font-display text-5xl font-bold leading-[1.15] md:text-6xl md:leading-[1.25] md:tracking-wider xl:text-7xl">
-                <span className="inline-block">Language Travel</span>
-                <br />
-                <span>Adoptee</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white from-50% to-transparent to-90%">
+                  Language Travel
+                  <br />
+                  Adoptee
+                </span>
               </h1>
-              <p className="mx-auto mb-8 mt-0 font-sans text-xs tracking-wide xs:max-w-xs sm:max-w-sm md:max-w-xl md:text-sm">
+              <p className="mx-auto mb-8 mt-0 font-sans text-xs tracking-wide xs:max-w-xs sm:max-w-sm md:max-w-xl md:text-sm text-white/85">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. A iusto aspernatur rem pariatur delectus nemo
                 vitae itaque, quibusdam, harum ut consequatur sint id minima laboriosam architecto repellat! Deleniti,
                 et asperiores!

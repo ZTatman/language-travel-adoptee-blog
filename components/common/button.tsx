@@ -29,7 +29,7 @@ export function Button({ onClick, hidden = false, rounded = false, filled = fals
       ${rounded ? "rounded-full" : ""} 
       ${filled
           ? "bg-sky-600 text-white hover:bg-sky-700 hover:text-gray-100"
-          : "border-[3px] border-sky-600 bg-none text-zinc-700 hover:border-sky-700"
+          : "border-[3px] border-sky-600 bg-none text-slate-700 hover:border-sky-700"
       }
       text-sm px-6 py-2 leading-none transition duration-150 ease-in-out sm:inline-block`}
       onClick={onClick}
