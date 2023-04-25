@@ -16,15 +16,15 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-fixed">
           <div className="flex h-full flex-col items-center justify-center">
             {/* Hero Text */}
-            <div className="px-6 text-center text-white md:px-12">
-              <h1 className="mb-8 font-display  text-5xl font-bold leading-[1.15] md:mb-4 md:text-6xl md:leading-[1.25] md:tracking-wider xl:text-7xl">
+            <div className="px-6 text-center md:px-12">
+              <h1 className="mb-8 font-display  text-5xl font-bold leading-[1] tracking-wide text-white/90 md:mb-4 md:text-6xl md:tracking-wider xl:text-7xl">
                 <span>
                   Language Travel
                   <br />
                   Adoptee
                 </span>
               </h1>
-              <p className="mx-auto mb-12 mt-0 font-sans text-sm tracking-widest text-white/80 xs:max-w-xs sm:max-w-sm md:mb-8 md:max-w-xl md:text-sm">
+              <p className="mx-auto mb-12 mt-0 max-w-sm font-sans text-xs leading-[inherit] tracking-widest text-white/90 md:max-w-lg">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. A iusto aspernatur rem pariatur delectus nemo
                 vitae itaque, quibusdam, harum ut consequatur sint id minima laboriosam architecto repellat! Deleniti,
                 et asperiores!
@@ -42,9 +42,19 @@ export default function Home() {
         </div>
       </section>
       {/* About Section */}
-      <section className="align-center flex justify-center">
-        <div className="h-96 w-96">
-          <Image src={headshot} alt="Emily" className="h-full object-contain" priority />
+      <section className="align-center flex justify-center bg-section px-9 py-6 md:py-9">
+        <div>
+          <Image
+            src={headshot}
+            alt="About Me Image"
+            priority
+            className="aspect-square max-w-[16rem] object-contain mix-blend-multiply md:max-w-xs"
+          />
+        </div>
+        <div className="relative text-center">
+          <h1 className="font-decorative text-7xl text-sky-600 md:text-8xl md:tracking-wide xl:text-9xl xl:tracking-wider">
+            About
+          </h1>
         </div>
       </section>
     </main>

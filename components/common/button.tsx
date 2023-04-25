@@ -17,7 +17,7 @@ export default function ButtonBase(props: PropsWithChildren<ButtonBaseProps>) {
 type Variant = "primary" | "secondary" | "disabled";
 const styleByVariant = Object.freeze({
   primary: "bg-sky-600 hover:bg-sky-700 hover:text-gray-100",
-  secondary: "bg-teal-500 hover:bg-teal-600 hover:text-gray-100",
+  secondary: "bg-teal-600 hover:bg-teal-700 hover:text-gray-100",
   disabled: "bg-gray-300 cursor-not-allowed focus:outline-none disabled:opacity-75",
 });
 

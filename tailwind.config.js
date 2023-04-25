@@ -12,10 +12,14 @@ module.exports = {
         xs: "425px",
         gr: "879px",
       },
+      colors: {
+        section: "#E7F4FA",
+      },
       fontFamily: {
         sans: ["var(--font-roboto)"],
         heading: ["var(--font-lora)"],
         display: ["var(--font-cinzel)"],
+        decorative: ["var(--font-comforter)"],
       },
     },
   },
