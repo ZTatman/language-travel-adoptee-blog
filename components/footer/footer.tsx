@@ -8,7 +8,6 @@ export default function Footer() {
     <footer>
       {/* Flex Container */}
       <div className="mx-auto w-full max-w-screen-xl px-9 py-6 md:py-9">
-        {/* TODO: Convert this to 3 col grid when links / newsletter signup are done */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-4">
           <div className="border-b pb-4 md:border-b-0 md:border-r md:pb-0">
             <Link href="/" className="text-center">
@@ -102,30 +101,35 @@ export default function Footer() {
           {/* Links */}
           <div className="flex flex-col items-center justify-center space-y-2 text-sm">
             <h3 className="font-sans text-lg uppercase tracking-wide text-slate-700">Links</h3>
+            {/* TODO: Convert this to next/link */}
             <a
               href="#"
               className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
             >
               About
             </a>
+            {/* TODO: Convert this to next/link */}
             <a
               href="#"
               className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
             >
               Blog
             </a>
+            {/* TODO: Convert this to next/link */}
             <a
               href="#"
               className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
             >
               Request a Topic
             </a>
+            {/* TODO: Convert this to next/link */}
             <a
               href="#"
               className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
             >
               Contact&nbsp;/&nbsp;Work With Me
             </a>
+            {/* TODO: Convert this to next/link */}
             <a
               href="#"
               className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
