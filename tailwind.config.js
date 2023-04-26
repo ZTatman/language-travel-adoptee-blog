@@ -10,7 +10,6 @@ module.exports = {
       screens: {
         // grandinho
         xs: "425px",
-        gr: "879px",
       },
       colors: {
         section: "#E7F4FA",

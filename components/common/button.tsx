@@ -22,7 +22,7 @@ const styleByVariant = Object.freeze({
 });
 
 interface ButtonProps {
-  variant: Variant;
+  variant?: Variant;
   hidden?: boolean;
   rounded?: boolean;
   filled?: boolean;
