@@ -30,8 +30,8 @@ export default function Home() {
                 et asperiores!
               </p>
             </div>
-            <div className="align-center flex flex-col justify-center space-y-8 md:flex-row md:space-x-8 md:space-y-0">
-              <Button onClick={() => console.log(":: button clicked!")} rounded variant="primary">
+            <div className="flex flex-col justify-center space-y-8 md:flex-row md:space-x-8 md:space-y-0">
+              <Button onClick={() => console.log(":: button clicked!")} rounded>
                 Read More
               </Button>
               <Button onClick={() => console.log(":: button clicked!")} rounded variant="secondary">
@@ -42,19 +42,31 @@ export default function Home() {
         </div>
       </section>
       {/* About Section */}
-      <section className="align-center flex justify-center bg-section px-9 py-6 md:py-9">
+      <section className="md:spac-y-0 flex w-full flex-col items-center justify-center space-y-2 bg-section px-9 py-6 md:flex-row md:space-x-12 md:py-9">
+        <h1 className="text-center font-decorative text-7xl text-sky-600 md:hidden">About</h1>
         <div>
           <Image
+            className="mx-auto my-0 aspect-square max-w-[16rem] object-contain mix-blend-multiply md:max-w-xs"
             src={headshot}
             alt="About Me Image"
             priority
-            className="aspect-square max-w-[16rem] object-contain mix-blend-multiply md:max-w-xs"
           />
         </div>
-        <div className="relative text-center">
-          <h1 className="font-decorative text-7xl text-sky-600 md:text-8xl md:tracking-wide xl:text-9xl xl:tracking-wider">
+        <div className="flex flex-col justify-center">
+          <h1 className="hidden text-center font-decorative text-7xl text-sky-600 md:block md:text-8xl md:tracking-wide xl:text-9xl xl:tracking-wider">
             About
           </h1>
+          <div className="max-w-sm">
+            <h3 className="font-heading text-xl font-bold italic text-slate-900 md:text-2xl">Hi, I am Emily</h3>
+            <p className="mb-4 text-left font-sans">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
+              tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae
+              erat.
+            </p>
+            <Button onClick={() => console.log(":: button clicked!")} rounded>
+              More About Me
+            </Button>
+          </div>
         </div>
       </section>
     </main>
