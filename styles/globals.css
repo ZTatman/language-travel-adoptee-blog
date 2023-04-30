@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+  }
+
+  .footer-link {
+    @apply text-slate-400 transition duration-150 hover:text-sky-600 hover:underline ease-in-out;
+  }
+  
+  .inline-btn {
+    @apply inline-block cursor-pointer transition duration-150 text-slate-700 hover:text-sky-600 hover:underline ease-in-out;
+  }
+}

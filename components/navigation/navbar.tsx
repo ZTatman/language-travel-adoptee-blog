@@ -13,7 +13,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className="flex w-auto flex-grow items-center justify-between border-b-2 px-9 py-3 text-center sm:w-auto">
+      <nav className="flex w-auto flex-grow items-center justify-between px-9 py-3 text-center sm:w-auto">
         <div className="flex flex-shrink-0 items-center justify-center sm:mr-6">
           <Link href="/">
             <Image src={logo} alt="Logo" width={52} height={52} />
@@ -21,22 +21,22 @@ export default function Navbar() {
         </div>
         <div className="text-md hidden sm:block">
           <Link
-            href="#"
-            className="group relative mt-4 block text-slate-700 transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
+            href="/about"
+            className="group relative mt-4 block transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
           >
             About
             <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600 transition-all duration-150 ease-in-out group-hover:scale-x-100"></span>
           </Link>
           <Link
-            href="#"
-            className="group relative mt-4 block text-slate-700 transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
+            href="/blog"
+            className="group relative mt-4 block transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
           >
             Blog
             <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600 transition-all duration-150 ease-in-out group-hover:scale-x-100"></span>
           </Link>
           <Link
-            href="#"
-            className="group relative mt-4 block text-slate-700 transition duration-150 ease-in-out sm:mr-6 sm:mt-0 sm:inline-block"
+            href="/contact"
+            className="group relative mt-4 block transition duration-150 ease-in-out sm:mr-6 sm:mt-0 sm:inline-block"
           >
             Contact Me
             <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600  transition-all duration-300 ease-in-out group-hover:scale-x-100"></span>
@@ -49,7 +49,7 @@ export default function Navbar() {
           <button
             onClick={toggleMenu}
             aria-label="Toggle navigation menu"
-            className="focus:ring-blue-sky-600 rounded-md p-1 align-middle text-slate-700 focus:outline-none focus:ring-2 sm:hidden"
+            className="rounded-md p-1 align-middle focus:outline-none focus:ring-2 focus:ring-sky-500 sm:hidden"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -66,19 +66,16 @@ export default function Navbar() {
       </nav>
       <div
         className={`${
-          showMenu ? "max-h-44" : "invisible max-h-0"
-        } text-md overflow-hidden text-center transition-all duration-300 ease-in-out sm:hidden`}
+          showMenu ? "max-h-44 shadow-inner" : "invisible max-h-0 shadow-none"
+        } text-md overflow-hidden bg-gray-100 text-center transition-all duration-300 ease-in-out sm:hidden`}
       >
-        <Link href="/about" className="block py-4 text-slate-700 transition duration-150 ease-in-out hover:bg-gray-100">
+        <Link href="/about" className="block py-4 transition duration-150 ease-in-out hover:bg-gray-200">
           About
         </Link>
-        <Link href="/blog" className="block py-4 text-slate-700 transition duration-150 ease-in-out hover:bg-gray-100">
+        <Link href="/blog" className="block py-4 transition duration-150 ease-in-out hover:bg-gray-200">
           Blog
         </Link>
-        <Link
-          href="/contact"
-          className="block py-4 text-slate-700 transition duration-150 ease-in-out hover:bg-gray-100"
-        >
+        <Link href="/contact" className="block py-4 transition duration-150 ease-in-out hover:bg-gray-200">
           Contact Me
         </Link>
       </div>

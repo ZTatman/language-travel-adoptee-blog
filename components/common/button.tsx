@@ -45,7 +45,7 @@ export function Button({
   return (
     <ButtonBase
       className={`
-      px-6 py-4 font-sans text-sm leading-none text-white transition duration-150 ease-in-out sm:inline-block
+      px-6 py-4 text-sm leading-none text-white transition duration-150 ease-in-out sm:inline-block
       ${dark ? "text-slate-700" : ""}
       ${hidden ? "hidden" : ""}
       ${rounded ? "rounded-full" : ""}

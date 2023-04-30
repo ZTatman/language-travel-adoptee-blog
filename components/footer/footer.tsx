@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 
 import logo from "../../public/finallang_favicon.ico";
 
@@ -14,12 +15,14 @@ export default function Footer() {
               <div className="flex justify-center">
                 <Image src={logo} alt="Logo" width={52} height={52} />
               </div>
-              <div className="text-small mt-2 font-display text-slate-700">Language Travel Adoptee</div>
+              <div className="text-small mt-2 font-display">Language Travel Adoptee</div>
             </Link>
             {/* Social Media Icons */}
             <div className="mt-2 flex justify-center space-x-2">
               <a
                 href="https://www.instagram.com/languagetraveladoptee"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 transition duration-150 hover:text-sky-600"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" id="instagram" aria-hidden="true">
@@ -33,6 +36,8 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.facebook.com/profile.php?id=100089352878080"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 transition duration-150 hover:text-sky-600"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" id="facebook" aria-hidden="true">
@@ -46,6 +51,8 @@ export default function Footer() {
               </a>
               <a
                 href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 transition duration-150 hover:text-sky-600"
               >
                 <svg
@@ -65,6 +72,8 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.youtube.com/@languagetraveladoptee"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 transition duration-150 hover:text-sky-600"
               >
                 <svg
@@ -85,6 +94,8 @@ export default function Footer() {
               </a>
               <a
                 href="https://twitter.com/LangTravAdoptee"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 transition duration-150 hover:text-sky-600"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" id="twitter" aria-hidden="true">
@@ -100,41 +111,31 @@ export default function Footer() {
           </div>
           {/* Links */}
           <div className="flex flex-col items-center justify-center space-y-2 text-sm">
-            <h3 className="font-sans text-lg uppercase tracking-wide text-slate-700">Links</h3>
-            {/* TODO: Convert this to next/link */}
-            <a
-              href="#"
-              className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
-            >
+            <h3 className="font-display text-lg uppercase tracking-wider">Links</h3>
+            <Link href="/about" className="footer-link text-center">
               About
-            </a>
-            {/* TODO: Convert this to next/link */}
-            <a
-              href="#"
-              className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
-            >
+            </Link>
+            <Link href="/blog" className="footer-link text-center">
               Blog
-            </a>
-            {/* TODO: Convert this to next/link */}
-            <a
-              href="#"
-              className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
-            >
-              Request a Topic
-            </a>
-            {/* TODO: Convert this to next/link */}
-            <a
-              href="#"
-              className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
-            >
+            </Link>
+            <Link href="/contact" className="footer-link text-center">
               Contact&nbsp;/&nbsp;Work With Me
-            </a>
-            {/* TODO: Convert this to next/link */}
+            </Link>
             <a
-              href="#"
-              className="text-center text-slate-400 transition duration-150 hover:text-sky-600 hover:underline"
+              href="patreon.com/languagetraveladoptee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link text-center"
             >
-              Support Me
+              Join My Patreon
+            </a>
+            <a
+              href="https://www.buymeacoffee.com/langtravadoptee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link text-center"
+            >
+              Show Some Love
             </a>
           </div>
         </div>
