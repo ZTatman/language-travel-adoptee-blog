@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import headshot from "../public/headshot.jpg";
 import { Button } from "@/components/common/button";
+import LatestYoutubeEmbed from "@/components/common/latestYoutubeVideoEmbed";
 
 export default function Home() {
   return (
@@ -43,7 +44,7 @@ export default function Home() {
         </div>
       </section>
       {/* About Section */}
-      <section className="flex w-full flex-col items-center justify-center space-y-3 bg-section py-12 md:flex-row md:space-y-0 md:py-24">
+      <section className="flex w-full flex-col items-center justify-center space-y-3 bg-section py-16 md:flex-row md:space-y-0 md:py-32">
         <h1 className="text-center font-decorative text-8xl tracking-widest text-sky-600 md:hidden">About</h1>
         <div className="mr-0 md:mr-12 lg:mr-24">
           <Image
@@ -62,9 +63,12 @@ export default function Home() {
               Welcome! I&apos;m Emily...
             </h3>
             <p className="mb-4 max-w-xs text-justify text-sm md:max-w-sm md:text-left">
-              While on my language-learning journey, I noticed online communities ignoring an important aspect of
-              learning:{" "}
-              <strong className="text-slate-800">the connection between cultures, identities, and authenticity</strong>.
+              While on my language-learning journey, I noticed a lot of online communities ignoring an important aspect
+              of learning:{" "}
+              <strong className="text-left text-slate-800">
+                the connection between cultures, identities, and authenticity
+              </strong>
+              .
               <br />
               <br />I seek to foster a language learning community through vulnerability, common humanity, and honest
               progress. None of us are truly invincible. Let&apos;s leverage that together.
@@ -136,6 +140,12 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      {/* create a section below for the latestYoutubeEmbed component */}
+      <section className="flex items-center bg-white">
+        <div className="mx-auto my-0 max-w-7xl px-4 py-16 sm:px-6 md:px-12">
+          <LatestYoutubeEmbed className="aspect-video max-w-md" />
         </div>
       </section>
     </main>
