@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import useGetLatestYoutubeVideos from "../../hooks/useGetLatestYoutubeVideos";
+import useGetLatestYoutubeVideos from "../../../hooks/useGetLatestYoutubeVideos";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 const channelLink = (
@@ -44,7 +45,7 @@ export default function LatestYoutubeVideoEmbed({ className }: { className?: str
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+      {loading && <Skeleton className={className} />}
       {firstVideo && (
         <iframe
           className={className}

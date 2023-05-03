@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import headshot from "../public/headshot.jpg";
 import { Button } from "@/components/common/button";
-import LatestYoutubeEmbed from "@/components/common/latestYoutubeVideoEmbed";
+import LatestYoutubeEmbed from "@/components/common/embeds/latestYoutubeVideoEmbed";
 
 export default function Home() {
   return (
