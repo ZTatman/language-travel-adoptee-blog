@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import useGetLatestYoutubeVideos from "../../../hooks/useGetLatestYoutubeVideos";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+console.log(":: YOUTUBE_API_KEY", YOUTUBE_API_KEY);
 const channelLink = (
   <a
     rel="noreferrer"
@@ -24,25 +25,24 @@ export default function LatestYoutubeVideoEmbed({ className }: { className?: str
 
   const { videos, loading, error } = useGetLatestYoutubeVideos(videosParams.apiKey, videosParams.max);
   const firstVideo = !loading && videos?.items?.[0];
-  const thumbnailUrl = firstVideo?.snippet?.thumbnails?.default?.url;
-  const videoId = thumbnailUrl?.split("/")?.[3];
+  const videoId = firstVideo?.id?.videoId;
 
   if (error)
     return (
-      <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 bg-slate-50 p-3 text-center text-sm">
+      <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 border-red-200 bg-red-50 p-3 text-center text-sm">
         <p>Woops, looks like there was an error!</p>
+        <p>{error}</p>
         {channelLink}
       </div>
     );
 
-  if (!firstVideo)
+  if (!loading && !firstVideo)
     return (
       <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 bg-slate-50 p-3 text-center text-sm">
         <p>Woops, looks like there&apos;s no video here!</p>
         {channelLink}
       </div>
     );
-
   return (
     <>
       {loading && <Skeleton className={className} />}
@@ -50,7 +50,7 @@ export default function LatestYoutubeVideoEmbed({ className }: { className?: str
         <iframe
           className={className}
           id="ytplayer"
-          src={`https://www.youtube.com/watchv?=${videoId}?autoplay=0`}
+          src={`https://www.youtube.com/embed/${videoId}`}
           allowFullScreen
           title="Embedded youtube"
         />

@@ -5,67 +5,80 @@ import Link from "next/link";
 import headshot from "../public/headshot.jpg";
 import { Button } from "@/components/common/button";
 import LatestYoutubeEmbed from "@/components/common/embeds/latestYoutubeVideoEmbed";
+import LatestBlogPosts from "@/components/blog/LatestBlogPosts";
 
 export default function Home() {
   return (
     <main>
       {/* Hero Image */}
       <section
-        className="relative h-[648px] w-full overflow-hidden bg-cover bg-center bg-no-repeat shadow-inner"
+        className="relative h-[648px] w-full overflow-hidden bg-cover bg-center bg-no-repeat shadow-inner md:h-screen"
         style={{ backgroundImage: 'url("/landing.jpg")' }}
       >
         {/* Hero Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-fixed">
+        <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
           <div className="flex h-full flex-col items-center justify-center">
             {/* Hero Text */}
             <div className="px-6 text-center md:px-12">
-              <h1 className="mb-8 font-display  text-5xl font-bold leading-[1] tracking-wide text-white/90 md:mb-4 md:text-6xl md:tracking-wider xl:text-7xl">
+              <h1 className="mb-8 font-display text-5xl font-bold leading-[1] tracking-wide text-white/90 md:mb-4 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
                 <span>
                   Language Travel
                   <br />
                   Adoptee
                 </span>
               </h1>
-              <p className="mx-auto mb-12 mt-0 max-w-sm text-xs leading-[inherit] tracking-widest text-white/90 md:max-w-lg">
+              <p className="mx-auto mb-20 mt-0 max-w-sm text-sm leading-[inherit] tracking-widest text-white/90 md:max-w-lg">
                 Your mental health matters while on your language learning journey. Let me show you how{" "}
                 <em className="font-bold text-white">your</em> life story and resilience are your greatest language
                 learning tools
               </p>
             </div>
-            <div className="flex flex-col justify-center space-y-8 md:flex-row md:space-x-8 md:space-y-0">
-              <Button onClick={() => console.log(":: button clicked!")} rounded>
-                Read More
-              </Button>
-              <Button onClick={() => console.log(":: button clicked!")} rounded variant="secondary">
+            <div className="flex flex-col justify-center space-y-8 md:flex-row md:space-x-8 md:space-y-0 lg:space-x-16">
+              <Button
+                className="tracking-wide"
+                onClick={() => console.log(":: button clicked!")}
+                rounded
+                disabled
+                variant="secondary"
+              >
                 Download My Free Guide
+              </Button>
+              <Button
+                className="min-w-[14rem] tracking-wide"
+                onClick={() => console.log(":: button clicked!")}
+                filled
+                rounded
+              >
+                Read More
               </Button>
             </div>
           </div>
         </div>
       </section>
       {/* About Section */}
-      <section className="flex w-full flex-col items-center justify-center space-y-3 bg-section py-16 md:flex-row md:space-y-0 md:py-32">
-        <h1 className="text-center font-decorative text-8xl tracking-widest text-sky-600 md:hidden">About</h1>
-        <div className="mr-0 md:mr-12 lg:mr-24">
+      <section className="flex w-full flex-col items-center justify-center bg-section py-16 md:flex-row md:space-x-12 md:py-32 lg:space-x-24">
+        <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
+        <div className="mb-8 md:mb-0">
           <Image
-            className="mx-auto my-0 aspect-square max-w-[16rem] object-contain mix-blend-multiply md:max-w-xs"
+            className="mx-auto my-0 aspect-square max-w-[18rem] object-contain mix-blend-multiply md:max-w-xs xl:max-w-md"
             src={headshot}
             alt="About Me Image"
             priority
           />
         </div>
         <div className="relative flex flex-col justify-center">
-          <h1 className="hidden text-center font-decorative text-8xl tracking-[0.2em] text-sky-600 md:absolute md:left-0 md:top-0 md:block md:-translate-y-1/3 md:translate-x-2/4">
+          <h1 className="hidden text-center font-decorative tracking-[0.2em] text-sky-600 md:absolute md:left-0 md:top-0 md:block md:translate-x-3/4 md:translate-y-0 md:text-7xl xl:-translate-y-1/3 xl:translate-x-3/4 xl:text-8xl">
             About
           </h1>
-          <div className="max-w-sm p-0 md:pt-20">
-            <h3 className="mb-2 text-center font-heading text-2xl font-bold italic text-slate-900 md:text-left">
+          {/* Bio */}
+          <div className="max-w-sm p-0 pr-8 md:pt-20">
+            <h3 className="mb-2 text-center font-heading text-2xl font-bold italic text-slate-800 md:text-left md:text-3xl">
               Welcome! I&apos;m Emily...
             </h3>
-            <p className="mb-4 max-w-xs text-justify text-sm md:max-w-sm md:text-left">
+            <p className="mb-4 max-w-xs pr-4 text-justify text-sm md:max-w-sm md:text-left md:text-base">
               While on my language-learning journey, I noticed a lot of online communities ignoring an important aspect
               of learning:{" "}
-              <strong className="text-left text-slate-800">
+              <strong className="text-left text-slate-700">
                 the connection between cultures, identities, and authenticity
               </strong>
               .
@@ -73,12 +86,13 @@ export default function Home() {
               <br />I seek to foster a language learning community through vulnerability, common humanity, and honest
               progress. None of us are truly invincible. Let&apos;s leverage that together.
             </p>
-            <div className="flex items-center justify-between">
-              <Link href="/about" className="inline-btn text-sm" onClick={() => console.log(":: button clicked!")}>
+            {/*  BIO CTA */}
+            <div className="flex flex-wrap items-center justify-between">
+              <Link href="/about" className="inline-btn" onClick={() => console.log(":: button clicked!")}>
                 More About Me&nbsp;&rarr;
               </Link>
               {/* Social Media Icons */}
-              <div className="mr-0 flex items-center justify-center space-x-2 md:mr-8">
+              <div className="flex items-center justify-center space-x-2 pr-8">
                 <a
                   href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO"
                   target="_blank"
@@ -143,9 +157,30 @@ export default function Home() {
         </div>
       </section>
       {/* create a section below for the latestYoutubeEmbed component */}
-      <section className="flex items-center bg-white">
-        <div className="mx-auto my-0 max-w-7xl px-4 py-16 sm:px-6 md:px-12">
-          <LatestYoutubeEmbed className="aspect-video max-w-md" />
+      <section className="bg-white py-16">
+        <h3 className="  text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
+        {/* create a 2 column flex box where the left column holds the <LatestYoutubeEmbed/> component */}
+        {/* and the right column holds the <LatestBlogPost/> component */}
+        <div className="mt-12 flex flex-col items-center justify-center lg:flex-row lg:justify-evenly">
+          <div className="flex flex-col items-center justify-center">
+            <h4 className="mb-4 text-center font-display tracking-wide">latest video</h4>
+            <LatestYoutubeEmbed className="mb-4 aspect-video w-[22rem] md:w-[24rem]" />
+            <a
+              href="https://www.youtube.com/@languagetraveladoptee"
+              className="inline-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Watch More Videos&nbsp;&rarr;
+            </a>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <h4 className="mb-4 text-center font-display tracking-wide">latests posts</h4>
+            <LatestBlogPosts className="mb-4 w-[22rem] text-center md:w-[24rem]" />
+            <Link href="/blog" className="inline-btn">
+              Check Out My Blog&nbsp;&rarr;
+            </Link>
+          </div>
         </div>
       </section>
     </main>
