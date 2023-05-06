@@ -1,13 +1,34 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import headshot from "../public/headshot.jpg";
 import { Button } from "@/components/common/button";
 import LatestYoutubeEmbed from "@/components/common/embeds/latestYoutubeVideoEmbed";
 import LatestBlogPosts from "@/components/blog/LatestBlogPosts";
 
 export default function Home() {
+  const aboutSectionRef = useRef(null);
+  // A scroller function that takes element and smooth scrolls to it.
+  const scrollToElement = (element: Element) => {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "center",
+    });
+  };
+
+  const onExploreClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    if (!aboutSectionRef.current) return;
+    const elementToScrollTo = aboutSectionRef.current;
+    setTimeout(() => {
+      scrollToElement(elementToScrollTo);
+    }, 100);
+  };
+
   return (
     <main>
       {/* Hero Image */}
@@ -17,46 +38,63 @@ export default function Home() {
       >
         {/* Hero Overlay */}
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
-          <div className="flex h-full flex-col items-center justify-center">
+          <div className="mt-16 h-full md:mt-48">
             {/* Hero Text */}
-            <div className="px-6 text-center md:px-12">
-              <h1 className="mb-8 font-display text-5xl font-bold leading-[1] tracking-wide text-white/90 md:mb-4 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
-                <span>
-                  Language Travel
-                  <br />
-                  Adoptee
-                </span>
+            <div className="mb-20 px-6 text-center md:px-12">
+              <h1 className="font-display text-5xl font-bold tracking-wide text-white/90 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
+                <span className="leading-[4.5rem]">Language Travel</span>
+                <br />
+                <span className="text-white-to-transparent leading-[4.5rem]">Adoptee</span>
               </h1>
-              <p className="mx-auto mb-20 mt-0 max-w-sm text-sm leading-[inherit] tracking-widest text-white/90 md:max-w-lg">
+              <p className="mx-auto my-0 max-w-sm text-sm leading-[inherit] tracking-widest text-white/90 md:max-w-lg lg:max-w-2xl">
                 Your mental health matters while on your language learning journey. Let me show you how{" "}
                 <em className="font-bold text-white">your</em> life story and resilience are your greatest language
                 learning tools
               </p>
             </div>
-            <div className="flex flex-col justify-center space-y-8 md:flex-row md:space-x-8 md:space-y-0 lg:space-x-16">
+            <div className="flex flex-col items-center justify-center space-y-8 md:space-y-10">
               <Button
-                className="tracking-wide"
+                className="btn btn-primary-opaque max-w-[16rem] text-sm tracking-wider"
                 onClick={() => console.log(":: button clicked!")}
-                rounded
-                disabled
-                variant="secondary"
               >
                 Download My Free Guide
               </Button>
-              <Button
-                className="min-w-[14rem] tracking-wide"
-                onClick={() => console.log(":: button clicked!")}
-                filled
-                rounded
-              >
-                Read More
-              </Button>
+              <div className="relative flex w-full items-center justify-center">
+                <div className="absolute left-0 w-1/3 border-b-2 border-white/50"></div>
+                <div className="relative flex w-1/3 items-center justify-center">
+                  <p className="font-heading text-sm font-light tracking-widest text-white/70">or</p>
+                </div>
+                <div className="absolute right-0 w-1/3 border-b-2 border-white/50"></div>
+              </div>
+              <div className="flex flex-col items-center justify-center space-y-4">
+                <div className="flex w-full items-center justify-center">
+                  <p className="font-heading text-lg font-light tracking-widest text-white/90">explore</p>
+                </div>
+                <button
+                  onClick={onExploreClick}
+                  className="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/50 transition-all duration-300 ease-in-out hover:translate-y-2 hover:bg-white/70"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2.5"
+                    stroke="currentColor"
+                    className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
       {/* About Section */}
-      <section className="flex w-full flex-col items-center justify-center bg-section py-16 md:flex-row md:space-x-12 md:py-32 lg:space-x-24">
+      <section
+        ref={aboutSectionRef}
+        className="flex w-full flex-col items-center justify-center bg-section py-16 md:flex-row md:space-x-12 md:py-32 lg:space-x-24"
+      >
         <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
         <div className="mb-8 md:mb-0">
           <Image
@@ -67,20 +105,18 @@ export default function Home() {
           />
         </div>
         <div className="relative flex flex-col justify-center">
-          <h1 className="hidden text-center font-decorative tracking-[0.2em] text-sky-600 md:absolute md:left-0 md:top-0 md:block md:translate-x-3/4 md:translate-y-0 md:text-7xl xl:-translate-y-1/3 xl:translate-x-3/4 xl:text-8xl">
+          <h1 className="hidden text-center font-decorative tracking-[0.2em] text-sky-600 md:absolute md:left-0 md:top-0 md:block md:translate-x-3/4 md:translate-y-0 md:text-7xl lg:-translate-y-1/3 lg:text-8xl xl:translate-x-3/4">
             About
           </h1>
           {/* Bio */}
-          <div className="max-w-sm p-0 pr-8 md:pt-20">
+          <div className="max-w-sm p-0 md:pt-20">
             <h3 className="mb-2 text-center font-heading text-2xl font-bold italic text-slate-800 md:text-left md:text-3xl">
               Welcome! I&apos;m Emily...
             </h3>
-            <p className="mb-4 max-w-xs pr-4 text-justify text-sm md:max-w-sm md:text-left md:text-base">
+            <p className="mb-4 max-w-xs pr-8 text-justify text-sm md:max-w-sm">
               While on my language-learning journey, I noticed a lot of online communities ignoring an important aspect
               of learning:{" "}
-              <strong className="text-left text-slate-700">
-                the connection between cultures, identities, and authenticity
-              </strong>
+              <strong className="text-slate-700">the connection between cultures, identities, and authenticity</strong>
               .
               <br />
               <br />I seek to foster a language learning community through vulnerability, common humanity, and honest
@@ -92,7 +128,7 @@ export default function Home() {
                 More About Me&nbsp;&rarr;
               </Link>
               {/* Social Media Icons */}
-              <div className="flex items-center justify-center space-x-2 pr-8">
+              <div className="flex items-center justify-start space-x-4 pr-8">
                 <a
                   href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO"
                   target="_blank"
@@ -156,11 +192,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* create a section below for the latestYoutubeEmbed component */}
-      <section className="bg-white py-16">
+      {/* Latest Content Section*/}
+      <section className="bg-white py-16 md:py-32">
         <h3 className="  text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
-        {/* create a 2 column flex box where the left column holds the <LatestYoutubeEmbed/> component */}
-        {/* and the right column holds the <LatestBlogPost/> component */}
         <div className="mt-12 flex flex-col items-center justify-center lg:flex-row lg:justify-evenly">
           <div className="flex flex-col items-center justify-center">
             <h4 className="mb-4 text-center font-display tracking-wide">latest video</h4>
