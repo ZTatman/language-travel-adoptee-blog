@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-roboto)"],
+        sans: ["var(--font-montserrat)"],
         heading: ["var(--font-lora)"],
         display: ["var(--font-cinzel)"],
         decorative: ["var(--font-comforter)"],

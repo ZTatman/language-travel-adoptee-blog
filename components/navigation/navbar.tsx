@@ -43,7 +43,10 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <Button onClick={() => console.log(":: button clicked!")} hidden rounded filled>
+          <Button
+            className="btn btn-primary rounded-full text-sm tracking-wider"
+            onClick={() => console.log(":: button clicked!")}
+          >
             Download
           </Button>
           <button

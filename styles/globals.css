@@ -3,15 +3,40 @@
 @tailwind utilities;
 
 @layer components {
-  .btn {
-    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+  .text-white-to-transparent {
+    @apply bg-gradient-to-b from-white/90 bg-clip-text bg-[center_top_1rem] text-transparent;
   }
 
   .footer-link {
     @apply text-slate-400 transition duration-150 hover:text-sky-600 hover:underline ease-in-out;
   }
-  
+
+  .btn {
+    @apply inline-block px-6 py-4 rounded-full font-semibold;
+  }
+
+  .btn-primary {
+    @apply bg-sky-600 hover:bg-sky-700 hover:text-gray-100 transition duration-150 ease-in-out;
+  }
+
+  .btn-primary-opaque {
+    @apply bg-sky-600/70 hover:bg-sky-700/70 hover:text-gray-100 border-4 border-sky-500 hover:border-sky-600;
+  }
+
+  .btn-secondary {
+    @apply bg-teal-600 hover:bg-teal-700 hover:text-gray-100 transition duration-150 ease-in-out;
+  }
+
+  .btn-secondary-opaque {
+    @apply bg-teal-600/70 hover:bg-teal-700/70 hover:text-gray-100 border-4 border-teal-500 hover:border-teal-600;
+  }
+
+  /* .btn-special {
+    @apply bg-gradient-to-r from-green-400 to-sky-500 hover:from-green-500 hover:to-sky-600 transition-all duration-300 ease-in-out;
+  } */
+
   .inline-btn {
     @apply inline-block cursor-pointer transition duration-150 text-slate-700 hover:text-sky-600 hover:underline ease-in-out;
   }
+
 }
