@@ -1,5 +1,5 @@
 // These styles apply to every route in the application
-import "../styles/globals.css";
+import "../../styles/globals.css";
 import { Montserrat, Nunito_Sans, Lora, Cinzel, Comforter } from "next/font/google";
 import { Navbar, Footer } from "@/componentIndex";
 

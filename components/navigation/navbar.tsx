@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +14,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className="flex w-auto flex-grow items-center justify-between px-9 py-3 text-center sm:w-auto">
+      <nav className="sticky top-0 z-50 flex w-auto flex-grow items-center justify-between bg-slate-50 px-9 py-3 text-center sm:w-auto">
         <div className="flex flex-shrink-0 items-center justify-center sm:mr-6">
           <Link href="/">
             <Image src={logo} alt="Logo" width={52} height={52} />
@@ -44,7 +45,7 @@ export default function Navbar() {
         </div>
         <div>
           <Button
-            className="btn btn-primary rounded-full text-sm tracking-wider"
+            className="btn btn-primary hidden rounded-full text-sm tracking-wider md:block"
             onClick={() => console.log(":: button clicked!")}
           >
             Download

@@ -1,10 +1,12 @@
 "use client";
 
 import { useRef } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
-import headshot from "../public/headshot.jpg";
+
+import headshot from "../../public/headshot.jpg";
 import { Button } from "@/components/common/button";
 import LatestYoutubeEmbed from "@/components/common/embeds/latestYoutubeVideoEmbed";
 import LatestBlogPosts from "@/components/blog/LatestBlogPosts";
@@ -33,26 +35,26 @@ export default function Home() {
     <main>
       {/* Hero Image */}
       <section
-        className="relative h-[648px] w-full overflow-hidden bg-cover bg-center bg-no-repeat shadow-inner md:h-screen"
+        className="relative min-h-[100vh] w-full overflow-hidden bg-cover bg-center bg-no-repeat shadow-inner"
         style={{ backgroundImage: 'url("/landing.jpg")' }}
       >
         {/* Hero Overlay */}
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
-          <div className="mt-16 h-full md:mt-48">
+          <div className="mt-24 h-full text-center md:mt-32">
             {/* Hero Text */}
-            <div className="mb-20 px-6 text-center md:px-12">
-              <h1 className="font-display text-5xl font-bold tracking-wide text-white/90 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
+            <div className="mb-10 px-6 text-center md:mb-20 md:px-12">
+              <h1 className="mb-4 font-display text-5xl font-bold tracking-wide text-white/90 md:mb-0 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
                 <span className="leading-[4.5rem]">Language Travel</span>
                 <br />
-                <span className="text-white-to-transparent leading-[4.5rem]">Adoptee</span>
+                <span className="text-white-to-transparent md:leading-[4.5rem]">Adoptee</span>
               </h1>
-              <p className="mx-auto my-0 max-w-sm text-sm leading-[inherit] tracking-widest text-white/90 md:max-w-lg lg:max-w-2xl">
+              <p className="mx-auto my-0 max-w-sm text-xs leading-[inherit] tracking-widest text-white/90 md:max-w-lg lg:max-w-2xl">
                 Your mental health matters while on your language learning journey. Let me show you how{" "}
                 <em className="font-bold text-white">your</em> life story and resilience are your greatest language
                 learning tools
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center space-y-8 md:space-y-10">
+            <div className="flex flex-col items-center justify-center space-y-4 md:space-y-6">
               <Button
                 className="btn btn-primary-opaque max-w-[16rem] text-sm tracking-wider"
                 onClick={() => console.log(":: button clicked!")}
@@ -66,9 +68,9 @@ export default function Home() {
                 </div>
                 <div className="absolute right-0 w-1/3 border-b-2 border-white/50"></div>
               </div>
-              <div className="flex flex-col items-center justify-center space-y-4">
+              <div className="flex flex-col items-center justify-center space-y-2">
                 <div className="flex w-full items-center justify-center">
-                  <p className="font-heading text-lg font-light tracking-widest text-white/90">explore</p>
+                  <p className="text-md font-heading font-light tracking-widest text-white/90">explore</p>
                 </div>
                 <button
                   onClick={onExploreClick}
@@ -93,7 +95,7 @@ export default function Home() {
       {/* About Section */}
       <section
         ref={aboutSectionRef}
-        className="flex w-full flex-col items-center justify-center bg-section py-16 md:flex-row md:space-x-12 md:py-32 lg:space-x-24"
+        className="flex w-full flex-col items-center justify-center bg-section py-24 md:flex-row md:space-x-12 lg:space-x-24"
       >
         <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
         <div className="mb-8 md:mb-0">
@@ -193,11 +195,11 @@ export default function Home() {
         </div>
       </section>
       {/* Latest Content Section*/}
-      <section className="bg-white py-16 md:py-32">
+      <section className="bg-white py-16">
         <h3 className="  text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
         <div className="mt-12 flex flex-col items-center justify-center lg:flex-row lg:justify-evenly">
-          <div className="flex flex-col items-center justify-center">
-            <h4 className="mb-4 text-center font-display tracking-wide">latest video</h4>
+          <div className="flex flex-col items-center justify-center space-y-6">
+            <h4 className="text-center font-display tracking-wide">latest video</h4>
             <LatestYoutubeEmbed className="mb-4 aspect-video w-[22rem] md:w-[24rem]" />
             <a
               href="https://www.youtube.com/@languagetraveladoptee"
@@ -208,7 +210,7 @@ export default function Home() {
               Watch More Videos&nbsp;&rarr;
             </a>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center space-y-6">
             <h4 className="mb-4 text-center font-display tracking-wide">latests posts</h4>
             <LatestBlogPosts className="mb-4 w-[22rem] text-center md:w-[24rem]" />
             <Link href="/blog" className="inline-btn">
@@ -217,6 +219,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <script async data-uid="c3e601a747" src="https://language-travel-adoptee.ck.page/c3e601a747/index.js"></script>
     </main>
   );
 }
