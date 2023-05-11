@@ -1,6 +1,4 @@
-import { sanityClient } from "@/lib/sanity.client";
 import groq from "groq";
-import { useEffect, useState } from "react";
 import useQueryBlogPosts from "@/hooks/useQueryBlogPosts";
 
 const latestBlogPostsQuery = groq`
@@ -11,13 +9,13 @@ const latestBlogPostsQuery = groq`
 } | order(createdAt desc)[0...3]`;
 
 export default function LatestBlogPosts({ className }: { className?: string } = { className: "" }) {
-  const { latestPosts, loading, error } = useQueryBlogPosts(latestBlogPostsQuery);
+  const { posts, loading, error } = useQueryBlogPosts(latestBlogPostsQuery);
+  console.log(":: posts", posts);
   return (
     <div className={className}>
       <ul>
-        {latestPosts &&
-          latestPosts.length >= 1 &&
-          latestPosts.map((post: any) => (
+        {posts.length >= 1 &&
+          posts.map((post: any) => (
             <li key={post.slug.current}>
               <a href="#">{post.title}</a>
             </li>

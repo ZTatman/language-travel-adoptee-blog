@@ -117,7 +117,7 @@ export default function Home() {
             <h3 className="mb-2 text-center font-heading text-2xl font-bold italic text-slate-800 md:text-left md:text-3xl">
               Welcome! I&apos;m Emily...
             </h3>
-            <p className="mb-4 max-w-xs pr-8 text-justify text-sm md:max-w-sm">
+            <p className="mb-4 max-w-xs text-center text-sm md:max-w-sm md:pr-8 md:text-left">
               While on my language-learning journey, I noticed a lot of online communities ignoring an important aspect
               of learning:{" "}
               <strong className="text-slate-700">the connection between cultures, identities, and authenticity</strong>
@@ -132,7 +132,7 @@ export default function Home() {
                 More About Me&nbsp;&rarr;
               </Link>
               {/* Social Media Icons */}
-              <div className="flex items-center justify-start space-x-4 pr-8">
+              <div className="flex items-center justify-start space-x-4 md:pr-8">
                 <a
                   href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO"
                   target="_blank"
@@ -198,11 +198,11 @@ export default function Home() {
       </section>
       {/* Latest Content Section*/}
       <section className="bg-white py-16">
-        <h3 className="  text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
-        <div className="mt-12 flex flex-col items-center justify-center lg:flex-row lg:justify-evenly">
-          <div className="flex flex-col items-center justify-center space-y-6">
-            <h4 className="text-center font-display tracking-wide">latest video</h4>
-            <LatestYoutubeEmbed className="mb-4 aspect-video w-[22rem] md:w-[24rem]" />
+        <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
+        <div className="flex flex-col items-center justify-center space-y-8 lg:flex-row lg:justify-evenly">
+          <div className="flex w-full flex-col items-center justify-center">
+            <h4 className="mb-2 text-center font-display tracking-wide">latest video</h4>
+            <LatestYoutubeEmbed className="mb-2 aspect-video w-[min(100%-2rem,24rem)]" />
             <a
               href="https://www.youtube.com/@languagetraveladoptee"
               className="inline-btn"
@@ -212,9 +212,9 @@ export default function Home() {
               Watch More Videos&nbsp;&rarr;
             </a>
           </div>
-          <div className="flex flex-col items-center justify-center space-y-6">
-            <h4 className="mb-4 text-center font-display tracking-wide">latests posts</h4>
-            <LatestBlogPosts className="mb-4 w-[22rem] text-center md:w-[24rem]" />
+          <div className="flex w-full flex-col items-center justify-center">
+            <h4 className="mb-2 text-center font-display tracking-wide">latests posts</h4>
+            <LatestBlogPosts className="mb-2 aspect-video h-[16rem] text-center" />
             <Link href="/blog" className="inline-btn">
               Check Out My Blog&nbsp;&rarr;
             </Link>
