@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
+// import { previewData } from "next/headers";
+
 import headshot from "../../public/headshot.jpg";
 import { Button } from "@/components/common/button";
 import LatestYoutubeEmbed from "@/components/common/embeds/latestYoutubeVideoEmbed";
@@ -80,11 +82,11 @@ export default function Home() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="2.5"
+                    strokeWidth="2.5"
                     stroke="currentColor"
                     className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out"
                   >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                   </svg>
                 </button>
               </div>
@@ -219,7 +221,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <script async data-uid="c3e601a747" src="https://language-travel-adoptee.ck.page/c3e601a747/index.js"></script>
     </main>
   );
 }
