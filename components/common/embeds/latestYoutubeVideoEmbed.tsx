@@ -3,7 +3,6 @@ import useGetLatestYoutubeVideos from "../../../hooks/useGetLatestYoutubeVideos"
 import { Skeleton } from "@/components/ui/skeleton";
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-console.log(":: YOUTUBE_API_KEY", YOUTUBE_API_KEY);
 const channelLink = (
   <a
     rel="noreferrer"
