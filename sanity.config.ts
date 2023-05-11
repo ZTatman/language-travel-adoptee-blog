@@ -13,7 +13,7 @@ export default defineConfig({
   name: "Language_Travel_Adoptee_Studio",
   title: "Language Travel Adoptee Studio",
   projectId,
-  dataset: dataset,
+  dataset,
   plugins: [deskTool(), visionTool()],
   schema: {
     types: schemaTypes,

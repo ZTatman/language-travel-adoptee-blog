@@ -10,7 +10,7 @@ import Script from "next/script";
 
 import headshot from "../../public/headshot.jpg";
 import { Button } from "@/components/common/button";
-import LatestYoutubeEmbed from "@/components/common/embeds/latestYoutubeVideoEmbed";
+import LatestYoutubeEmbed from "@/components/common/latestYoutubeVideoEmbed";
 import LatestBlogPosts from "@/components/blog/LatestBlogPosts";
 
 export default function Home() {

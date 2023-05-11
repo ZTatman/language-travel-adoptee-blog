@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { sanityClient } from "@/lib/sanity.client";
+
 /**
  *
  * @param query  The query to run

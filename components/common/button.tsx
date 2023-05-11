@@ -20,13 +20,6 @@ interface ButtonProps {
 }
 
 export function Button({ className = "", onClick, children = null }: PropsWithChildren<ButtonProps>) {
-  // const primary = filled
-  //   ? styleByVariant.primary
-  //   : "bg-sky-600/70 hover:bg-sky-700/70 hover:text-gray-100 border-4 border-sky-500 hover:border-sky-600";
-
-  // const secondary = filled
-  //   ? styleByVariant.secondary
-  //   : "bg-teal-600/70 hover:bg-teal-700/70 hover:text-gray-100 border-4 border-teal-500 hover:border-teal-600";
   return (
     <ButtonBase
       className={`

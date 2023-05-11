@@ -1,5 +1,5 @@
 import groq from "groq";
-import useQueryBlogPosts from "@/hooks/useQueryBlogPosts";
+import { useQueryBlogPosts } from "@/hooks";
 
 const latestBlogPostsQuery = groq`
 *[_type == "post"] {

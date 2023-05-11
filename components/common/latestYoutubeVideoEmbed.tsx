@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import useGetLatestYoutubeVideos from "../../../hooks/useGetLatestYoutubeVideos";
+import { useGetLatestYoutubeVideos } from "@/hooks";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
@@ -14,7 +14,6 @@ export default function LatestYoutubeVideoEmbed({ className }: { className?: str
 
   const { videos, loading, error } = useGetLatestYoutubeVideos(videosParams.apiKey, videosParams.max);
   const firstVideo = videos?.items?.[0];
-  console.log(":: firstVideo", firstVideo);
   const videoId = firstVideo?.id?.videoId;
 
   if (error)
