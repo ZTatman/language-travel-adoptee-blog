@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${lora.variable} ${cinzel.variable} ${comforter.variable} m-0 h-full bg-slate-50 font-sans text-slate-700`}
+      className={`${montserrat.variable} ${lora.variable} ${cinzel.variable} ${comforter.variable} m-0 h-full bg-white font-sans text-slate-700`}
     >
       <body className="m-0 h-full">
         <div>

@@ -76,15 +76,15 @@ export default function Home() {
                 </div>
                 <button
                   onClick={onExploreClick}
-                  className="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/50 transition-all duration-300 ease-in-out hover:translate-y-2 hover:bg-white/70"
+                  className="group relative flex h-8 w-8 items-center justify-center rounded-full bg-white/50 transition-all duration-300 ease-in-out hover:translate-y-2 hover:bg-white/70"
                 >
                   <svg
+                    className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/3 transform transition-all duration-300 ease-in-out group-hover:-translate-y-1/4"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="2.5"
                     stroke="currentColor"
-                    className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 transform transition-all duration-300 ease-in-out"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                   </svg>
@@ -97,12 +97,12 @@ export default function Home() {
       {/* About Section */}
       <section
         ref={aboutSectionRef}
-        className="flex w-full flex-col items-center justify-center bg-section py-24 md:flex-row md:space-x-12 lg:space-x-24"
+        className="flex w-full flex-col items-center justify-center bg-section py-12 md:flex-row md:space-x-12 md:py-24 lg:space-x-24 lg:py-24"
       >
         <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
-        <div className="mb-8 md:mb-0">
+        <div className="mb-4 md:mb-0">
           <Image
-            className="mx-auto my-0 aspect-square max-w-[18rem] object-contain mix-blend-multiply md:max-w-xs xl:max-w-md"
+            className="mx-auto my-0 aspect-square max-w-[12rem] object-contain mix-blend-multiply md:max-w-xs xl:max-w-md"
             src={headshot}
             alt="About Me Image"
             priority
@@ -117,7 +117,7 @@ export default function Home() {
             <h3 className="mb-2 text-center font-heading text-2xl font-bold italic text-slate-800 md:text-left md:text-3xl">
               Welcome! I&apos;m Emily...
             </h3>
-            <p className="mb-4 max-w-xs text-center text-sm md:max-w-sm md:pr-8 md:text-left">
+            <p className="mb-0 max-w-xs text-center text-[14px] md:mb-4 md:max-w-sm md:pr-8 md:text-left md:text-sm">
               While on my language-learning journey, I noticed a lot of online communities ignoring an important aspect
               of learning:{" "}
               <strong className="text-slate-700">the connection between cultures, identities, and authenticity</strong>
@@ -127,7 +127,7 @@ export default function Home() {
               progress. None of us are truly invincible. Let&apos;s leverage that together.
             </p>
             {/*  BIO CTA */}
-            <div className="flex flex-wrap items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between text-sm md:text-base">
               <Link href="/about" className="inline-btn" onClick={() => console.log(":: button clicked!")}>
                 More About Me&nbsp;&rarr;
               </Link>
@@ -197,15 +197,16 @@ export default function Home() {
         </div>
       </section>
       {/* Latest Content Section*/}
-      <section className="bg-white py-16">
+      <section className="bg-white py-12 md:py-16 lg:py-24">
         <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
-        <div className="flex flex-col items-center justify-center space-y-8 lg:flex-row lg:justify-evenly">
+        {/* Latest Content Container */}
+        <div className="grid grid-rows-2 gap-8 md:grid-cols-2 md:grid-rows-none">
           <div className="flex w-full flex-col items-center justify-center">
             <h4 className="mb-2 text-center font-display tracking-wide">latest video</h4>
-            <LatestYoutubeEmbed className="mb-2 aspect-video w-[min(100%-2rem,24rem)]" />
+            <LatestYoutubeEmbed className="mb-2 aspect-video w-[min(100%-2rem,26rem)]" />
             <a
               href="https://www.youtube.com/@languagetraveladoptee"
-              className="inline-btn"
+              className="inline-btn text-sm"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -214,8 +215,8 @@ export default function Home() {
           </div>
           <div className="flex w-full flex-col items-center justify-center">
             <h4 className="mb-2 text-center font-display tracking-wide">latests posts</h4>
-            <LatestBlogPosts className="mb-2 aspect-video h-[16rem] text-center" />
-            <Link href="/blog" className="inline-btn">
+            <LatestBlogPosts className="mb-2 h-full w-[min(100%-2rem,26rem)] space-y-4" />
+            <Link href="/blog" className="inline-btn text-sm">
               Check Out My Blog&nbsp;&rarr;
             </Link>
           </div>
