@@ -14,7 +14,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className="sticky top-0 z-50 flex w-auto flex-grow items-center justify-between bg-slate-50 px-9 py-3 text-center sm:w-auto">
+      <nav className="sticky top-0 z-50 flex w-auto flex-grow items-center justify-between border-b bg-white px-9 py-3 text-center sm:w-auto">
         <div className="flex flex-shrink-0 items-center justify-center sm:mr-6">
           <Link href="/">
             <Image src={logo} alt="Logo" width={52} height={52} />
@@ -71,7 +71,7 @@ export default function Navbar() {
       <div
         className={`${
           showMenu ? "max-h-44 shadow-inner" : "invisible max-h-0 shadow-none"
-        } text-md overflow-hidden bg-gray-100 text-center transition-all duration-300 ease-in-out sm:hidden`}
+        } text-md overflow-hidden bg-gray-50 text-center transition-all duration-300 ease-in-out sm:hidden`}
       >
         <Link href="/about" className="block py-4 transition duration-150 ease-in-out hover:bg-gray-200">
           About
