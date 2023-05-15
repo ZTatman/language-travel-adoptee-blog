@@ -24,9 +24,19 @@ export default function LatestYoutubeVideoEmbed({ className }: { className?: str
         <p>Click below to see more videos!</p>
       </div>
     );
+
+  if (loading || !firstVideo) return <Skeleton className={className} />;
+
+  if (!loading && !firstVideo)
+    return (
+      <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 bg-slate-50 p-3 text-center text-sm">
+        <p>Woops, looks like there&apos;s no video here!</p>
+        <p>Click below to see more videos!</p>
+      </div>
+    );
+
   return (
     <>
-      {loading && <Skeleton className={className} />}
       {firstVideo && (
         <iframe
           className={className}
