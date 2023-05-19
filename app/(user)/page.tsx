@@ -42,7 +42,7 @@ export default function Home() {
       >
         {/* Hero Overlay */}
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
-          <div className="mt-24 h-full text-center md:mt-48">
+          <div className="mt-clamp-2 h-full text-center">
             {/* Hero Text */}
             <div className="mb-10 px-6 text-center md:mb-20 md:px-12">
               <h1 className="mb-4 font-display text-5xl font-bold tracking-wide text-white/90 md:mb-0 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">

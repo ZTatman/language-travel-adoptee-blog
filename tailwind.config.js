@@ -1,11 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-	],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -15,6 +11,20 @@ module.exports = {
       },
     },
     extend: {
+      // write me a property to clamp margin top based on viewport height, min is 24rem and max is 48 rem, and in between the browser needs to figure it out
+      // https://css-tricks.com/clamp-its-a-little-bit-of-max-min-and-a-little-bit-of-responsive-neat/
+      // https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+      // https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+      margin: {
+        "clamp-1": "clamp(2rem, 5vw, 4rem)",
+        "clamp-2": "clamp(4rem, 10vw, 8rem)",
+        "clamp-3": "clamp(6rem, 15vw, 12rem)",
+        "clamp-4": "clamp(8rem, 20vw, 16rem)",
+        "clamp-5": "clamp(10rem, 25vw, 20rem)",
+        "clamp-6": "clamp(12rem, 30vw, 24rem)",
+        "clamp-7": "clamp(14rem, 35vw, 28rem)",
+        "clamp-8": "clamp(16rem, 40vw, 32rem)",
+      },
       fontFamily: {
         sans: ["var(--font-montserrat)"],
         heading: ["var(--font-lora)"],
@@ -79,4 +89,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
