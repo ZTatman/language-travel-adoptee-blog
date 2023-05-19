@@ -2,6 +2,8 @@
 import "../../styles/globals.css";
 import { Montserrat, Nunito_Sans, Lora, Cinzel, Comforter } from "next/font/google";
 import { Navbar, Footer } from "@/componentIndex";
+import { Toaster } from "@/components/ui/toaster";
+import { PreviewData } from "next/headers";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

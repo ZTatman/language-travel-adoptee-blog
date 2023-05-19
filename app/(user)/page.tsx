@@ -37,12 +37,12 @@ export default function Home() {
     <main>
       {/* Hero Image */}
       <section
-        className="relative min-h-[100vh] w-full overflow-hidden bg-cover bg-center bg-no-repeat shadow-inner"
+        className="relative h-[100vh] w-full overflow-hidden bg-cover bg-center bg-no-repeat shadow-inner"
         style={{ backgroundImage: 'url("/landing.jpg")' }}
       >
         {/* Hero Overlay */}
         <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
-          <div className="mt-24 h-full text-center md:mt-32">
+          <div className="mt-24 h-full text-center md:mt-48">
             {/* Hero Text */}
             <div className="mb-10 px-6 text-center md:mb-20 md:px-12">
               <h1 className="mb-4 font-display text-5xl font-bold tracking-wide text-white/90 md:mb-0 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
@@ -97,7 +97,7 @@ export default function Home() {
       {/* About Section */}
       <section
         ref={aboutSectionRef}
-        className="flex w-full flex-col items-center justify-center bg-section py-12 md:flex-row md:space-x-12 md:py-24 lg:space-x-24 lg:py-24"
+        className="flex w-full flex-col items-center justify-center bg-section py-12 md:flex-row md:space-x-12 md:py-24 lg:space-x-24"
       >
         <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
         <div className="mb-4 md:mb-0">
@@ -197,7 +197,7 @@ export default function Home() {
         </div>
       </section>
       {/* Latest Content Section*/}
-      <section className="bg-white py-12 md:py-16 lg:py-24">
+      <section className="bg-white py-12 md:py-24">
         <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
         {/* Latest Content Container */}
         <div className="grid grid-rows-2 gap-8 md:grid-cols-2 md:grid-rows-none">

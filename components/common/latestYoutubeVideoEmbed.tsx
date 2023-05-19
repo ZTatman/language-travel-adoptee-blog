@@ -5,14 +5,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 
 export default function LatestYoutubeVideoEmbed({ className }: { className?: string } = { className: "" }) {
-  const videosParams = useMemo(() => {
+  const { apiKey, max } = useMemo(() => {
     return {
       apiKey: YOUTUBE_API_KEY,
       max: 1,
     };
   }, []);
 
-  const { videos, loading, error } = useGetLatestYoutubeVideos(videosParams.apiKey, videosParams.max);
+  const [videos, loading, error] = useGetLatestYoutubeVideos(apiKey, max);
   const firstVideo = videos?.items?.[0];
   const videoId = firstVideo?.id?.videoId;
 

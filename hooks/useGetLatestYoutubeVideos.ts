@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_LTA_YOUTUBE_API_KEY ?? "";
+const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_LTA_YOUTUBE_API_KEY;
 
 interface Video {
   id: {
@@ -31,13 +31,13 @@ interface YoutubeResponse {
 
 /**
  *
- * @param apiKey  The API key for the youtube channel
- * @param max  The maximum number of videos to return
+ * @param {string} apiKey - The API key for the youtube channel
+ * @param {number} max - The maximum number of videos to return
  * @returns  An object containing the videos, loading state, and error state
  * @example
  * const { videos, loading, error } = useGetLatestVideos(YOUTUBE_API_KEY, YOUTUBE_CHANNEL_ID);
  */
-export default function useGetLatestVideos(apiKey: String, max: Number = 1) {
+export default function useGetLatestVideos(apiKey: string, max: number = 1) {
   const [videos, setVideos] = useState<Video[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -60,5 +60,5 @@ export default function useGetLatestVideos(apiKey: String, max: Number = 1) {
       });
     return () => abortController.abort();
   }, [apiKey, max]);
-  return { videos, loading, error };
+  return [videos, loading, error];
 }
