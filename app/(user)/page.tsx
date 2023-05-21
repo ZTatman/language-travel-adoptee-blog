@@ -6,12 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
-// import { previewData } from "next/headers";
-
 import headshot from "../../public/headshot.jpg";
-import { Button } from "@/components/common/button";
-import LatestYoutubeEmbed from "@/components/common/latestYoutubeVideoEmbed";
-import LatestBlogPosts from "@/components/blog/LatestBlogPosts";
+import { Button } from "@/components/button";
+import LatestYoutubeEmbed from "@/components/latestYoutubeVideoEmbed";
+import LatestBlogPosts from "@/components/blog/latestBlogPosts";
 
 export default function Home() {
   const aboutSectionRef = useRef(null);
@@ -50,7 +48,7 @@ export default function Home() {
                 <br />
                 <span className="text-white-to-transparent md:leading-[4.5rem]">Adoptee</span>
               </h1>
-              <p className="mx-auto my-0 max-w-sm text-xs leading-[inherit] tracking-widest text-white/90 md:max-w-lg lg:max-w-2xl">
+              <p className="mx-auto my-0 max-w-sm text-xs leading-[inherit] tracking-widest text-white md:max-w-lg lg:max-w-2xl">
                 Your mental health matters while on your language learning journey. Let me show you how{" "}
                 <em className="font-bold text-white">your</em> life story and resilience are your greatest language
                 learning tools

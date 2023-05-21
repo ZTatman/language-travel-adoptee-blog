@@ -1,22 +1,25 @@
-import groq from "groq";
 import Image from "next/image";
+import Link from "next/link";
 
+import groq from "groq";
 import { useQueryBlogPosts } from "@/hooks";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const latestBlogPostsQuery = groq`
 *[_type == "post"] {
   title,
-  "slug": slug.current,
+  description,
   author->{name},
-  "image": mainImage.asset->{url},
-  categories[]->
+  categories[]->,
+  "slug": slug.current,
+  "imageUrl": mainImage.asset->url
 } | order(createdAt desc)[0...3]`;
 
 export default function LatestBlogPosts({ className }: { className?: string } = { className: "" }) {
   const { posts, loading, error } = useQueryBlogPosts(latestBlogPostsQuery);
   const hasPosts = posts.length >= 1;
+  console.log(":: posts", posts);
   if (error)
     return (
       <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 border-red-200 bg-red-50 p-3 text-center text-sm">
@@ -25,9 +28,14 @@ export default function LatestBlogPosts({ className }: { className?: string } = 
         <p>Click below to read my blog!</p>
       </div>
     );
-
-  if (loading || !hasPosts) return <Skeleton className={className} />;
-
+  if (loading || !hasPosts)
+    return (
+      <div className={className}>
+        <Skeleton className="h-24 w-full rounded-xl" />
+        <Skeleton className="h-24 w-full rounded-xl" />
+        <Skeleton className="h-24 w-full rounded-xl" />
+      </div>
+    );
   if (!loading && !hasPosts)
     return (
       <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 bg-slate-50 p-3 text-center text-sm">
@@ -39,27 +47,36 @@ export default function LatestBlogPosts({ className }: { className?: string } = 
   return (
     <>
       <ul className={className}>
-        {posts.length >= 1 && posts.map((post: any) => <BlogCardRow key={post.slug.current} post={post} />)}
+        {posts.length >= 1 && posts.map((post: any) => <CardRow key={post.slug} post={post} />)}
       </ul>
     </>
   );
 }
 
-function BlogCardRow({ post, onClick }: { post: any; onClick?: () => void }) {
+function CardRow({ post, onClick }: { post: any; onClick?: () => void }) {
   return (
-    <Card onClick={onClick} className="group flex h-20 items-center justify-center overflow-hidden rounded-xl">
-      <div className="hover h-full w-24 overflow-hidden">
+    <Card
+      onClick={onClick}
+      className="group flex h-24 items-center justify-center overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:shadow-lg"
+    >
+      <div className="h-full w-24 overflow-hidden">
         <Image
-          className="h-full w-full transform rounded object-cover object-center transition-all duration-300 ease-in-out group-hover:scale-110"
+          className="h-full w-full transform object-cover object-center transition-all duration-300 ease-in-out group-hover:scale-110"
           width={96}
           height={96}
-          src={post.image.url}
+          src={post.imageUrl}
           alt={post.title}
         />
       </div>
-      <CardHeader className="w-full px-6 py-3 text-left font-heading">
-        <CardTitle>{post.title}</CardTitle>
-      </CardHeader>
+      <div>
+        <CardHeader className="max-w-xs px-3 text-left">
+          <CardTitle className="font-heading text-base">{post.title}</CardTitle>
+          <CardDescription className="font-sans text-xs line-clamp-2">{post.description}</CardDescription>
+          <Link className="inline-btn text-xs font-semibold" href="#">
+            Read More
+          </Link>
+        </CardHeader>
+      </div>
     </Card>
   );
 }

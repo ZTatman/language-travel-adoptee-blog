@@ -11,7 +11,6 @@ module.exports = {
       },
     },
     extend: {
-      // write me a property to clamp margin top based on viewport height, min is 24rem and max is 48 rem, and in between the browser needs to figure it out
       // https://css-tricks.com/clamp-its-a-little-bit-of-max-min-and-a-little-bit-of-responsive-neat/
       // https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
       // https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
@@ -67,11 +66,11 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
+      // borderRadius: {
+      //   lg: "var(--radius)",
+      //   md: "calc(var(--radius) - 2px)",
+      //   sm: "calc(var(--radius) - 4px)",
+      // },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -88,5 +87,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/line-clamp")],
 };

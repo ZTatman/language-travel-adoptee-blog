@@ -1,9 +1,8 @@
-// These styles apply to every route in the application
-import "../../styles/globals.css";
 import { Montserrat, Nunito_Sans, Lora, Cinzel, Comforter } from "next/font/google";
-import { Navbar, Footer } from "@/componentIndex";
-import { Toaster } from "@/components/ui/toaster";
-import { PreviewData } from "next/headers";
+import { previewData } from "next/headers";
+
+import "../../styles/globals.css";
+import { Navbar, Footer, NewsletterSignup } from "@/componentIndex";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -42,8 +41,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="m-0 h-full">
         <div>
-          <Navbar />
+          <div className="sticky top-0 z-50">
+            {previewData() && (
+              <div className="w-full bg-amber-400 p-2 text-center text-white">
+                <p className="text-sm">In Preview Mode</p>
+              </div>
+            )}
+            <Navbar />
+          </div>
           {children}
+          <NewsletterSignup />
           <Footer />
         </div>
       </body>

@@ -19,12 +19,8 @@ interface Video {
   };
 }
 
-interface SearchResponse {
-  items: Video[];
-}
-
 interface YoutubeResponse {
-  videos: SearchResponse;
+  videos: Video[] | null;
   loading: boolean;
   error: Error | null;
 }
@@ -37,7 +33,7 @@ interface YoutubeResponse {
  * @example
  * const { videos, loading, error } = useGetLatestVideos(YOUTUBE_API_KEY, YOUTUBE_CHANNEL_ID);
  */
-export default function useGetLatestVideos(apiKey: string, max: number = 1) {
+export default function useGetLatestVideos(apiKey: string, max: number = 1): YoutubeResponse {
   const [videos, setVideos] = useState<Video[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -49,7 +45,11 @@ export default function useGetLatestVideos(apiKey: string, max: number = 1) {
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCp-HcdqX1iSlUok92r8-t9w&maxResults=${max}&order=date&key=${apiKey}`,
       { signal: abortController.signal }
     )
-      .then((res) => res.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch video due to bad response: " + response.status);
+        }
+      })
       .then((videos) => {
         setVideos(videos);
         setLoading(false);
@@ -60,5 +60,5 @@ export default function useGetLatestVideos(apiKey: string, max: number = 1) {
       });
     return () => abortController.abort();
   }, [apiKey, max]);
-  return [videos, loading, error];
+  return { videos, loading, error };
 }

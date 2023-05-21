@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "../common/button";
-import logo from "../../public/finallang_favicon.ico";
+import { Button } from "./button";
+import logo from "../public/finallang_favicon.ico";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className="sticky top-0 z-50 flex w-auto flex-grow items-center justify-between border-b bg-white px-9 py-3 text-center sm:w-auto">
+      <nav className="flex w-auto flex-grow items-center justify-between border-b bg-white px-9 py-3 text-center sm:w-auto">
         <div className="flex flex-shrink-0 items-center justify-center sm:mr-6">
           <Link href="/">
             <Image src={logo} alt="Logo" width={52} height={52} />

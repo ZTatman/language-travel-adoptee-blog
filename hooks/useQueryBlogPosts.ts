@@ -3,8 +3,8 @@ import { sanityClient } from "@/lib/sanity.client";
 
 /**
  *
- * @param query  The query to run
- * @returns  An object containing the posts, loading state, and error state
+ * @param {string} query  The query to run
+ * @returns {object} An object containing the posts, loading state, and error state
  * @example
  * const { posts, loading, error } = useQueryPosts(latestBlogPostsQuery);
  */
