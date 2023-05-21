@@ -18,8 +18,8 @@ const latestBlogPostsQuery = groq`
 
 export default function LatestBlogPosts({ className }: { className?: string } = { className: "" }) {
   const { posts, loading, error } = useQueryBlogPosts(latestBlogPostsQuery);
-  const hasPosts = posts.length >= 1;
-  console.log(":: posts", posts);
+  const hasPosts = posts.length > 0;
+
   if (error)
     return (
       <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 border-red-200 bg-red-50 p-3 text-center text-sm">
@@ -28,6 +28,7 @@ export default function LatestBlogPosts({ className }: { className?: string } = 
         <p>Click below to read my blog!</p>
       </div>
     );
+
   if (loading || !hasPosts)
     return (
       <div className={className}>
@@ -36,6 +37,7 @@ export default function LatestBlogPosts({ className }: { className?: string } = 
         <Skeleton className="h-24 w-full rounded-xl" />
       </div>
     );
+
   if (!loading && !hasPosts)
     return (
       <div className="flex h-32 max-w-xs flex-col justify-center rounded border-2 bg-slate-50 p-3 text-center text-sm">
@@ -43,7 +45,6 @@ export default function LatestBlogPosts({ className }: { className?: string } = 
         <p>Click below to read my blog!</p>
       </div>
     );
-
   return (
     <>
       <ul className={className}>

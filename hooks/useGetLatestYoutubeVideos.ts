@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_LTA_YOUTUBE_API_KEY;
 
-interface Video {
+interface Item {
+  etag: string;
   id: {
+    kind: string;
     videoId: string;
   };
   snippet: {
-    title: string;
+    channelId: string;
+    channelTitle: string;
     description: string;
+    liveBroadcastContent: string;
+    publishTime: string;
+    publishedAt: string;
     thumbnails: {
       default: {
         url: string;
@@ -17,10 +23,23 @@ interface Video {
       };
     };
   };
+  title: string;
+}
+
+interface Response {
+  etag: string;
+  items: Item[];
+  kind: string;
+  nextPageToken: string;
+  pageInfo: {
+    resultsPerPage: number;
+    totalResults: number;
+  };
+  regionCode: string;
 }
 
 interface YoutubeResponse {
-  videos: Video[] | null;
+  videos: Response | null;
   loading: boolean;
   error: Error | null;
 }
@@ -34,7 +53,7 @@ interface YoutubeResponse {
  * const { videos, loading, error } = useGetLatestVideos(YOUTUBE_API_KEY, YOUTUBE_CHANNEL_ID);
  */
 export default function useGetLatestVideos(apiKey: string, max: number = 1): YoutubeResponse {
-  const [videos, setVideos] = useState<Video[] | null>(null);
+  const [videos, setVideos] = useState<Response | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   useEffect(() => {
@@ -49,6 +68,7 @@ export default function useGetLatestVideos(apiKey: string, max: number = 1): You
         if (!response.ok) {
           throw new Error("Failed to fetch video due to bad response: " + response.status);
         }
+        return response.json();
       })
       .then((videos) => {
         setVideos(videos);

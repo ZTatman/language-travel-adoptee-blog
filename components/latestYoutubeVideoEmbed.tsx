@@ -1,13 +1,14 @@
 import { useGetLatestYoutubeVideos } from "@/hooks";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY as string;
-const MAX_TO_RETRIEVE = 1;
+const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+const MAX_TO_RETRIEVE = 2;
 
 export default function LatestYoutubeVideoEmbed({ className }: { className?: string } = { className: "" }) {
   const { videos, loading, error } = useGetLatestYoutubeVideos(YOUTUBE_API_KEY, MAX_TO_RETRIEVE);
   const firstVideo = videos?.items?.[0];
   const videoId = firstVideo?.id?.videoId;
+  console.log(":: firstVideo", firstVideo, videoId);
 
   if (error)
     return (
@@ -17,9 +18,7 @@ export default function LatestYoutubeVideoEmbed({ className }: { className?: str
         <p>Click below to see more videos!</p>
       </div>
     );
-
   if (loading || !firstVideo) return <Skeleton className={className} />;
-
   if (!loading && !firstVideo)
     return (
       <div className="mb-2 flex aspect-video w-[min(100%-2rem,26rem)] flex-col justify-center rounded border-2 bg-slate-50 p-3 text-center text-sm">
