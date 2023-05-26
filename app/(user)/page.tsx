@@ -4,12 +4,11 @@ import { useRef } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 
 import headshot from "../../public/headshot.jpg";
 import { Button } from "@/components/button";
 import LatestYoutubeEmbed from "@/components/latestYoutubeVideoEmbed";
-import LatestBlogPosts from "@/components/blog/latestBlogPosts";
+import LatestBlogPosts from "@/components/blog/LatestBlogPosts";
 
 export default function Home() {
   const aboutSectionRef = useRef(null);
@@ -39,11 +38,11 @@ export default function Home() {
         style={{ backgroundImage: 'url("/landing.jpg")' }}
       >
         {/* Hero Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
-          <div className="mt-clamp-2 h-full text-center">
+        <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-full overflow-hidden bg-scroll bg-gradient-to-t from-black/70 to-transparent">
+          <div className="h-full text-center mt-clamp-4">
             {/* Hero Text */}
-            <div className="mb-10 px-6 text-center md:mb-20 md:px-12">
-              <h1 className="mb-4 font-display text-5xl font-bold tracking-wide text-white/90 md:mb-0 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
+            <div className="px-6 mb-10 text-center md:mb-20 md:px-12">
+              <h1 className="mb-4 text-5xl font-bold tracking-wide font-display text-white/90 md:mb-0 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
                 <span className="leading-[4.5rem]">Language Travel</span>
                 <br />
                 <span className="text-white-to-transparent md:leading-[4.5rem]">Adoptee</span>
@@ -61,23 +60,23 @@ export default function Home() {
               >
                 Download My Free Guide
               </Button>
-              <div className="relative flex w-full items-center justify-center">
+              <div className="relative flex items-center justify-center w-full">
                 <div className="absolute left-0 w-1/3 border-b-2 border-white/50"></div>
-                <div className="relative flex w-1/3 items-center justify-center">
-                  <p className="font-heading text-sm font-light tracking-widest text-white/70">or</p>
+                <div className="relative flex items-center justify-center w-1/3">
+                  <p className="text-sm font-light tracking-widest font-heading text-white/70">or</p>
                 </div>
                 <div className="absolute right-0 w-1/3 border-b-2 border-white/50"></div>
               </div>
               <div className="flex flex-col items-center justify-center space-y-2">
-                <div className="flex w-full items-center justify-center">
-                  <p className="text-md font-heading font-light tracking-widest text-white/90">explore</p>
+                <div className="flex items-center justify-center w-full">
+                  <p className="font-light tracking-widest text-md font-heading text-white/90">explore</p>
                 </div>
                 <button
                   onClick={onExploreClick}
-                  className="group relative flex h-8 w-8 items-center justify-center rounded-full bg-white/50 transition-all duration-300 ease-in-out hover:translate-y-2 hover:bg-white/70"
+                  className="relative flex items-center justify-center w-8 h-8 rounded-full group bg-white/50 transition-all duration-300 ease-in-out hover:translate-y-2 hover:bg-white/70"
                 >
                   <svg
-                    className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/3 transform transition-all duration-300 ease-in-out group-hover:-translate-y-1/4"
+                    className="absolute w-6 h-6 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/3 transform transition-all duration-300 ease-in-out group-hover:-translate-y-1/4"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -95,9 +94,9 @@ export default function Home() {
       {/* About Section */}
       <section
         ref={aboutSectionRef}
-        className="flex w-full flex-col items-center justify-center bg-section py-12 md:flex-row md:space-x-12 md:py-24 lg:space-x-24"
+        className="flex flex-col items-center justify-center w-full py-12 bg-section md:flex-row md:space-x-12 md:py-24 lg:space-x-24"
       >
-        <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
+        <h1 className="mb-2 tracking-widest text-center font-decorative text-7xl text-sky-600 md:hidden">About</h1>
         <div className="mb-4 md:mb-0">
           <Image
             className="mx-auto my-0 aspect-square max-w-[12rem] object-contain mix-blend-multiply md:max-w-xs xl:max-w-md"
@@ -112,7 +111,7 @@ export default function Home() {
           </h1>
           {/* Bio */}
           <div className="max-w-sm p-0 md:pt-20">
-            <h3 className="mb-2 text-center font-heading text-2xl font-bold italic text-slate-800 md:text-left md:text-3xl">
+            <h3 className="mb-2 text-2xl italic font-bold text-center font-heading text-slate-800 md:text-left md:text-3xl">
               Welcome! I&apos;m Emily...
             </h3>
             <p className="mb-0 max-w-xs text-center text-[14px] md:mb-4 md:max-w-sm md:pr-8 md:text-left md:text-sm">
@@ -159,7 +158,7 @@ export default function Home() {
                   className="text-red-600 transition duration-150 hover:text-red-700"
                 >
                   <svg
-                    className="h-6 w-6"
+                    className="w-6 h-6"
                     fill="currentColor"
                     fillRule="evenodd"
                     viewBox="0 0 24 24"
@@ -180,7 +179,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-sky-600 transition duration-150 hover:text-sky-700"
                 >
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" id="twitter" aria-hidden="true">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" id="twitter" aria-hidden="true">
                     <path
                       fillRule="evenodd"
                       d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"
@@ -195,26 +194,26 @@ export default function Home() {
         </div>
       </section>
       {/* Latest Content Section*/}
-      <section className="bg-white py-12 md:py-24">
-        <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
+      <section className="py-12 bg-white md:py-24">
+        <h3 className="mb-8 text-3xl italic font-bold text-center font-heading text-slate-800">What&apos;s New</h3>
         {/* Latest Content Container */}
         <div className="grid grid-rows-2 gap-8 md:grid-cols-2 md:grid-rows-none">
-          <div className="flex w-full flex-col items-center justify-center">
-            <h4 className="mb-2 text-center font-display tracking-wide">latest video</h4>
+          <div className="flex flex-col items-center justify-center w-full">
+            <h4 className="mb-2 tracking-wide text-center font-display">latest video</h4>
             <LatestYoutubeEmbed className="mb-2 aspect-video w-[min(100%-2rem,26rem)]" />
             <a
               href="https://www.youtube.com/@languagetraveladoptee"
-              className="inline-btn text-sm"
+              className="text-sm inline-btn"
               target="_blank"
               rel="noopener noreferrer"
             >
               Watch More Videos&nbsp;&rarr;
             </a>
           </div>
-          <div className="flex w-full flex-col items-center justify-center">
-            <h4 className="mb-2 text-center font-display tracking-wide">latests posts</h4>
+          <div className="flex flex-col items-center justify-center w-full">
+            <h4 className="mb-2 tracking-wide text-center font-display">latests posts</h4>
             <LatestBlogPosts className="mb-2 h-full w-[min(100%-2rem,26rem)] space-y-4" />
-            <Link href="/blog" className="inline-btn text-sm">
+            <Link href="/blog" className="text-sm inline-btn">
               Check Out My Blog&nbsp;&rarr;
             </Link>
           </div>

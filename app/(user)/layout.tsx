@@ -39,11 +39,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${montserrat.variable} ${lora.variable} ${cinzel.variable} ${comforter.variable} m-0 h-full bg-white font-sans text-slate-700`}
     >
-      <body className="m-0 h-full">
+      <body className="h-full m-0">
         <div>
           <div className="sticky top-0 z-50">
             {previewData() && (
-              <div className="w-full bg-amber-400 p-2 text-center text-white">
+              <div className="w-full p-2 text-center text-white bg-amber-500">
                 <p className="text-sm">In Preview Mode</p>
               </div>
             )}
