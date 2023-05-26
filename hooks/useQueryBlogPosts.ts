@@ -8,11 +8,12 @@ import { sanityClient } from "@/lib/sanity.client";
  * @example
  * const { posts, loading, error } = useQueryPosts(latestBlogPostsQuery);
  */
-export default function useQueryBlogPosts(query: string) {
+export default function useQueryBlogPosts(query: string): object {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   useEffect(() => {
+    if(!query) return;
     const abortController = new AbortController();
     setLoading(true);
     setError(null);

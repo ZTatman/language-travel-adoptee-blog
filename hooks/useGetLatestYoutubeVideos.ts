@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_LTA_YOUTUBE_API_KEY;
-
 interface Item {
   etag: string;
   id: {
@@ -52,11 +50,13 @@ interface YoutubeResponse {
  * @example
  * const { videos, loading, error } = useGetLatestVideos(YOUTUBE_API_KEY, YOUTUBE_CHANNEL_ID);
  */
-export default function useGetLatestVideos(apiKey: string, max: number = 1): YoutubeResponse {
+export default function useGetLatestVideos(apiKey: string | undefined, max: number = 1): YoutubeResponse {
   const [videos, setVideos] = useState<Response | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   useEffect(() => {
+    if(!apiKey) return;
+
     const abortController = new AbortController();
     setLoading(true);
     setError(null);
