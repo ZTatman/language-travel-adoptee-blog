@@ -1,15 +1,17 @@
 import { useGetLatestYoutubeVideos } from "@/hooks";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-const MAX_TO_RETRIEVE = 2;
+const YOUTUBE_API_KEY: string | undefined = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+const MAX_TO_RETRIEVE = 1;
 
-export default function LatestYoutubeVideoEmbed({ className }: { className?: string } = { className: "" }) {
+type Props = {
+    className?: string;
+};
+
+export default function LatestYoutubeVideoEmbed({ className = ""}: Props) {
   const { videos, loading, error } = useGetLatestYoutubeVideos(YOUTUBE_API_KEY, MAX_TO_RETRIEVE);
   const firstVideo = videos?.items?.[0];
   const videoId = firstVideo?.id?.videoId;
-  console.log(":: firstVideo", firstVideo, videoId);
-
   if (error)
     return (
       <div className="mb-2 flex aspect-video w-[min(100%-2rem,26rem)] flex-col justify-center rounded border-2 border-red-200 bg-red-50 p-3 text-center text-sm">

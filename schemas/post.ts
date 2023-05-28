@@ -9,12 +9,24 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) =>
+        Rule.required()
+          .min(4)
+          .max(50)
+          .warning("Titles between 4 and 50 characters are recommended")
+          .error("A title is required and must be between 4 and 50 characters!"),
     }),
     defineField({
       name: "description",
       title: "Description",
       description: "Enter a short description here for the post...",
       type: "string",
+      validation: (Rule) =>
+        Rule.required()
+          .min(4)
+          .max(150)
+          .warning("Descriptions between 4 and 150 characters are recommended")
+          .error("A description is required and must be between 4 and 150 characters!"),
     }),
     defineField({
       name: "slug",
@@ -38,6 +50,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required().warning("A main image is recommended").error("A main image is required!"),
     }),
     defineField({
       name: "categories",

@@ -1,27 +1,37 @@
 import { previewData } from "next/headers";
-
 import groq from "groq";
+import { sanityClient } from "@/lib/sanity.client";
 import PreviewBlogPostsList from "@/components/blog/previewBlogPostsList";
 import PreviewSuspense from "@/components/blog/previewSuspense";
-import { sanityClient } from "@/lib/sanity.client";
+import BlogList from "@/components/blog/blogList";
 
-const allBlogPostsQuery = groq`
+const getAllPostsQuery = groq`
 *[_type == "post"] {
-  title,
-  "slug": slug.current,
-  author->{name},
-  "image": mainImage.asset->{url},
+  ...,
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
+  author->,
   categories[]->
 } | order(createdAt desc)`;
 
+async function getAllPosts() {
+  const posts = await sanityClient.fetch(getAllPostsQuery);
+  return posts;
+}
+
 export default async function Blog() {
-  const posts = await sanityClient.fetch(allBlogPostsQuery);
-  if (previewData())
+  const posts = await getAllPosts();
+  if (previewData()) {
     return (
-      // style the loading state using tailwind classes
-      <PreviewSuspense fallback={<p className="text-center font-display text-slate-700">Loading Preview Data...</p>}>
-        <PreviewBlogPostsList posts={posts} />
+      <PreviewSuspense
+        fallback={<p className="py-4 text-center font-display text-slate-700">Loading Preview Data...</p>}
+      >
+        <PreviewBlogPostsList query={getAllPostsQuery} />
       </PreviewSuspense>
     );
-  return <div>Blog Page</div>;
+  }
+  return (
+    <div>
+      <BlogList posts={posts} />
+    </div>
+  );
 }
