@@ -5,10 +5,10 @@ const YOUTUBE_API_KEY: string | undefined = process.env.NEXT_PUBLIC_YOUTUBE_API_
 const MAX_TO_RETRIEVE = 1;
 
 type Props = {
-    className?: string;
+  className?: string;
 };
 
-export default function LatestYoutubeVideoEmbed({ className = ""}: Props) {
+export default function LatestYoutubeVideoWidget({ className = "" }: Props) {
   const { videos, loading, error } = useGetLatestYoutubeVideos(YOUTUBE_API_KEY, MAX_TO_RETRIEVE);
   const firstVideo = videos?.items?.[0];
   const videoId = firstVideo?.id?.videoId;

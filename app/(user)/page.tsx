@@ -1,14 +1,14 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, Suspense } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
 
 import headshot from "../../public/headshot.jpg";
 import { Button } from "@/components/button";
-import LatestYoutubeEmbed from "@/components/latestYoutubeVideoEmbed";
-import LatestBlogPosts from "@/components/blog/LatestBlogPosts";
+import LatestYoutubeVideoWidget from "@/components/latestYoutubeVideoWidget";
+import LatestBlogPostsWidget from "@/components/blog/latestBlogPostsWidget";
 
 export default function Home() {
   const aboutSectionRef = useRef(null);
@@ -93,6 +93,7 @@ export default function Home() {
       </section>
       {/* About Section */}
       <section className="relative flex w-full flex-col items-center justify-center bg-section py-12 md:flex-row md:space-x-12 md:py-24 lg:space-x-24">
+        {/* @TODO: Fix this hack later, use boundingclient and y offset later on */}
         <div ref={aboutSectionRef} className="md:-mt-22 absolute left-0 top-0 -mt-12"></div>
         <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
         <div className="mb-4 md:mb-0">
@@ -198,7 +199,7 @@ export default function Home() {
         <div className="grid grid-rows-2 gap-8 md:grid-cols-2 md:grid-rows-none">
           <div className="flex w-full flex-col items-center justify-center">
             <h4 className="mb-2 text-center font-display tracking-wide">latest video</h4>
-            <LatestYoutubeEmbed className="mb-2 aspect-video w-[min(100%-2rem,26rem)]" />
+            <LatestYoutubeVideoWidget className="mb-2 aspect-video w-[min(100%-2rem,26rem)]" />
             <a
               href="https://www.youtube.com/@languagetraveladoptee"
               className="inline-btn text-sm"
@@ -210,7 +211,7 @@ export default function Home() {
           </div>
           <div className="flex w-full flex-col items-center justify-center">
             <h4 className="mb-2 text-center font-display tracking-wide">latests posts</h4>
-            <LatestBlogPosts className="mb-2 h-full w-[min(100%-2rem,26rem)] space-y-4" />
+            <LatestBlogPostsWidget className="mb-2 h-full w-[min(100%-2rem,26rem)] space-y-4" />
             <Link href="/blog" className="inline-btn text-sm">
               Check Out My Blog&nbsp;&rarr;
             </Link>
