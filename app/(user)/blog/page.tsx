@@ -23,7 +23,7 @@ export default async function Blog() {
   if (previewData()) {
     return (
       <PreviewSuspense
-        fallback={<p className="py-4 text-center font-display text-slate-700">Loading Preview Data...</p>}
+        fallback={<p className="py-4 text-center text-lg font-heading font-bold text-slate-700 animate-pulse">Loading Preview Data...</p>}
       >
         <PreviewBlogPostsList query={getAllPostsQuery} />
       </PreviewSuspense>

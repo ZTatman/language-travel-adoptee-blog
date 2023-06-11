@@ -1,8 +1,15 @@
-import { Montserrat, Nunito_Sans, Lora, Cinzel, Comforter } from "next/font/google";
-import { previewData } from "next/headers";
+import {
+  Montserrat,
+  Lora,
+  Cinzel,
+  Comforter,
+} from "next/font/google";
 
-import "../../styles/globals.css";
+import { previewData } from "next/headers";
+import Link from "next/link";
+
 import { Navbar, Footer, NewsletterSignup } from "@/componentIndex";
+import "../../styles/globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -33,20 +40,19 @@ const comforter = Comforter({
   variable: "--font-comforter",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
       className={`${montserrat.variable} ${lora.variable} ${cinzel.variable} ${comforter.variable} m-0 h-full bg-white font-sans text-slate-700`}
     >
-      <body className="h-full m-0">
+      <body className="m-0 h-full">
         <div>
           <div className="sticky top-0 z-50">
-            {previewData() && (
-              <div className="w-full p-2 text-center text-white bg-amber-500">
-                <p className="text-sm">In Preview Mode</p>
-              </div>
-            )}
             <Navbar />
           </div>
           {children}
