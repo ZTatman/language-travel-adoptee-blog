@@ -14,7 +14,6 @@ export default defineType({
           .min(4)
           .max(50)
           .warning("Titles between 4 and 50 characters are recommended")
-          .error("A title is required and must be between 4 and 50 characters!"),
     }),
     defineField({
       name: "description",
@@ -26,7 +25,6 @@ export default defineType({
           .min(4)
           .max(150)
           .warning("Descriptions between 4 and 150 characters are recommended")
-          .error("A description is required and must be between 4 and 150 characters!"),
     }),
     defineField({
       name: "slug",
@@ -47,9 +45,6 @@ export default defineType({
       name: "mainImage",
       title: "Main image",
       type: "image",
-      options: {
-        hotspot: true,
-      },
       validation: (Rule) => Rule.required().warning("A main image is recommended").error("A main image is required!"),
     }),
     defineField({

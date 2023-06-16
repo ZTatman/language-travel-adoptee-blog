@@ -38,7 +38,7 @@ export default function Home() {
         style={{ backgroundImage: 'url("/landing.jpg")' }}
       >
         {/* Hero Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
+        <div className="absolute left-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
           <div className="mt-clamp-4 h-full text-center">
             {/* Hero Text */}
             <div className="mb-10 px-6 text-center md:mb-20 md:px-12">
