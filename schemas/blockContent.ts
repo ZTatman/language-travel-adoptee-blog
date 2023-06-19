@@ -1,4 +1,5 @@
 import { defineType, defineArrayMember } from "sanity";
+import { HighlightIcon, HighlightDecorator } from "./blockComponents";
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -28,9 +29,12 @@ export default defineType({
         { title: "H2", value: "h2" },
         { title: "H3", value: "h3" },
         { title: "H4", value: "h4" },
-        { title: "Quote", value: "blockquote" },
+        { title: "Blockquote", value: "blockquote" },
       ],
-      lists: [{ title: "Bullet", value: "bullet" }],
+      lists: [
+        { title: "Bullet", value: "bullet" },
+        { title: "Number", value: "number" },
+      ],
       // Marks let you mark up inline text in the block editor.
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
@@ -38,6 +42,13 @@ export default defineType({
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
+          { title: "Underline", value: "underline" },
+          { title: "Strike", value: "strike-through" },
+          {
+            title: "Highlight",
+            value: "highlight",
+            icon: () => "H",
+          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [

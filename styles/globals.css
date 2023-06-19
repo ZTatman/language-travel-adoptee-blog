@@ -39,4 +39,8 @@
     @apply inline-block cursor-pointer transition duration-150 text-slate-700 hover:text-sky-600 hover:underline ease-in-out;
   }
 
+  .blockquote {
+    @apply relative mx-auto max-w-2xl py-6 text-center font-display text-xl tracking-wide;
+  }
+
 }

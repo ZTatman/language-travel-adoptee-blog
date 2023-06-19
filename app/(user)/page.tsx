@@ -21,7 +21,9 @@ export default function Home() {
     });
   };
 
-  const onExploreClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onExploreClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     if (!aboutSectionRef.current) return;
     const elementToScrollTo = aboutSectionRef.current;
@@ -45,12 +47,15 @@ export default function Home() {
               <h1 className="mb-4 font-display text-5xl font-bold tracking-wide text-white/90 md:mb-0 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
                 <span className="leading-[4.5rem]">Language Travel</span>
                 <br />
-                <span className="text-white-to-transparent md:leading-[4.5rem]">Adoptee</span>
+                <span className="text-white-to-transparent md:leading-[4.5rem]">
+                  Adoptee
+                </span>
               </h1>
               <p className="mx-auto my-0 max-w-sm text-xs leading-[inherit] tracking-widest text-white md:max-w-lg lg:max-w-2xl">
-                Your mental health matters while on your language learning journey. Let me show you how{" "}
-                <em className="font-bold text-white">your</em> life story and resilience are your greatest language
-                learning tools
+                Your mental health matters while on your language learning
+                journey. Let me show you how{" "}
+                <em className="font-bold text-white">your</em> life story and
+                resilience are your greatest language learning tools
               </p>
             </div>
             <div className="flex flex-col items-center justify-center space-y-4 md:space-y-6">
@@ -63,13 +68,17 @@ export default function Home() {
               <div className="relative flex w-full items-center justify-center">
                 <div className="absolute left-0 w-1/3 border-b-2 border-white/50"></div>
                 <div className="relative flex w-1/3 items-center justify-center">
-                  <p className="font-heading text-sm font-light tracking-widest text-white/70">or</p>
+                  <p className="font-heading text-sm font-light tracking-widest text-white/70">
+                    or
+                  </p>
                 </div>
                 <div className="absolute right-0 w-1/3 border-b-2 border-white/50"></div>
               </div>
               <div className="flex flex-col items-center justify-center space-y-2">
                 <div className="flex w-full items-center justify-center">
-                  <p className="text-md font-heading font-light tracking-widest text-white/90">explore</p>
+                  <p className="text-md font-heading font-light tracking-widest text-white/90">
+                    explore
+                  </p>
                 </div>
                 <button
                   onClick={onExploreClick}
@@ -83,7 +92,11 @@ export default function Home() {
                     strokeWidth="2.5"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
                   </svg>
                 </button>
               </div>
@@ -94,8 +107,13 @@ export default function Home() {
       {/* About Section */}
       <section className="relative flex w-full flex-col items-center justify-center bg-section py-12 md:flex-row md:space-x-12 md:py-24 lg:space-x-24">
         {/* @TODO: Fix this hack later, use boundingclient and y offset later on */}
-        <div ref={aboutSectionRef} className="md:-mt-22 absolute left-0 top-0 -mt-12"></div>
-        <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">About</h1>
+        <div
+          ref={aboutSectionRef}
+          className="md:-mt-22 absolute left-0 top-0 -mt-12"
+        ></div>
+        <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">
+          About
+        </h1>
         <div className="mb-4 md:mb-0">
           <Image
             className="mx-auto my-0 aspect-square max-w-[12rem] object-contain mix-blend-multiply md:max-w-xs xl:max-w-md"
@@ -114,17 +132,24 @@ export default function Home() {
               Welcome! I&apos;m Emily...
             </h3>
             <p className="mb-0 max-w-xs text-center text-[14px] md:mb-4 md:max-w-sm md:pr-8 md:text-left md:text-sm">
-              While on my language-learning journey, I noticed a lot of online communities ignoring an important aspect
-              of learning:{" "}
-              <strong className="text-slate-700">the connection between cultures, identities, and authenticity</strong>
+              While on my language-learning journey, I noticed a lot of online
+              communities ignoring an important aspect of learning:{" "}
+              <strong className="text-slate-700">
+                the connection between cultures, identities, and authenticity
+              </strong>
               .
               <br />
-              <br />I seek to foster a language learning community through vulnerability, common humanity, and honest
-              progress. None of us are truly invincible. Let&apos;s leverage that together.
+              <br />I seek to foster a language learning community through
+              vulnerability, common humanity, and honest progress. None of us
+              are truly invincible. Let&apos;s leverage that together.
             </p>
             {/*  BIO CTA */}
             <div className="flex flex-wrap items-center justify-between text-sm md:text-base">
-              <Link href="/about" className="inline-btn" onClick={() => console.log(":: button clicked!")}>
+              <Link
+                href="/about"
+                className="inline-btn"
+                onClick={() => console.log(":: button clicked!")}
+              >
                 More About Me&nbsp;&rarr;
               </Link>
               {/* Social Media Icons */}
@@ -178,7 +203,13 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-sky-600 transition duration-150 hover:text-sky-700"
                 >
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" id="twitter" aria-hidden="true">
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    id="twitter"
+                    aria-hidden="true"
+                  >
                     <path
                       fillRule="evenodd"
                       d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"
@@ -194,11 +225,15 @@ export default function Home() {
       </section>
       {/* Latest Content Section*/}
       <section className="bg-white py-12 md:py-24">
-        <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800">What&apos;s New</h3>
+        <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800">
+          What&apos;s New
+        </h3>
         {/* Latest Content Container */}
         <div className="grid grid-rows-2 gap-8 md:grid-cols-2 md:grid-rows-none">
           <div className="flex w-full flex-col items-center justify-center">
-            <h4 className="mb-2 text-center font-display tracking-wide">latest video</h4>
+            <h4 className="mb-2 text-center font-display tracking-wide">
+              latest video
+            </h4>
             <LatestYoutubeVideoWidget className="mb-2 aspect-video w-[min(100%-2rem,26rem)]" />
             <a
               href="https://www.youtube.com/@languagetraveladoptee"
@@ -210,7 +245,9 @@ export default function Home() {
             </a>
           </div>
           <div className="flex w-full flex-col items-center justify-center">
-            <h4 className="mb-2 text-center font-display tracking-wide">latests posts</h4>
+            <h4 className="mb-2 text-center font-display tracking-wide">
+              latests posts
+            </h4>
             <LatestBlogPostsWidget className="mb-2 h-full w-[min(100%-2rem,26rem)] space-y-4" />
             <Link href="/blog" className="inline-btn text-sm">
               Check Out My Blog&nbsp;&rarr;
