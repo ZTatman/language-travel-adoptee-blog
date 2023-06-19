@@ -63,7 +63,7 @@ function CardRow({ post, onClick }: CardRowProps) {
   return (
     <Card
       onClick={onClick}
-      className="group flex h-24 items-center justify-center overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:shadow-lg"
+      className="group flex h-28 items-center justify-center overflow-hidden rounded-md transition-all duration-300 ease-in-out hover:shadow-lg"
     >
       <div className="h-full w-24 overflow-hidden">
         <Image
@@ -76,7 +76,7 @@ function CardRow({ post, onClick }: CardRowProps) {
       </div>
       <div>
         <CardHeader className="max-w-xs px-3 text-left">
-          <CardTitle className="font-heading text-base">{post.title}</CardTitle>
+          <CardTitle className="font-heading text-base line-clamp-1">{post.title}</CardTitle>
           <CardDescription className="font-sans text-xs line-clamp-2">{post.description}</CardDescription>
           <Link className="inline-btn text-xs font-semibold" href="#">
             Read More
