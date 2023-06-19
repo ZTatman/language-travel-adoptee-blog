@@ -105,7 +105,7 @@ export default function Home() {
         </div>
       </section>
       {/* About Section */}
-      <section className="relative flex w-full flex-col items-center justify-center bg-section py-12 md:flex-row md:space-x-12 md:py-24 lg:space-x-24">
+      <section className="relative flex w-full flex-col items-center justify-center bg-section py-24 md:flex-row md:space-x-12 lg:space-x-24">
         {/* @TODO: Fix this hack later, use boundingclient and y offset later on */}
         <div
           ref={aboutSectionRef}
@@ -224,17 +224,17 @@ export default function Home() {
         </div>
       </section>
       {/* Latest Content Section*/}
-      <section className="bg-white py-12 md:py-24">
-        <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800">
+      <section className="bg-white py-24">
+        <h3 className="text-center font-heading text-3xl font-bold italic text-slate-800 md:mb-8">
           What&apos;s New
         </h3>
         {/* Latest Content Container */}
-        <div className="grid grid-rows-2 gap-8 md:grid-cols-2 md:grid-rows-none">
-          <div className="flex w-full flex-col items-center justify-center">
-            <h4 className="mb-2 text-center font-display tracking-wide">
+        <div className="grid grid-rows-2 gap-16 px-12 md:grid-cols-2 md:grid-rows-none md:gap-8 md:px-24">
+          <div className="mt-16 flex w-full flex-col items-center justify-center md:mt-0">
+            <h4 className="mb-4 text-center font-display tracking-wide">
               latest video
             </h4>
-            <LatestYoutubeVideoWidget className="mb-2 aspect-video w-[min(100%-2rem,26rem)]" />
+            <LatestYoutubeVideoWidget className="mb-4 aspect-video h-full w-full" />
             <a
               href="https://www.youtube.com/@languagetraveladoptee"
               className="inline-btn text-sm"
@@ -245,10 +245,10 @@ export default function Home() {
             </a>
           </div>
           <div className="flex w-full flex-col items-center justify-center">
-            <h4 className="mb-2 text-center font-display tracking-wide">
+            <h4 className="mb-4 text-center font-display tracking-wide">
               latests posts
             </h4>
-            <LatestBlogPostsWidget className="mb-2 h-full w-[min(100%-2rem,26rem)] space-y-4" />
+            <LatestBlogPostsWidget className="mb-4 h-full w-full max-w-[min(100%-4rem,26rem)] space-y-4" />
             <Link href="/blog" className="inline-btn text-sm">
               Check Out My Blog&nbsp;&rarr;
             </Link>

@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer>
       {/* Flex Container */}
-      <div className="mx-auto w-full bg-section px-9 py-12 md:py-16">
+      <div className="mx-auto w-full px-9 py-24">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-4">
           <div className="border-b border-gray-300 pb-4 md:border-b-0 md:border-r md:pb-0">
             <Link href="/" className="text-center">
