@@ -40,7 +40,21 @@
   }
 
   .blockquote {
-    @apply relative mx-auto max-w-2xl py-6 text-center font-display text-xl tracking-wide;
+    @apply relative mx-auto max-w-2xl p-6 my-12 text-center border-l-8 border-sky-500;
+  }
+
+  .style-quotation-mark {
+    @apply hidden absolute text-7xl right-0 bottom-0 leading-[inherit];
+  }
+  
+  @screen sm {
+    .style-quotation-mark {
+      @apply block;
+    }
+  }
+
+  .blockquote-before {
+    @apply before:content-[close-quote] before:text-8xl before:absolute before:opacity-50 before:text-sky-600 before:right-0 before:bottom-8 before:h-0 before:font-bold before:font-display;
   }
 
 }

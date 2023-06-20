@@ -5,21 +5,27 @@ import groq from "groq";
 import urlFor from "@/lib/urlFor";
 import { useQueryBlogPosts } from "@/hooks";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const latestBlogPostsQuery = groq`
 *[_type == "post"] {
   ...,
   author->{name},
   categories[]->,
-  "slug": slug.current,
 } | order(createdAt desc)[0...3]`;
 
 type LastestBlogPostsProps = {
   className?: string;
 };
 
-export default function LatestBlogPostsWidget({ className = "" }: LastestBlogPostsProps) {
+export default function LatestBlogPostsWidget({
+  className = "",
+}: LastestBlogPostsProps) {
   const { posts, loading, error } = useQueryBlogPosts(latestBlogPostsQuery);
   const hasPosts = posts.length > 0;
   if (error)
@@ -48,7 +54,8 @@ export default function LatestBlogPostsWidget({ className = "" }: LastestBlogPos
   return (
     <>
       <ul className={className}>
-        {posts.length >= 1 && posts.map((post: any) => <CardRow key={post.slug} post={post} />)}
+        {posts.length >= 1 &&
+          posts.map((post: any) => <CardRow key={post.slug} post={post} />)}
       </ul>
     </>
   );
@@ -76,9 +83,16 @@ function CardRow({ post, onClick }: CardRowProps) {
       </div>
       <div>
         <CardHeader className="max-w-xs px-3 text-left">
-          <CardTitle className="font-heading text-base line-clamp-1">{post.title}</CardTitle>
-          <CardDescription className="font-sans text-xs line-clamp-2">{post.description}</CardDescription>
-          <Link className="inline-btn text-xs font-semibold" href="#">
+          <CardTitle className="font-heading text-base line-clamp-1">
+            {post.title}
+          </CardTitle>
+          <CardDescription className="font-sans text-xs line-clamp-2">
+            {post.description}
+          </CardDescription>
+          <Link
+            className="inline-btn text-xs font-semibold"
+            href={`/post/${post.slug.current}`}
+          >
             Read More
           </Link>
         </CardHeader>
