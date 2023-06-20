@@ -32,18 +32,18 @@ export default async function Page({ params: { slug } }: Props) {
         />
         <div className="absolute top-0 h-full w-full backdrop-brightness-50">
           <div className="flex h-full w-full flex-col items-center justify-center text-center text-white">
-            <h1 className="max-w-sm font-display text-xl font-semibold tracking-wide md:max-w-2xl md:text-5xl lg:max-w-4xl">
+            <h1 className="max-w-sm font-display text-4xl font-semibold tracking-wide md:max-w-2xl md:text-5xl lg:max-w-4xl">
               {post.title}
             </h1>
-            <div className="relative my-4 flex h-4 w-full flex-row items-center justify-center md:my-6">
+            <div className="relative my-6 flex h-4 w-full flex-row items-center justify-center md:my-6">
               <div className="w-1/4 border-b-2 border-white/50 md:w-1/3"></div>
-              <div className="flex flex-row px-2">
+              <div className="flex flex-row flex-wrap items-center justify-center px-2">
                 {post.categories &&
                   post.categories.length > 0 &&
                   post.categories.map((category) => (
                     <div
                       key={category._id}
-                      className="px-1 text-teal-500 after:content-['.']"
+                      className="px-2 font-semibold tracking-wide text-teal-500 after:content-['.']"
                     >
                       {category.title}
                     </div>
@@ -116,12 +116,18 @@ export default async function Page({ params: { slug } }: Props) {
                   {children}
                 </h4>
               ),
-              blockquote: ({ children }: any) => (
-                <blockquote className="blockquote">
-                  {children}
-                </blockquote>
-              ),
             },
+            marks: {
+              blockquote: ({children, value}: any) => (
+                <figure className="blockquote">
+                  <blockquote className="italic font-heading text-xl tracking-wide" cite={value.url}>
+                    <div className="style-quotation-mark">&rdquo;</div>
+                    {children}
+                  </blockquote>
+                  {value.author && <figcaption className="mt-2 text-sm font-sans">&#8209;{value.author}</figcaption>}
+                </figure>
+              ),
+            }
           }}
         />
       </section>
