@@ -40,11 +40,11 @@
   }
 
   .blockquote {
-    @apply relative mx-auto max-w-2xl p-6 my-12 text-center border-l-8 border-sky-500;
+    @apply relative mx-auto max-w-2xl p-6 my-12 text-center border-l-8 border-teal-500;
   }
 
   .style-quotation-mark {
-    @apply hidden absolute text-7xl right-0 bottom-0 leading-[inherit];
+    @apply hidden absolute text-7xl right-4 bottom-0 text-sky-300 leading-[inherit];
   }
   
   @screen sm {

@@ -3,6 +3,7 @@ import { sanityClient } from "@/lib/sanity.client";
 import urlFor from "@/lib/urlFor";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
+import logo from "@/public/finallang_favicon.ico";
 
 type Props = {
   params: {
@@ -118,16 +119,32 @@ export default async function Page({ params: { slug } }: Props) {
               ),
             },
             marks: {
-              blockquote: ({children, value}: any) => (
-                <figure className="blockquote">
-                  <blockquote className="italic font-heading text-xl tracking-wide" cite={value.url}>
-                    <div className="style-quotation-mark">&rdquo;</div>
+              blockquote: ({ children, value }: any) => (
+                <figure className="relative mx-auto my-12 max-w-2xl border-l-8 border-teal-500 p-6 text-center">
+                  <blockquote
+                    className="font-heading text-xl italic tracking-wide"
+                    cite={value.url}
+                  >
+                    <div className="absolute -bottom-4 right-4 hidden text-7xl leading-[inherit] text-teal-300/80 sm:block">
+                      &rdquo;
+                    </div>
+                    <Image
+                      src={logo}
+                      className="absolute inset-0 m-auto w-32 opacity-10"
+                      alt="Logo"
+                      width={52}
+                      height={52}
+                    />
                     {children}
                   </blockquote>
-                  {value.author && <figcaption className="mt-2 text-sm font-sans">&#8209;{value.author}</figcaption>}
+                  {value.author && (
+                    <figcaption className="mt-2 font-sans text-sm">
+                      &#8209;{value.author}
+                    </figcaption>
+                  )}
                 </figure>
               ),
-            }
+            },
           }}
         />
       </section>
