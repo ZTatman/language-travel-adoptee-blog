@@ -10,90 +10,92 @@ import { defineType, defineArrayMember } from "sanity";
  *  }
  */
 export default defineType({
-  title: "Block Content",
-  name: "blockContent",
-  type: "array",
-  of: [
-    defineArrayMember({
-      title: "Block",
-      type: "block",
-      // Styles let you set what your user can mark up blocks with. These
-      // correspond with HTML tags, but you can set any title or value
-      // you want and decide how you want to deal with it where you want to
-      // use your content.
-      styles: [
-        { title: "Normal", value: "normal" },
-        { title: "H1", value: "h1" },
-        { title: "H2", value: "h2" },
-        { title: "H3", value: "h3" },
-        { title: "H4", value: "h4" },
-      ],
-      lists: [
-        { title: "Bullet", value: "bullet" },
-        { title: "Number", value: "number" },
-      ],
-      // Marks let you mark up inline text in the block editor.
-      marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting by editors.
-        decorators: [
-          { title: "Strong", value: "strong" },
-          { title: "Emphasis", value: "em" },
-          { title: "Underline", value: "underline" },
-          { title: "Strike", value: "strike-through" },
-          {
-            title: "Highlight",
-            value: "highlight",
-            icon: () => "H",
-          },
-        ],
-        // Annotations can be any object structure – e.g. a link or a footnote.
-        annotations: [
-          {
-            title: "URL",
-            name: "link",
-            type: "object",
-            fields: [
-              {
-                title: "URL",
-                name: "href",
-                type: "url",
-              },
+    title: "Block Content",
+    name: "blockContent",
+    type: "array",
+    of: [
+        defineArrayMember({
+            title: "Block",
+            type: "block",
+            // Styles let you set what your user can mark up blocks with. These
+            // correspond with HTML tags, but you can set any title or value
+            // you want and decide how you want to deal with it where you want to
+            // use your content.
+            styles: [
+                { title: "Normal", value: "normal" },
+                { title: "H1", value: "h1" },
+                { title: "H2", value: "h2" },
+                { title: "H3", value: "h3" },
+                { title: "H4", value: "h4" },
             ],
-          },
-          {
-            name: "blockquote",
-            type: "object",
-            title: "BlockQuote",
-            icon: () => "BL",
-            fields: [
-              // {
-              //   name: "text",
-              //   type: "text", // <= This can also be a Portable Text field
-              //   title: "Text",
-              // },
-              {
-                name: "author",
-                type: "string", // <= This could be a reference to an author document type, if you had that
-                title: "Author",
-              },
-              {
-                name: "url",
-                type: "url",
-                title: "URL",
-                description: "Source on the web",
-              },
+            lists: [
+                { title: "Bullet", value: "bullet" },
+                { title: "Number", value: "number" },
             ],
-          },
-        ],
-      },
-    }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
-    defineArrayMember({
-      type: "image",
-      options: { hotspot: true },
-    }),
-  ],
+            // Marks let you mark up inline text in the block editor.
+            marks: {
+                // Decorators usually describe a single property – e.g. a typographic
+                // preference or highlighting by editors.
+                decorators: [
+                    { title: "Strong", value: "strong" },
+                    { title: "Emphasis", value: "em" },
+                    { title: "Underline", value: "underline" },
+                    { title: "Strike", value: "strike-through" },
+                    {
+                        title: "Highlight",
+                        value: "highlight",
+                        icon: () => "H",
+                    },
+                ],
+                // Annotations can be any object structure – e.g. a link or a footnote.
+                annotations: [
+                    {
+                        title: "URL",
+                        name: "link",
+                        type: "object",
+                        fields: [
+                            {
+                                title: "URL",
+                                name: "href",
+                                type: "url",
+                            },
+                        ],
+                    },
+                    {
+                        name: "blockquote",
+                        type: "object",
+                        title: "BlockQuote",
+                        icon: () => "BL",
+                        fields: [
+                            {
+                                name: "author",
+                                type: "string", // <= This could be a reference to an author document type, if you had that
+                                title: "Author",
+                            },
+                            {
+                                name: "url",
+                                type: "url",
+                                title: "URL",
+                                description: "Source on the web",
+                            },
+                        ],
+                    },
+                ],
+            },
+        }),
+        // You can add additional types here. Note that you can't use
+        // primitive types such as 'string' and 'number' in the same array
+        // as a block type.
+        defineArrayMember({
+            type: "image",
+            options: { hotspot: true },
+        }),
+        defineArrayMember({
+            type: "captionimage",
+            options: { hotspot: true },
+        }),
+        defineArrayMember({
+            type: "youtube",
+        }),
+    ],
 });
