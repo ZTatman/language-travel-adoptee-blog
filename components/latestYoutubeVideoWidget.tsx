@@ -35,6 +35,7 @@ export default function LatestYoutubeVideoWidget({ className = "" }: Props) {
           className={className}
           id="ytplayer"
           src={`https://www.youtube.com/embed/${videoId}`}
+          loading="lazy"
           allowFullScreen
           title="Embedded youtube"
         />
