@@ -68,7 +68,7 @@ export default async function Page({ params: { slug } }: Props) {
           </div>
         </div>
       </section>
-      <section className="mx-auto w-full max-w-[min(100%-4rem,48rem)]">
+      <section className="my-10 mx-auto w-full max-w-[min(100%-4rem,48rem)]">
         <PortableText
           value={post.body}
           components={RichTextComponents}

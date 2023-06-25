@@ -2,12 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import urlFor from "@/lib/urlFor";
 import logo from "@/public/finallang_favicon.ico";
-
-// function BlockRenderer = props => {
-//     if(props.node._type == "blockquote") return(
-
-//     )
-// }
+import getVideoId from "get-video-id";
 
 export const RichTextComponents = {
     types: {
@@ -18,15 +13,69 @@ export const RichTextComponents = {
                         className="object-contain"
                         src={urlFor(value).url()}
                         alt="Blog Post Image"
+                        placeholder="blur"
+                        blurDataURL="data:..."
                         fill
                     />
                 </div>
             );
         },
-        captionimage: ({props}: any) => {
-            console.log(props);
-            return (<div>Caption Image</div>)
-        } 
+        captionimage: ({value}: any) => {
+            return (
+                <div className="m-10">
+                    <figure className="relative mx-auto h-96 w-full">
+                        <Image
+                            className="object-contain"
+                            src={urlFor(value).url()}
+                            alt={value.alt}
+                            placeholder="blur"
+                            blurDataURL="data:..."
+                            fill
+                        />
+                    </figure>
+                    <div className="text-center">
+                        {value.caption && (
+                            <figcaption className="mt-4 font-sans font-semibold">
+                                {value.caption}
+                            </figcaption>
+                        )}
+                        {value.attribution && (
+                            <figcaption className="mt-1 font-sans text-sm text-neutral-400">
+                                {value.attribution}
+                            </figcaption>
+                        )}
+                    </div>
+                </div>
+            );
+        },
+        youtube: ({ value }: any) => {
+            const { id } = getVideoId(value.url);
+            return (
+                    <div className="my-10">
+                        <div className="relative h-96 aspect-video w-full">
+                            <iframe
+                                className="object-contain"
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${id}`}
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div className="flex justify-center mt-4">
+                            <a
+                                className="px-6 py-4 text-base rounded-sm font-bold text-white duration-2000 bg-slate-800 shadow-md hover:bg-gradient-to-br from-orange-400 to-pink-500 transition-all ease-in-out"
+                                href={`https://www.youtube.com/@languagetraveladoptee`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Visit My Channel
+                            </a>
+                        </div>
+                    </div>
+            );
+        },
     },
     list: {
         bullet: ({ children }: any) => (
@@ -53,7 +102,7 @@ export const RichTextComponents = {
     marks: {
         blockquote: ({ children, value }: any) => {
             return (
-                <div className="relative mx-auto my-12 max-w-2xl border-l-8 border-teal-500 p-6 text-center">
+                <figure className="relative mx-auto my-12 max-w-2xl border-l-8 border-teal-500 p-6 text-center">
                     <blockquote
                         className="font-heading text-xl italic tracking-wide"
                         cite={value.url}
@@ -75,7 +124,7 @@ export const RichTextComponents = {
                             &#8209;{value.author}
                         </figcaption>
                     )}
-                </div>
+                </figure>
             );
         },
     },
