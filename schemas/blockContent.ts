@@ -27,7 +27,7 @@ export default defineType({
                 { title: "H2", value: "h2" },
                 { title: "H3", value: "h3" },
                 { title: "H4", value: "h4" },
-                { title: "Blockquote", value: "blockquote"}
+                { title: "Blockquote", value: "blockquote" }
             ],
             lists: [
                 { title: "Bullet", value: "bullet" },
@@ -51,17 +51,40 @@ export default defineType({
                 // Annotations can be any object structure – e.g. a link or a footnote.
                 annotations: [
                     {
-                        title: "URL",
-                        name: "link",
-                        type: "object",
+                        name: 'link',
+                        type: 'object',
+                        title: 'External link',
                         fields: [
                             {
-                                title: "URL",
-                                name: "href",
-                                type: "url",
+                                name: 'href',
+                                type: 'url',
+                                title: 'URL'
                             },
-                        ],
+                            {
+                                title: 'Open in new tab',
+                                name: 'blank',
+                                description: 'If enabled, this will allow users to open the link in a new tab, which prevents them from changing the current page.',
+                                type: 'boolean'
+                            }
+                        ]
                     },
+                    {
+                        name: 'internalLink',
+                        type: 'object',
+                        title: 'Internal link',
+                        icon: () => "IL",
+                        fields: [
+                            {
+                                name: 'reference',
+                                type: 'reference',
+                                title: 'Reference',
+                                to: [
+                                    { type: 'post' },
+                                    // other types you may want to link to
+                                ]
+                            }
+                        ]
+                    }
                 ],
             },
         }),
