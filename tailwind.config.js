@@ -66,6 +66,9 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      borderRadius: {
+        egg: "79% 21% 67% 33% / 40% 70% 30% 60%",
+      },
       // borderRadius: {
       //   lg: "var(--radius)",
       //   md: "calc(var(--radius) - 2px)",
