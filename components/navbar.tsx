@@ -27,21 +27,21 @@ export default function Navbar() {
             className="group relative mt-4 block transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
           >
             About
-            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600 transition-all duration-150 ease-in-out group-hover:scale-x-100"></span>
+            <span className="absolute inset-0 top-6 h-0.5 origin-bottom-right scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600 transition-all duration-300 ease-in-out group-hover:scale-x-100"></span>
           </Link>
           <Link
             href="/blog"
             className="group relative mt-4 block transition duration-300 sm:mr-6 sm:mt-0 sm:inline-block"
           >
             Blog
-            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600 transition-all duration-150 ease-in-out group-hover:scale-x-100"></span>
+            <span className="absolute inset-0 top-6 h-0.5 origin-bottom-right scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600 transition-all duration-300 ease-in-out group-hover:scale-x-100"></span>
           </Link>
           <Link
             href="/contact"
             className="group relative mt-4 block transition duration-150 ease-in-out sm:mr-6 sm:mt-0 sm:inline-block"
           >
             Contact Me
-            <span className="absolute inset-0 top-6 h-0.5 origin-center scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600  transition-all duration-300 ease-in-out group-hover:scale-x-100"></span>
+            <span className="absolute inset-0 top-6 h-0.5 origin-bottom-right scale-x-0 transform bg-gradient-to-r from-teal-500 to-sky-600  transition-all duration-300 ease-in-out group-hover:scale-x-100"></span>
           </Link>
         </div>
         <div>

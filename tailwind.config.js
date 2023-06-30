@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 module.exports = {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
@@ -66,6 +67,13 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      backgroundPosition: {
+        'pos-0': '0% 0%',
+        'pos-100': '100% 100%',
+      },
       borderRadius: {
         egg: "79% 21% 67% 33% / 40% 70% 30% 60%",
       },
@@ -88,7 +96,22 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      textShadow: {
+        DEFAULT: '0 0 rgb(0 0 0),.06em 0 0 rgba(255,255,255,.7),0 .05em 0 rgba(255,255,255,.7),-.06em 0 0 rgba(255,255,255,.7)',
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+        require("tailwindcss-animate"),
+        plugin(function ({ matchUtilities, theme }) {
+            matchUtilities(
+                {
+                'text-shadow': (value) => ({
+                    textShadow: value,
+                }),
+                },
+                { values: theme('textShadow') }
+            )
+        }),
+    ],
 };

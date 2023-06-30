@@ -15,9 +15,16 @@ export default async function Page({ params: { slug } }: Props) {
     const query = groq`
     *[_type == 'post' && slug.current == $slug][0]
     {
-      ...,
-      author->,
-      categories[]->
+        ...,
+        author->,
+        categories[]->,
+        body[]{
+            ...,
+            markDefs[]{
+                ...,
+                "slug": reference->slug,
+            }
+        }
     }
   `;
     const post: Post = await sanityClient.fetch(query, { slug });
@@ -36,7 +43,7 @@ export default async function Page({ params: { slug } }: Props) {
                         <h1 className="max-w-sm font-display text-4xl font-semibold tracking-wide md:max-w-2xl md:text-5xl lg:max-w-4xl">
                             {post.title}
                         </h1>
-                        <div className="relative my-6 flex h-4 w-full flex-row items-center justify-center md:my-6">
+                        <div className="relative my-6 flex h-4 w-full flex-row items-center justify-center md:mb-6 md:mt-10">
                             <div className="w-1/4 border-b-2 border-white/50 md:w-1/3"></div>
                             <div className="flex flex-row flex-wrap items-center justify-center px-2">
                                 {post.categories &&

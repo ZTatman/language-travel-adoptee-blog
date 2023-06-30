@@ -40,6 +40,23 @@
   }
 
   .listitem-decoration-style {
-    @apply before:relative before:inline-block before:h-3 before:w-3 before:rounded-egg before:left-[calc((1.25em-5px)*-1)] before:bg-sky-200;
+    @apply before:relative before:inline-block before:h-3 before:w-3 before:rounded-egg before:left-[calc((1.25em-5px)*-1)] before:bg-sky-300/60;
+  }
+
+  .internal-link {
+        @apply
+            before:absolute
+            before:h-3
+            before:top-2
+            before:inset-0 
+            before:opacity-50
+            before:bg-[linear-gradient(transparent_calc(100%-0.45em),_rgb(56_189_248)_0),_linear-gradient(transparent_calc(100%-0.45em),_rgb(94_234_212)_0)]
+            before:bg-[length:0_100%,100%_100%]
+            hover:before:bg-[length:100%_100%,100%_100%]
+            before:bg-no-repeat
+            before:transition-all
+            before:duration-150
+            before:ease-in-out
+        ;
   }
 }
