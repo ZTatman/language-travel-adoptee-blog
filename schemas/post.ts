@@ -11,9 +11,8 @@ export default defineType({
             type: "string",
             validation: (Rule) =>
                 Rule.required()
-                    .min(4)
-                    .max(50)
-                    .warning("Titles between 4 and 50 characters are recommended"),
+                    .min(12)
+                    .error("Title of at least 12 characters is required")
         }),
         defineField({
             name: "description",
@@ -22,9 +21,8 @@ export default defineType({
             type: "string",
             validation: (Rule) =>
                 Rule.required()
-                    .min(4)
-                    .max(150)
-                    .warning("Descriptions between 4 and 150 characters are recommended"),
+                    .min(50)
+                    .error("Description of at 50 characters is required")
         }),
         defineField({
             name: "slug",
@@ -34,27 +32,29 @@ export default defineType({
                 source: "title",
                 maxLength: 96,
             },
+            validation: (Rule) =>
+                    Rule.required()
+                        .error("A slug is required")
         }),
         defineField({
             name: "author",
             title: "Author",
             type: "reference",
             to: { type: "author" },
+            validation: (Rule) => Rule.required().error("At least one author is required")
         }),
         defineField({
             name: "mainImage",
             title: "Main image",
             type: "image",
-            validation: (Rule) =>
-                Rule.required()
-                    .warning("A main image is recommended")
-                    .error("A main image is required!"),
+            validation: (Rule) => Rule.required().error("A main image is required"),
         }),
         defineField({
             name: "categories",
             title: "Categories",
             type: "array",
             of: [{ type: "reference", to: { type: "category" } }],
+            validation: (Rule) => Rule.required().min(1).error("At least one category is required")
         }),
         defineField({
             name: "publishedAt",
