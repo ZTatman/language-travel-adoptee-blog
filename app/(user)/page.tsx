@@ -235,7 +235,7 @@ export default function Home() {
                         <h4 className="mb-4 text-center font-display tracking-wide">
                             latest video
                         </h4>
-                        <LatestYoutubeVideoWidget className="mb-4 aspect-video h-full w-full" />
+                        <LatestYoutubeVideoWidget className="mb-4 aspect-video h-full w-full drop-shadow-md" />
                         <a
                             href="https://www.youtube.com/@languagetraveladoptee"
                             className="inline-btn text-sm"
