@@ -27,6 +27,7 @@ export default defineType({
                 { title: "H2", value: "h2" },
                 { title: "H3", value: "h3" },
                 { title: "H4", value: "h4" },
+                { title: "Blockquote", value: "blockquote"}
             ],
             lists: [
                 { title: "Bullet", value: "bullet" },
@@ -58,25 +59,6 @@ export default defineType({
                                 title: "URL",
                                 name: "href",
                                 type: "url",
-                            },
-                        ],
-                    },
-                    {
-                        name: "blockquote",
-                        type: "object",
-                        title: "BlockQuote",
-                        icon: () => "BL",
-                        fields: [
-                            {
-                                name: "author",
-                                type: "string", // <= This could be a reference to an author document type, if you had that
-                                title: "Author",
-                            },
-                            {
-                                name: "url",
-                                type: "url",
-                                title: "URL",
-                                description: "Source on the web",
                             },
                         ],
                     },
