@@ -66,9 +66,9 @@ export const RichTextComponents = {
                     <div className="mt-6 flex justify-center">
                         <a
                             className="
-                                hover:dop-shadow-pink-300 rounded-sm bg-slate-800 bg-size-200 bg-pos-0 px-6 py-4
-                                text-base font-bold text-white drop-shadow-md transition-all duration-500 delay-50 ease-in-out hover:bg-gradient-to-r
-                                hover:from-orange-400 hover:via-pink-500 hover:via-65% hover:to-orange-500 hover:bg-pos-100"
+                                rounded-sm bg-slate-800 bg-size-400 px-6 py-4 text-base font-bold 
+                                text-white drop-shadow-md transition-all hover:animate-background hover:bg-gradient-to-r
+                                hover:from-orange-400 hover:via-pink-500 hover:via-65% hover:to-sky-500"
                             href={`https://www.youtube.com/@languagetraveladoptee`}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -147,8 +147,8 @@ export const RichTextComponents = {
         link: ({ children, value }: any) => {
             const { blank, href } = value
             return blank ?
-                <a className="font-semibold text-sky-500 hover:underline hover:underline-offset-y3" href={href} target="_blank" rel="noopener">{children}</a>
-                : <a className="font-semibold text-sky-500 hover:underline hover:underline-offset-y3" href={href}>{children}</a>
+                <a className="font-semibold text-sky-500 hover:text-sky-600" href={href} target="_blank" rel="noopener">{children}</a>
+                : <a className="font-semibold text-sky-500 hover:text-sky-600" href={href}>{children}</a>
         }
     },
 };
