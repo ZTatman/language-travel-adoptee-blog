@@ -98,8 +98,23 @@ export const RichTextComponents = {
         ),
     },
     block: {
+        intro: ({ children }: any) => {
+            return (
+                <>
+                    {children.slice(0, -1)}
+                    <p className="
+                        pb-12 leading-[1.9em] first-letter:relative first-letter:float-left
+                        first-letter:-mb-[0.2em] first-letter:-ml-[8px] first-letter:mr-[2px] first-letter:pl-[5px]
+                        first-letter:pr-[10px] first-letter:pt-[4px] first-letter:font-display first-letter:text-8xl
+                        first-letter:font-bold"
+                    >
+                        {children.pop()}
+                    </p>
+                </>
+            )
+        },
         normal: ({ children }: any) => (
-            <p className="leading-8">{children}</p>
+            <p className="leading-[1.9]">{children}</p>
         ),
         h1: ({ children }: any) => (
             <h1 className="py-6 font-heading text-4xl font-bold">{children}</h1>
