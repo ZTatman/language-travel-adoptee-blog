@@ -42,15 +42,14 @@ export default function RootLayout({
             lang="en"
             className={`${montserrat.variable} ${lora.variable} ${cinzel.variable} ${comforter.variable} m-0 h-full bg-white font-sans text-slate-700`}
         >
-            <body className="m-0 h-full">
-                <div>
-                    <div className="sticky top-0 z-50">
-                        <Navbar />
-                    </div>
-                    {children}
-                    <NewsletterSignup />
-                    <Footer />
+            {/* pt-[77px] and fixed are needed to prevent <Navbar /> from overlapping page content */}
+            <body className="m-0 h-full pt-[77px]">
+                <div className="fixed top-0 z-[999] w-full">
+                    <Navbar />
                 </div>
+                {children}
+                <NewsletterSignup />
+                <Footer />
             </body>
         </html>
     );
