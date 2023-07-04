@@ -73,12 +73,12 @@ export default async function Page({ params: { slug } }: Props) {
                             <div className="w-1/4 border-b-2 border-white/50"></div>
                         </div>
                         <div>
-                            <p className="max-w-sm text-sm tracking-wide text-white/80 md:max-w-xl md:text-sm">
+                            <p className="max-w-sm text-sm tracking-wide text-white/80 md:max-w-xl">
                                 {post.description}
                             </p>
-                            <p className="relative flex flex-row items-center justify-center space-x-2 pt-8 text-xs">
+                            <p className="relative flex flex-row items-center justify-center space-x-2 pt-16 text-sm tracking-wider font-semibold text-white/80">
                                 <span>
-                                    {post.author.name}&nbsp;,&emsp;
+                                    {post.author.name},&emsp;
                                     {new Date(post._createdAt).toLocaleDateString("en-US", {
                                         day: "numeric",
                                         month: "long",
@@ -96,7 +96,7 @@ export default async function Page({ params: { slug } }: Props) {
                     <PortableText value={post.body} components={RichTextComponents} />
                 </div>
                 {/* Author Bio and other side elements go here */}
-                <div className="grid h-96 w-full place-content-center bg-red-600 text-white">aside here</div>
+                <div className="grid h-96 w-full place-content-center bg-sky-600 text-white">aside here</div>
             </section>
             <section className="mx-auto w-full">
                 <div className="mx-auto flex w-full max-w-6xl items-center justify-between pb-6">
