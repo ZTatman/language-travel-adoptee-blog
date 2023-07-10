@@ -4,7 +4,7 @@ import urlFor from "@/lib/urlFor";
 import logo from "@/public/finallang_favicon.ico";
 import getVideoId from "get-video-id";
 import { slugify } from "@/lib/utils";
-import bookmark from "@/public/bookmark(1).png"
+import bookmark from "@/public/bookmark.png"
 
 export const RichTextComponents = {
     types: {
