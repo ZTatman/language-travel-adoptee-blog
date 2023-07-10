@@ -40,7 +40,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${montserrat.variable} ${lora.variable} ${cinzel.variable} ${comforter.variable} m-0 h-full bg-white font-sans text-slate-700`}
+            className={`${montserrat.variable} ${lora.variable} ${cinzel.variable} ${comforter.variable} m-0 h-full bg-white font-sans text-slate-700 scroll-smooth scroll-pt-[55px]`}
         >
             {/* pt-[77px] and fixed are needed to prevent <Navbar /> from overlapping page content */}
             <body className="m-0 h-full pt-[77px]">

@@ -22,12 +22,11 @@ export default defineType({
             // you want and decide how you want to deal with it where you want to
             // use your content.
             styles: [
-                { title: "Introduction", value: "intro"},
+                { title: "Title", value: "h1" },
+                { title: "Heading (Table Of Contents)", value: "h2" },
+                { title: "Subheading", value: "h3" },
+                { title: "Introduction Paragraph", value: "intro"},
                 { title: "Normal", value: "normal" },
-                { title: "H1", value: "h1" },
-                { title: "H2", value: "h2" },
-                { title: "H3", value: "h3" },
-                { title: "H4", value: "h4" },
                 { title: "Blockquote", value: "blockquote" }
             ],
             lists: [
@@ -85,7 +84,7 @@ export default defineType({
                                 ]
                             }
                         ]
-                    }
+                    },
                 ],
             },
         }),
@@ -103,5 +102,9 @@ export default defineType({
         defineArrayMember({
             type: "youtube",
         }),
+        defineArrayMember({
+            type: "tableofcontents",
+        }),
+
     ],
 });

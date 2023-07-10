@@ -4,6 +4,7 @@ import post from "./post";
 import author from "./author";
 import youtube from "./youtube";
 import captionimage from "./captionimage";
+import tableofcontents from "./tableofcontents";
 
 export const schemaTypes = [
     post,
@@ -12,4 +13,5 @@ export const schemaTypes = [
     blockContent,
     youtube,
     captionimage,
+    tableofcontents,
 ];

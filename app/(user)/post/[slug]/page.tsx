@@ -8,6 +8,7 @@ import { RichTextComponents } from "@/components/richTextComponents";
 import { sanityClient } from "@/lib/sanity.client";
 import urlFor from "@/lib/urlFor";
 
+
 type Props = {
     params: {
         slug: string;
@@ -37,10 +38,12 @@ export default async function Page({ params: { slug } }: Props) {
     }
   `;
     const post: Post = await sanityClient.fetch(query, { slug });
+
     const prevPost = post.prevPost;
     const nextPost = post.nextPost;
     const routeToPrevPost = `/post/${prevPost?.slug?.current ?? ""}`;
     const routeToNextPost = `/post/${nextPost?.slug?.current ?? ""}`;
+
     return (
         <article>
             {/* Image, Title, Description, Category Header */}
@@ -76,7 +79,7 @@ export default async function Page({ params: { slug } }: Props) {
                             <p className="max-w-sm text-sm tracking-wide text-white/80 md:max-w-xl">
                                 {post.description}
                             </p>
-                            <p className="relative flex flex-row items-center justify-center space-x-2 pt-16 text-sm tracking-wider font-semibold text-white/80">
+                            <p className="relative flex flex-row items-center justify-center space-x-2 pt-16 text-sm font-semibold tracking-wider text-white/80">
                                 <span>
                                     {post.author.name},&emsp;
                                     {new Date(post._createdAt).toLocaleDateString("en-US", {
@@ -96,12 +99,12 @@ export default async function Page({ params: { slug } }: Props) {
                     <PortableText value={post.body} components={RichTextComponents} />
                 </div>
                 {/* Author Bio and other side elements go here */}
-                <div className="grid h-96 w-full place-content-center bg-sky-600 text-white">aside here</div>
+                <div className="hidden md:grid md:col-span-1 h-96 w-full place-content-center bg-sky-600 text-white">aside here</div>
             </section>
             <section className="mx-auto w-full">
-                <div className="mx-auto flex w-full max-w-6xl items-center justify-between pb-6">
+                <div className="mx-auto flex w-full max-w-6xl items-center pb-6">
                     {prevPost &&
-                        <Link className="group relative flex aspect-square w-56 flex-col items-center justify-center space-y-2 text-center" href={routeToPrevPost}>
+                        <Link className="group relative mr-auto flex aspect-square w-56 flex-col items-center justify-center space-y-2 text-center" href={routeToPrevPost}>
                             <svg className="absolute inset-0 z-[-1] m-auto w-full origin-center text-sky-100/80 transition-all duration-300 ease-in-out group-hover:w-[95%] group-hover:text-sky-100" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="currentColor" d="M32.9,-47.7C46.6,-42.3,64.6,-40,75.9,-30.3C87.3,-20.5,92,-3.3,83.4,7.5C74.9,18.3,53.1,22.7,41.1,34.5C29.1,46.3,27,65.4,18.1,73.4C9.2,81.4,-6.4,78.2,-22.7,74.7C-39,71.1,-55.9,67.1,-68,56.9C-80.1,46.6,-87.3,30.1,-84.8,15.2C-82.2,0.3,-70,-13,-59.8,-24C-49.6,-34.9,-41.5,-43.4,-31.8,-50.7C-22.2,-58,-11.1,-64.2,-0.8,-63C9.5,-61.8,19.1,-53.2,32.9,-47.7Z" transform="translate(100 100)" />
                             </svg>
@@ -112,7 +115,7 @@ export default async function Page({ params: { slug } }: Props) {
                         </Link>
                     }
                     {nextPost &&
-                        <Link className="group relative flex aspect-square w-56 flex-col items-center justify-center space-y-2 text-center" href={routeToNextPost}>
+                        <Link className="group relative ml-auto flex aspect-square w-56 flex-col items-center justify-center space-y-2 text-center" href={routeToNextPost}>
                             <svg className="absolute inset-0 z-[-1] m-auto w-full origin-center text-sky-100/80 transition-all duration-300 ease-in-out [transform:_scaleX(-1)] group-hover:w-[95%] group-hover:text-sky-100" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="currentColor" d="M32.9,-47.7C46.6,-42.3,64.6,-40,75.9,-30.3C87.3,-20.5,92,-3.3,83.4,7.5C74.9,18.3,53.1,22.7,41.1,34.5C29.1,46.3,27,65.4,18.1,73.4C9.2,81.4,-6.4,78.2,-22.7,74.7C-39,71.1,-55.9,67.1,-68,56.9C-80.1,46.6,-87.3,30.1,-84.8,15.2C-82.2,0.3,-70,-13,-59.8,-24C-49.6,-34.9,-41.5,-43.4,-31.8,-50.7C-22.2,-58,-11.1,-64.2,-0.8,-63C9.5,-61.8,19.1,-53.2,32.9,-47.7Z" transform="translate(100 100)" />
                             </svg>

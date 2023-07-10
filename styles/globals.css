@@ -40,7 +40,7 @@
   }
 
   .listitem-decoration-style {
-    @apply before:relative before:inline-block before:h-3 before:w-3 before:rounded-egg before:left-[calc((1.25em-5px)*-1)] before:bg-sky-300/60;
+    @apply before:relative before:inline-block before:h-3 before:w-3 before:rounded-egg_1 before:left-[calc((1.25em-5px)*-1)] before:bg-sky-300/60;
   }
 
   .internal-link {
@@ -59,4 +59,16 @@
             before:ease-in-out
         ;
   }
+
+  .toc-label {
+        content: "Chapters";
+        border-radius: 20px 20px 0 0;
+        height: 35px;
+        left: 1.5em;
+        padding: 6px 20px 6px 20px;
+        position: absolute;
+        top: -35px;
+        z-index: -1;
+    }
+
 }

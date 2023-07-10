@@ -17,7 +17,7 @@ export default defineType({
             url: "url",
         },
     },
-components: {
+    components: {
         preview: YoutubePreview,
     },
 });
