@@ -11,15 +11,15 @@ export const RichTextComponents = {
         tableofcontents: ({ value }: any) => {
             return (
                 <nav className="before:toc-label relative my-10 rounded-2xl shadow shadow-black/10 [border:_1px_solid_rgba(0,0,0,.125)] before:bg-sky-300/50 before:font-heading before:text-lg before:font-semibold before:tracking-wider before:text-sky-800/50 before:content-['Table_of_Contents']">
-                    <ul className="py-2 md:[column-count:_2]">
+                    <ul className="py-2 md:[column-count:_2] md:[&>*:nth-child(2):last-child]:border-none">
                         {value.sections.map(
                             (section: string) =>
-                                <li className="mx-6 border-t-2 border-sky-300/20 font-semibold uppercase first:border-none md:odd:border-none md:even:border-t-2 md:even:border-sky-300/30" key={slugify(section)}>
+                                <li className="mx-6 border-t-2 font-semibold uppercase first:border-none md:odd:border-none md:even:border-t-2" key={slugify(section)}>
                                     <a
-                                        className="group inline-flex items-center py-[10px] text-slate-600 hover:text-slate-700 hover:underline hover:underline-offset-4 md:py-[8px]"
+                                        className="group inline-flex items-center py-[10px] text-slate-600 hover:text-slate-700 hover:underline hover:underline-offset-4 md:py-3"
                                         href={'#' + slugify(section)}
                                     >
-                                        <div className="relative -ml-1 mr-5 h-[30px] w-[30px] p-1 md:h-[40px] md:w-[40px]">
+                                        <div className="relative -ml-1 mr-5 aspect-square w-[30px] p-1 md:h-[40px] md:w-[40px]">
                                             <Image className="absolute inset-0 m-auto [z-index:_10;]" src={bookmark} alt="chapter" />
                                             <div className="absolute inset-0 z-0 m-auto h-full w-full rounded-egg_2 bg-sky-300/50 group-hover:bg-sky-400/50"></div>
                                         </div>
@@ -117,7 +117,7 @@ export const RichTextComponents = {
     },
     listItem: {
         bullet: ({ children }: any) => (
-            <li className="listitem-decoration-style relative max-w-none overflow-hidden text-ellipsis whitespace-nowrap pl-4">
+            <li className="listitem-decoration-style relative max-w-none pl-4">
                 {children}
             </li>
         ),
