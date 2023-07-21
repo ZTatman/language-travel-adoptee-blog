@@ -40,7 +40,7 @@
   }
 
   .listitem-decoration-style {
-    @apply before:relative before:inline-block before:h-3 before:w-3 before:rounded-egg_1 before:left-[calc((1.25em-5px)*-1)] before:bg-sky-300/60;
+    @apply before:relative before:inline-block before:h-3 before:w-3 before:rounded-egg_1 before:left-[calc((1.25em-5px)*-1)] before:bg-sky-300/40;
   }
 
   .internal-link {
@@ -71,4 +71,7 @@
         z-index: -1;
     }
 
+    .blog-container {
+        grid-template-columns: minmax(0,6.25rem) minmax(0,3rem) 46rem minmax(3rem,49rem) 21.25rem minmax(0,3rem) minmax(15px,1fr);
+    }
 }

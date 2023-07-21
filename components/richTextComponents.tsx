@@ -10,7 +10,7 @@ export const RichTextComponents = {
     types: {
         tableofcontents: ({ value }: any) => {
             return (
-                <nav className="before:toc-label relative my-10 rounded-2xl shadow shadow-black/10 [border:_1px_solid_rgba(0,0,0,.125)] before:bg-sky-300/50 before:font-heading before:text-lg before:font-semibold before:tracking-wider before:text-sky-800/50 before:content-['Table_of_Contents']">
+                <nav className="before:toc-label relative my-10 rounded-2xl shadow shadow-black/10 [border:_1px_solid_rgba(0,0,0,.125)] before:bg-sky-300/40 before:font-heading before:text-lg before:font-semibold before:tracking-wider before:text-sky-800/50 before:content-['Table_of_Contents']">
                     <ul className="py-2 md:[column-count:_2] md:[&>*:nth-child(2):last-child]:border-none">
                         {value.sections.map(
                             (section: string) =>
@@ -21,7 +21,7 @@ export const RichTextComponents = {
                                     >
                                         <div className="relative -ml-1 mr-5 aspect-square w-[30px] p-1 md:h-[40px] md:w-[40px]">
                                             <Image className="absolute inset-0 m-auto [z-index:_10;]" src={bookmark} alt="chapter" />
-                                            <div className="absolute inset-0 z-0 m-auto h-full w-full rounded-egg_2 bg-sky-300/50 group-hover:bg-sky-400/50"></div>
+                                            <div className="absolute inset-0 z-0 m-auto h-full w-full rounded-egg_2 bg-sky-300/40 group-hover:bg-sky-400/40"></div>
                                         </div>
                                         <span className="line-clamp-1">{section}</span>
                                     </a>
@@ -142,7 +142,7 @@ export const RichTextComponents = {
             <p className="leading-[1.9]">{children}</p>
         ),
         h1: ({ children }: any) => (
-            <h1 className="py-6 font-heading text-4xl font-bold">{children}</h1>
+            <h1 className="pb-6 font-heading text-4xl font-bold">{children}</h1>
         ),
         h2: (props: any) => {
             const { node, children } = props;

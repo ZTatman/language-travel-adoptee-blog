@@ -7,7 +7,7 @@ import { RichTextComponents } from "@/components/richTextComponents";
 
 import { sanityClient } from "@/lib/sanity.client";
 import urlFor from "@/lib/urlFor";
-
+import profilePicture from "@/public/headshot.jpg";
 
 type Props = {
     params: {
@@ -93,16 +93,27 @@ export default async function Page({ params: { slug } }: Props) {
                     </div>
                 </div>
             </section>
-            {/* 2 col grid here including portable text and author bio */}
-            <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-x-10 py-24 md:grid-cols-[1fr_310px]">
-                <div className="col-span-1 mx-auto h-full w-full max-w-[min(100%,100%-4rem)]">
+            {/* 2 col grid here including portable text and sidebar elements */}
+            <section className="mx-auto grid w-full grid-cols-1 items-start py-24 lg:grid-cols-[1fr_minmax(0,3rem)_minmax(310px,23rem)_minmax(4px,16px)]">
+                <div className="col-span-1 mx-auto h-full w-full max-w-[min(100%,90%-4rem)]">
                     <PortableText value={post.body} components={RichTextComponents} />
                 </div>
-                {/* Author Bio and other side elements go here */}
-                <div className="hidden md:grid md:col-span-1 h-96 w-full place-content-center bg-sky-600 text-white">aside here</div>
+                {/* Author Bio and other Sidebar elements go here */}
+                <aside className="hidden h-full w-full lg:col-span-1 lg:col-start-3 lg:block">
+                    <h2 className="sr-only">Sidebar Section</h2>
+                    {/* Short Bio Here */}
+                    <div className="mb-9 w-full text-center max-w-xs mx-auto">
+                        <h3 className="mb-4 pb-[10px] font-decorative text-4xl font-semibold tracking-widest text-sky-600">Get To Know Me!</h3>
+                        <Image className="mx-auto aspect-square w-[250px] mix-blend-darken bg-none" src={profilePicture} alt="profile picture"/>
+                        <div className="-mt-4 -z-1 rounded-md bg-sky-300/40 w-[85%] mx-auto">
+                            <p className="px-5 pb-[10px] pt-10 text-sm leading-[140%]">Fermentum leo vel orci porta non pulvinar neque. Eget gravida cum sociis natoque penatibus et magnis dis. Viverra vitae congue eu consequat ac.</p>
+                        </div>
+                        <Link className="font-semibold text-sm mt-10 mx-5 block" href="/about">Read More About Me</Link>
+                    </div>
+                </aside>
             </section>
             <section className="mx-auto w-full">
-                <div className="mx-auto flex w-full max-w-6xl items-center pb-6">
+                <div className="mx-auto flex w-[min(100%,100%-2rem)] max-w-6xl items-center pb-6">
                     {prevPost &&
                         <Link className="group relative mr-auto flex aspect-square w-56 flex-col items-center justify-center space-y-2 text-center" href={routeToPrevPost}>
                             <svg className="absolute inset-0 z-[-1] m-auto w-full origin-center text-sky-100/80 transition-all duration-300 ease-in-out group-hover:w-[95%] group-hover:text-sky-100" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
