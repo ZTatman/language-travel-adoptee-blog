@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import BlogCard from "./blogCard";
 
 type Props = {

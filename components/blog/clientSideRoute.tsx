@@ -8,5 +8,5 @@ type Props = {
 };
 
 export default function ClientSideRoute({ children, route }: Props) {
-  return <Link href={route}>{children}</Link>;
+  return <Link className="block h-full" href={route}>{children}</Link>;
 }

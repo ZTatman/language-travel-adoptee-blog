@@ -70,8 +70,4 @@
         top: -35px;
         z-index: -1;
     }
-
-    .blog-container {
-        grid-template-columns: minmax(0,6.25rem) minmax(0,3rem) 46rem minmax(3rem,49rem) 21.25rem minmax(0,3rem) minmax(15px,1fr);
-    }
 }

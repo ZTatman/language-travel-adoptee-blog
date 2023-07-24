@@ -5,7 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import headshot from "../../public/headshot.jpg";
+import headshot from "../../public/headshot.png";
 import { Button } from "@/components/button";
 import LatestYoutubeVideoWidget from "@/components/latestYoutubeVideoWidget";
 import LatestBlogPostsWidget from "@/components/blog/latestBlogPostsWidget";
@@ -42,9 +42,9 @@ export default function Home() {
             >
                 {/* Hero Overlay */}
                 <div className="absolute left-0 top-0 h-full w-full overflow-hidden bg-gradient-to-t from-black/70 to-transparent bg-scroll">
-                    <div className="mt-clamp-4 h-full text-center">
+                    <div className="flex h-full flex-col justify-center text-center">
                         {/* Hero Text */}
-                        <div className="mb-10 px-6 text-center md:mb-20 md:px-12">
+                        <div className="p-6 text-center md:p-12">
                             <h1 className="mb-4 font-display text-5xl font-bold tracking-wide text-white/90 md:mb-0 md:text-6xl md:tracking-wider lg:tracking-widest xl:text-7xl">
                                 <span className="leading-[4.5rem]">Language Travel</span>
                                 <br />
@@ -110,7 +110,7 @@ export default function Home() {
                 {/* @TODO: Fix this hack later, use boundingclient and y offset later on */}
                 <div
                     ref={aboutSectionRef}
-                    className="md:-mt-22 absolute left-0 top-0 -mt-12"
+                    className="absolute left-0 top-0"
                 ></div>
                 <h1 className="mb-2 text-center font-decorative text-7xl tracking-widest text-sky-600 md:hidden">
                     About

@@ -92,7 +92,7 @@ export const RichTextComponents = {
                         <a
                             className="
                                 rounded-sm bg-slate-800 bg-size-200 bg-pos-0 px-6 py-4 text-base
-                                font-bold text-white drop-shadow-md transition-all duration-500 delay-150
+                                font-bold text-white drop-shadow-md transition-all delay-150 duration-500
                                 hover:bg-gradient-to-r hover:from-orange-400 hover:via-pink-500 hover:via-65% hover:to-orange-500 hover:bg-pos-100"
                             href={`https://www.youtube.com/@languagetraveladoptee`}
                             target="_blank"
@@ -142,7 +142,7 @@ export const RichTextComponents = {
             <p className="leading-[1.9]">{children}</p>
         ),
         h1: ({ children }: any) => (
-            <h1 className="pb-6 font-heading text-4xl font-bold">{children}</h1>
+            <h1 className="py-6 font-heading text-4xl font-bold">{children}</h1>
         ),
         h2: (props: any) => {
             const { node, children } = props;

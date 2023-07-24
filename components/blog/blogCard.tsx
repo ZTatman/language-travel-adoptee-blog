@@ -4,7 +4,6 @@ import {
     Card,
     CardDescription,
     CardContent,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
@@ -19,27 +18,27 @@ type Props = {
 export default function BlogCard({ post }: Props) {
     return (
         <ClientSideRoute route={`/post/${post.slug.current}`} key={post._id}>
-            <Card className="group mx-auto my-0 h-full w-full max-w-xs cursor-pointer overflow-hidden shadow-lg">
-                <CardHeader className="overflow-hidden">
-                    <div className="relative h-52 w-full drop-shadow-lg">
-                        <Image
-                            className="object-cover object-center transition-all duration-300 ease-in-out group-hover:scale-105"
-                            src={urlFor(post.mainImage).url()}
-                            alt={post.author.name}
-                            fill
-                        />
-                        <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent px-4 py-4 transition-all duration-300 ease-in-out">
-                            {post.categories && post.categories.length > 0 && (
-                                <div className="flex flex-row flex-wrap gap-2">
-                                    {post.categories.map((category) => (
-                                        <Category key={category._id} category={category} />
-                                    ))}
-                                </div>
-                            )}
+            <Card className="group mx-auto my-0 h-full w-full max-w-[22rem] cursor-pointer overflow-hidden shadow-lg">
+                <div className="flex h-full flex-col">
+                    <div className="overflow-hidden">
+                        <div className="relative h-52 w-full drop-shadow-lg">
+                            <Image
+                                className="object-cover object-center transition-all duration-300 ease-in-out group-hover:scale-105"
+                                src={urlFor(post.mainImage).url()}
+                                alt={post.author.name}
+                                fill
+                            />
+                            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent px-4 py-4 transition-all duration-300 ease-in-out">
+                                {post.categories && post.categories.length > 0 && (
+                                    <div className="flex flex-row flex-wrap gap-2">
+                                        {post.categories.map((category) => (
+                                            <Category key={category._id} category={category} />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </CardHeader>
-                <div className="flex min-h-[250px] flex-col">
                     <CardContent className="space-y-3 p-8">
                         <CardTitle className="line-clamp-1 font-heading text-xl group-hover:text-sky-500">
                             {post.title}
@@ -48,7 +47,7 @@ export default function BlogCard({ post }: Props) {
                             {post.description}
                         </CardDescription>
                     </CardContent>
-                    <div className="mt-auto flex flex-row items-center space-x-4 px-8 py-2 font-sans text-xs text-gray-600 border-t-[1px]">
+                    <div className="mt-auto flex flex-row items-center space-x-4 border-t-[1px] px-8 py-2 font-sans text-xs text-gray-600">
                         {/* Author */}
                         <div className="flex flex-row items-center gap-2">
                             <Image
