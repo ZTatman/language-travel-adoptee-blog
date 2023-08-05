@@ -75,21 +75,17 @@ export default function PageContent({ post }: Props) {
                             </div>
                             <div className="w-1/4 border-b-2 border-white/50"></div>
                         </div>
-                        <div>
-                            <p className="max-w-sm text-sm tracking-wide text-white/80 md:max-w-xl">
-                                {post.description}
-                            </p>
-                            <p className="relative flex flex-row items-center justify-center space-x-2 pt-16 text-sm tracking-wider text-white/80">
-                                <span>
-                                    {post.author.name},&emsp;
-                                    {new Date(post._createdAt).toLocaleDateString("en-US", {
-                                        day: "numeric",
-                                        month: "long",
-                                        year: "numeric",
-                                    })}
-                                </span>
-                            </p>
-                        </div>
+                        <p className="max-w-sm text-sm tracking-wide text-white/80 md:max-w-xl">
+                            {post.description}
+                        </p>
+                        <p className="mt-28 text-sm tracking-wider text-white/80">
+                            {post.author.name},&emsp;
+                            {new Date(post._createdAt).toLocaleDateString("en-US", {
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric",
+                            })}
+                        </p>
                     </div>
                 </div>
             </section>
