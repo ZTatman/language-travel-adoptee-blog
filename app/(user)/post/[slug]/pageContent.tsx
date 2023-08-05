@@ -34,7 +34,7 @@ export default function PageContent({ post }: Props) {
         let pathArray = pathname?.split("?")[0]?.split("/").slice(0, -1) || [];
         pathArray = pathArray.filter((path) => path !== "").map((path) => path === "post" ? "blog" : path);
         const breadcrumbs = pathArray.map((path, index) => {
-            const href = "/" + pathArray.slice(0, index).join("/")
+            const href = "/" + pathArray.slice(0, index + 1).join("/")
             return {
                 href,
                 label: path.charAt(0).toUpperCase() + path.slice(1)
@@ -103,6 +103,7 @@ export default function PageContent({ post }: Props) {
                             {breadcrumbs.map(({ href, label }) => (
                                 <BreadcrumbItem className="hover:text-sky-600" key={label} href={href}>{label}</BreadcrumbItem>
                             ))}
+                            <span className="invisible"></span>
                         </Breadcrumbs>
                     </div>
                     {/* Share Content Banner */}
