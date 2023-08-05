@@ -181,7 +181,7 @@ export default function PageContent({ post }: Props) {
                                         confidence in your studies and resetting your language-learning mindset.
                                     </strong>
                                 </p>
-                                <button className="text-md mt-4 bg-sky-500 px-5 py-4 font-sans font-bold uppercase text-white transition-all duration-150 ease-in-out hover:bg-sky-600">
+                                <button className="text-md mt-4 bg-sky-600 px-5 py-4 font-sans font-bold uppercase text-white transition-all duration-150 ease-in-out hover:bg-sky-700">
                                     <Link href="#" rel="noopener noreferrer">sign me up</Link>
                                 </button>
                             </div>
