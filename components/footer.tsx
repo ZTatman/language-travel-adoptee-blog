@@ -17,7 +17,7 @@ export default function Footer() {
               <div className="text-small mt-2 font-display">Language Travel Adoptee</div>
             </Link>
             {/* Social Media Icons */}
-            <div className="mt-2 flex justify-center space-x-2">
+            <div className="mt-2 flex justify-center space-x-4">
               <a
                 href="https://www.instagram.com/languagetraveladoptee"
                 target="_blank"

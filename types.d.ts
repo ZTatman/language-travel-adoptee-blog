@@ -61,4 +61,12 @@ interface Post extends Base {
   slug: Slug;
   title: string;
   description: string;
+  prevPost: {
+    title: string;
+    slug: Slug;
+  },
+  nextPost: {
+    title: string;
+    slug: Slug;
+  }
 }

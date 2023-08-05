@@ -107,7 +107,6 @@ export default function Home() {
             </section>
             {/* About Section */}
             <section className="relative flex w-full flex-col items-center justify-center bg-section py-24 md:flex-row md:space-x-12 lg:space-x-24">
-                {/* @TODO: Fix this hack later, use boundingclient and y offset later on */}
                 <div
                     ref={aboutSectionRef}
                     className="absolute left-0 top-0"
@@ -145,7 +144,7 @@ export default function Home() {
                             are truly invincible. Let&apos;s leverage that together.
                         </p>
                         {/*  Read More About Me */}
-                        <div className="flex flex-wrap items-center justify-between text-sm md:text-base">
+                        <div className="flex flex-wrap items-center justify-between text-sm">
                             <Link
                                 href="/about"
                                 className="inline-btn"
@@ -155,67 +154,21 @@ export default function Home() {
                             </Link>
                             {/* Social Media Icons */}
                             <div className="flex items-center justify-start space-x-4 md:pr-8">
-                                <a
-                                    href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-green-600 transition duration-150 hover:text-green-700"
-                                >
-                                    <svg
-                                        className="-mr-2 mt-[.6rem] h-8 w-8"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        id="spotify"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M8 0C3.589 0 0 3.589 0 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm3.67 11.548a.499.499 0 0 1-.696.122c-1.875-1.318-4.994-1.391-7.1-.9a.5.5 0 0 1-.226-.975c2.315-.536 5.775-.438 7.9 1.057a.5.5 0 0 1 .122.696zm.976-1.951a.5.5 0 0 1-.698.114C9.773 8.15 7.101 7.762 3.535 8.49a.5.5 0 1 1-.201-.98c3.857-.787 6.779-.347 9.197 1.388a.502.502 0 0 1 .115.699zm.986-2.62a.5.5 0 0 1-.695.133c-2.757-1.871-6.948-1.88-9.661-.92a.5.5 0 1 1-.333-.944C5.894 4.203 10.467 4.225 13.5 6.282a.502.502 0 0 1 .132.695z"
-                                            clipRule="evenodd"
-                                        />
+                                <a href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:scale-105 transition duration-150 hover:text-green-700">
+                                    <svg className="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="spotify">
+                                        <path d="M8 0C3.589 0 0 3.589 0 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm3.67 11.548a.499.499 0 0 1-.696.122c-1.875-1.318-4.994-1.391-7.1-.9a.5.5 0 0 1-.226-.975c2.315-.536 5.775-.438 7.9 1.057a.5.5 0 0 1 .122.696zm.976-1.951a.5.5 0 0 1-.698.114C9.773 8.15 7.101 7.762 3.535 8.49a.5.5 0 1 1-.201-.98c3.857-.787 6.779-.347 9.197 1.388a.502.502 0 0 1 .115.699zm.986-2.62a.5.5 0 0 1-.695.133c-2.757-1.871-6.948-1.88-9.661-.92a.5.5 0 1 1-.333-.944C5.894 4.203 10.467 4.225 13.5 6.282a.502.502 0 0 1 .132.695z"></path>
                                     </svg>
                                     <span className="sr-only">Spotify page</span>
                                 </a>
-                                <a
-                                    href="https://www.youtube.com/@languagetraveladoptee"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-red-600 transition duration-150 hover:text-red-700"
-                                >
-                                    <svg
-                                        className="h-6 w-6"
-                                        fill="currentColor"
-                                        fillRule="evenodd"
-                                        viewBox="0 0 24 24"
-                                        id="youtube"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M23,9.71a8.5,8.5,0,0,0-.91-4.13,2.92,2.92,0,0,0-1.72-1A78.36,78.36,0,0,0,12,4.27a78.45,78.45,0,0,0-8.34.3,2.87,2.87,0,0,0-1.46.74c-.9.83-1,2.25-1.1,3.45a48.29,48.29,0,0,0,0,6.48,9.55,9.55,0,0,0,.3,2,3.14,3.14,0,0,0,.71,1.36,2.86,2.86,0,0,0,1.49.78,45.18,45.18,0,0,0,6.5.33c3.5.05,6.57,0,10.2-.28a2.88,2.88,0,0,0,1.53-.78,2.49,2.49,0,0,0,.61-1,10.58,10.58,0,0,0,.52-3.4C23,13.69,23,10.31,23,9.71ZM9.74,14.85V8.66l5.92,3.11C14,12.69,11.81,13.73,9.74,14.85Z"
-                                            clipRule="evenodd"
-                                        />
+                                <a href="https://www.youtube.com/@languagetraveladoptee" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:scale-105 transition duration-150 hover:text-red-700">
+                                    <svg className="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="youtube">
+                                        <path fillRule="evenodd" d="M15.32 4.06c-.434-.772-.905-.914-1.864-.968C12.498 3.027 10.089 3 8.002 3c-2.091 0-4.501.027-5.458.091-.957.055-1.429.196-1.867.969C.23 4.831 0 6.159 0 8.497v.008c0 2.328.23 3.666.677 4.429.438.772.909.912 1.866.977.958.056 3.368.089 5.459.089 2.087 0 4.496-.033 5.455-.088.959-.065 1.43-.205 1.864-.977.451-.763.679-2.101.679-4.429v-.008c0-2.339-.228-3.667-.68-4.438zM6 11.5v-6l5 3-5 3z" clipRule="evenodd"></path>
                                     </svg>
                                     <span className="sr-only">Youtube page</span>
                                 </a>
-                                <a
-                                    href="https://twitter.com/LangTravAdoptee"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-sky-600 transition duration-150 hover:text-sky-700"
-                                >
-                                    <svg
-                                        className="h-6 w-6"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        id="twitter"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"
-                                            clipRule="evenodd"
-                                        />
+                                <a href="https://twitter.com/LangTravAdoptee" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:scale-105 transition duration-150 hover:text-sky-600">
+                                    <svg className="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="twitter">
+                                        <path d="M16 3.539a6.839 6.839 0 0 1-1.89.518 3.262 3.262 0 0 0 1.443-1.813 6.555 6.555 0 0 1-2.08.794 3.28 3.28 0 0 0-5.674 2.243c0 .26.022.51.076.748a9.284 9.284 0 0 1-6.761-3.431 3.285 3.285 0 0 0 1.008 4.384A3.24 3.24 0 0 1 .64 6.578v.036a3.295 3.295 0 0 0 2.628 3.223 3.274 3.274 0 0 1-.86.108 2.9 2.9 0 0 1-.621-.056 3.311 3.311 0 0 0 3.065 2.285 6.59 6.59 0 0 1-4.067 1.399c-.269 0-.527-.012-.785-.045A9.234 9.234 0 0 0 5.032 15c6.036 0 9.336-5 9.336-9.334 0-.145-.005-.285-.012-.424A6.544 6.544 0 0 0 16 3.539z"></path>
                                     </svg>
                                     <span className="sr-only">Twitter page</span>
                                 </a>
@@ -226,12 +179,12 @@ export default function Home() {
             </section>
             {/* Latest Content Section */}
             <section className="bg-white py-24">
-                <h3 className="text-center font-heading text-3xl font-bold italic text-slate-800 md:mb-8">
+                <h3 className="mb-8 text-center font-heading text-3xl font-bold italic text-slate-800 md:mb-16">
                     What&apos;s New
                 </h3>
                 {/* Latest Content Container */}
                 <div className="grid grid-rows-2 gap-16 px-12 md:grid-cols-2 md:grid-rows-none md:gap-8 md:px-24">
-                    <div className="mt-16 flex w-full flex-col items-center justify-center md:mt-0">
+                    <div className="flex w-full flex-col items-center justify-center">
                         <h4 className="mb-4 text-center font-display tracking-wide">
                             latest video
                         </h4>
