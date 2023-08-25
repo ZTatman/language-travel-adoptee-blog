@@ -1,23 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import groq from "groq";
 import urlFor from "@/lib/urlFor";
 import { useQueryBlogPosts } from "@/hooks";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-    Card,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-
-const latestBlogPostsQuery = groq`
-*[_type == "post"] {
-  ...,
-  author->{name},
-  categories[]->,
-} | order(createdAt desc)[0...3]`;
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { LATEST_POSTS } from "@/groq/queries";
 
 type LastestBlogPostsProps = {
     className?: string;
@@ -26,7 +14,7 @@ type LastestBlogPostsProps = {
 export default function LatestBlogPostsWidget({
     className = "",
 }: LastestBlogPostsProps) {
-    const { posts, loading, error } = useQueryBlogPosts(latestBlogPostsQuery);
+    const { posts, loading, error } = useQueryBlogPosts(LATEST_POSTS);
     const hasPosts = posts.length > 0;
     if (error)
         return (
