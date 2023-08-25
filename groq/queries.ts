@@ -11,7 +11,7 @@ export const DEFAULT = groq`
 }`;
 
 export const PREVIOUS_PAGE = groq`
-*[_type == "post" && _id < $lastId] | order(_id desc) [0...${POSTS_PER_PAGE}] {
+*[_type == "post" && _id < $lastId] | order(_id) [0...${POSTS_PER_PAGE}] {
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
@@ -19,7 +19,7 @@ export const PREVIOUS_PAGE = groq`
 }`;
 
 export const NEXT_PAGE = groq`
-*[_type == "post" && _id > $lastId] | order(_id asc) [0...${POSTS_PER_PAGE}] {
+*[_type == "post" && _id > $lastId] | order(_id) [0...${POSTS_PER_PAGE}] {
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
