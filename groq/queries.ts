@@ -1,6 +1,6 @@
 import groq from "groq";
 
-export const POSTS_PER_PAGE = 3;
+export const POSTS_PER_PAGE = 6;
 
 export const DEFAULT = groq`
 *[_type == "post"] | order(_id)[0...${POSTS_PER_PAGE}] {

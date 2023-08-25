@@ -63,7 +63,7 @@ export default function BlogCard({ post }: Props) {
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            {new Date(post._updatedAt).toLocaleDateString("en-us", {
+                            {new Date(post._createdAt).toLocaleDateString("en-us", {
                                 month: "short",
                                 year: "2-digit",
                             })}
