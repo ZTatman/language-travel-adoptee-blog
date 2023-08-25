@@ -24,7 +24,7 @@ export default function PreviewBlogPostsList({ query }: Props) {
           &nbsp; to exit preivew mode.
         </p>
       </div>
-      <BlogList posts={posts} />
+      <BlogList blogPosts={posts} />
     </div>
   );
 }
