@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { sanityClient } from "@/lib/sanity.client";
-import { NEXT_PAGE, TOTAL_NUMBER_OF_POSTS, POSTS_PER_PAGE } from "@/groq/queries";
+import { NEXT_PAGE, TOTAL_POSTS, POSTS_PER_PAGE, TOTAL_PAGES } from "@/groq/queries";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
@@ -12,10 +12,14 @@ export async function GET(request: Request) {
     }
     else {
         try {
-            const totalNumberOfPosts = await sanityClient.fetch(TOTAL_NUMBER_OF_POSTS);
-            const lastPage = Math.ceil(totalNumberOfPosts / POSTS_PER_PAGE);
+            const totalNumberOfPosts = await sanityClient.fetch(TOTAL_POSTS);
+            const { totalPages } = await sanityClient.fetch(TOTAL_PAGES)
+
+            console.log(":: TOTAL_POSTS: " + totalNumberOfPosts + " POSTS_PER_PAGE: " + POSTS_PER_PAGE + " PAGE: " + page + " LAST_PAGE: " + totalPages)
+
             const posts = await sanityClient.fetch(NEXT_PAGE, { lastId });
-            if (page === lastPage) {
+
+            if (page === Math.ceil(totalPages)) {
                 return NextResponse.json({ posts: posts, isLastPage: true }, { status: 200 });
             }
             else {

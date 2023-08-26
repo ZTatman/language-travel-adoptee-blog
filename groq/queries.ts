@@ -1,17 +1,25 @@
 import groq from "groq";
 
-export const POSTS_PER_PAGE = 6;
+export const POSTS_PER_PAGE = 1;
+
+export const TOTAL_POSTS = groq`count(*[_type == "post"])`;
+
+export const TOTAL_PAGES = groq`
+*[_type == "post"]| order(_id) [0] {
+    "totalPages": count(*[_type == "post"]) / ${POSTS_PER_PAGE}
+}`;
 
 export const DEFAULT = groq`
 *[_type == "post"] | order(_id)[0...${POSTS_PER_PAGE}] {
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
-    categories[]->
+    categories[]->,
+    "pages": count(*[_type == "post"]) / ${POSTS_PER_PAGE}
 }`;
 
 export const PREVIOUS_PAGE = groq`
-*[_type == "post" && _id < $lastId] | order(_id) [0...${POSTS_PER_PAGE}] {
+*[_type == "post" && _id < $lastId] | order(_id desc) [0...${POSTS_PER_PAGE}] {
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
@@ -19,14 +27,12 @@ export const PREVIOUS_PAGE = groq`
 }`;
 
 export const NEXT_PAGE = groq`
-*[_type == "post" && _id > $lastId] | order(_id) [0...${POSTS_PER_PAGE}] {
+*[_type == "post" && _id > $lastId] | order(_id, _createdAt) [0...${POSTS_PER_PAGE}] {
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
     categories[]->
 }`;
-
-export const TOTAL_NUMBER_OF_POSTS = groq`count(*[_type == "post"])`;
 
 export const LATEST_POSTS = groq`
 *[_type == "post"] {
