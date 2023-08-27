@@ -4,6 +4,7 @@ import { Card, CardDescription, CardContent, CardTitle } from "@/components/ui/c
 import Category from "./category";
 import ClientSideRoute from "./clientSideRoute";
 import urlFor from "@/lib/urlFor";
+import { Key } from "react";
 
 type Props = {
     post: Post;
@@ -20,12 +21,14 @@ export default function BlogCard({ post }: Props) {
                                 className="object-cover object-center transition-all duration-300 ease-in-out group-hover:scale-105"
                                 src={urlFor(post.mainImage).url()}
                                 alt={post.author.name}
+                                blurDataURL={post.blurDataUrl}
+                                placeholder="blur"
                                 fill
                             />
                             <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent px-4 py-4 transition-all duration-300 ease-in-out">
                                 {post.categories && post.categories.length > 0 && (
                                     <div className="flex flex-row flex-wrap gap-2">
-                                        {post.categories.map((category) => (
+                                        {post.categories.map((category: { _id: Key | null | undefined; }) => (
                                             <Category key={category._id} category={category} />
                                         ))}
                                     </div>

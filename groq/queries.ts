@@ -15,7 +15,18 @@ export const DEFAULT = groq`
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
     categories[]->,
+    "blurDataUrl": mainImage.asset->metadata.lqip,
     "pages": count(*[_type == "post"]) / ${POSTS_PER_PAGE}
+}`;
+
+export const ALL_POSTS = groq`
+*[_type == "post"] | order(_id) {
+    ...,
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
+    author->,
+    categories[]->,
+    "blurDataUrl": mainImage.asset->metadata.lqip,
+    "pages": 1
 }`;
 
 export const PREVIOUS_PAGE = groq`
@@ -23,6 +34,7 @@ export const PREVIOUS_PAGE = groq`
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
+    "blurDataUrl": mainImage.asset->metadata.lqip,
     categories[]->
 }`;
 
@@ -31,14 +43,16 @@ export const NEXT_PAGE = groq`
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
+    "blurDataUrl": mainImage.asset->metadata.lqip,
     categories[]->
 }`;
 
 export const LATEST_POSTS = groq`
 *[_type == "post"] {
-  ...,
-  author->{name},
-  categories[]->,
+    ...,
+    author->{name},
+    categories[]->,
+    "blurDataUrl": mainImage.asset->metadata.lqip,
 } | order(createdAt desc)[0...3]`;
 
 
