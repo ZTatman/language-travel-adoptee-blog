@@ -69,6 +69,7 @@ export const SELECTED_POST = groq`
             "slug": reference->slug,
         }
     },
+    "blurDataUrl": mainImage.asset->metadata.lqip,
     "nextPost": *[_type == 'post' && ^._createdAt < _createdAt] | order(_createdAt asc)[0] {
         title,slug
     },

@@ -52,6 +52,8 @@ export default function PageContent({ post }: Props) {
                     className="object-cover object-bottom"
                     src={urlFor(post.mainImage).crop("entropy").url()}
                     alt={post.author.name}
+                    blurDataURL={post.blurDataUrl}
+                    placeholder="blur"
                     fill
                 />
                 <div className="absolute top-0 h-full w-full backdrop-brightness-[0.4]">

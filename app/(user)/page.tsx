@@ -154,19 +154,19 @@ export default function Home() {
                             </Link>
                             {/* Social Media Icons */}
                             <div className="flex items-center justify-start space-x-4 md:pr-8">
-                                <a href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:scale-105 transition duration-150 hover:text-green-700">
+                                <a href="https://open.spotify.com/show/2eVbzHTByRNVbxlkPPoICO" target="_blank" rel="noopener noreferrer" className="text-green-600 transition duration-150 hover:scale-105 hover:text-green-700">
                                     <svg className="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="spotify">
                                         <path d="M8 0C3.589 0 0 3.589 0 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm3.67 11.548a.499.499 0 0 1-.696.122c-1.875-1.318-4.994-1.391-7.1-.9a.5.5 0 0 1-.226-.975c2.315-.536 5.775-.438 7.9 1.057a.5.5 0 0 1 .122.696zm.976-1.951a.5.5 0 0 1-.698.114C9.773 8.15 7.101 7.762 3.535 8.49a.5.5 0 1 1-.201-.98c3.857-.787 6.779-.347 9.197 1.388a.502.502 0 0 1 .115.699zm.986-2.62a.5.5 0 0 1-.695.133c-2.757-1.871-6.948-1.88-9.661-.92a.5.5 0 1 1-.333-.944C5.894 4.203 10.467 4.225 13.5 6.282a.502.502 0 0 1 .132.695z"></path>
                                     </svg>
                                     <span className="sr-only">Spotify page</span>
                                 </a>
-                                <a href="https://www.youtube.com/@languagetraveladoptee" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:scale-105 transition duration-150 hover:text-red-700">
+                                <a href="https://www.youtube.com/@languagetraveladoptee" target="_blank" rel="noopener noreferrer" className="text-red-600 transition duration-150 hover:scale-105 hover:text-red-700">
                                     <svg className="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="youtube">
                                         <path fillRule="evenodd" d="M15.32 4.06c-.434-.772-.905-.914-1.864-.968C12.498 3.027 10.089 3 8.002 3c-2.091 0-4.501.027-5.458.091-.957.055-1.429.196-1.867.969C.23 4.831 0 6.159 0 8.497v.008c0 2.328.23 3.666.677 4.429.438.772.909.912 1.866.977.958.056 3.368.089 5.459.089 2.087 0 4.496-.033 5.455-.088.959-.065 1.43-.205 1.864-.977.451-.763.679-2.101.679-4.429v-.008c0-2.339-.228-3.667-.68-4.438zM6 11.5v-6l5 3-5 3z" clipRule="evenodd"></path>
                                     </svg>
                                     <span className="sr-only">Youtube page</span>
                                 </a>
-                                <a href="https://twitter.com/LangTravAdoptee" target="_blank" rel="noopener noreferrer" className="text-sky-500 hover:scale-105 transition duration-150 hover:text-sky-600">
+                                <a href="https://twitter.com/LangTravAdoptee" target="_blank" rel="noopener noreferrer" className="text-sky-500 transition duration-150 hover:scale-105 hover:text-sky-600">
                                     <svg className="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="twitter">
                                         <path d="M16 3.539a6.839 6.839 0 0 1-1.89.518 3.262 3.262 0 0 0 1.443-1.813 6.555 6.555 0 0 1-2.08.794 3.28 3.28 0 0 0-5.674 2.243c0 .26.022.51.076.748a9.284 9.284 0 0 1-6.761-3.431 3.285 3.285 0 0 0 1.008 4.384A3.24 3.24 0 0 1 .64 6.578v.036a3.295 3.295 0 0 0 2.628 3.223 3.274 3.274 0 0 1-.86.108 2.9 2.9 0 0 1-.621-.056 3.311 3.311 0 0 0 3.065 2.285 6.59 6.59 0 0 1-4.067 1.399c-.269 0-.527-.012-.785-.045A9.234 9.234 0 0 0 5.032 15c6.036 0 9.336-5 9.336-9.334 0-.145-.005-.285-.012-.424A6.544 6.544 0 0 0 16 3.539z"></path>
                                     </svg>
