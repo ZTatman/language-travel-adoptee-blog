@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 import BlogCard from "./blogCard";
+import SearchBar from "../search/searchBar";
 import { Skeleton } from "../ui/skeleton";
+import { Post } from "@/types";
 
 type Props = {
     posts: Post[];
@@ -64,12 +66,32 @@ export default function BlogList({ posts, pages = 0 }: Props) {
         }
     };
 
+    const onFormSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        console.log("*** FORM_DATA ***\n", formData);
+        // console.log(formData.get("search"));
+    
+    }, []);
+
     return (
         <div>
             {/* Filters & Pagination */}
-            <div className="flex items-center justify-between px-16 py-5">
+            <div className="my-4 flex items-center justify-between px-14">
                 <div>Filters Here</div>
-                <div className="inline-flex items-center space-x-8">
+                <SearchBar onSubmit={onFormSubmit}/>
+            </div>
+            {/* Posts */}
+            {isPostLoading &&
+                <Loading />
+            }
+            <div className="px-10">
+                <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3">
+                    {!isPostLoading && blogPosts && blogPosts.map((post) => (
+                        <BlogCard key={post._id} post={post} />
+                    ))}
+                </div>
+                <div className="my-8 flex items-center justify-end space-x-8 px-4">
                     <button
                         className="rounded-sm bg-sky-600 px-4 py-2 text-white transition duration-150 ease-in-out hover:bg-sky-700 active:bg-sky-800 disabled:bg-sky-600 disabled:opacity-50"
                         onClick={handlePreviousPage}
@@ -83,15 +105,6 @@ export default function BlogList({ posts, pages = 0 }: Props) {
                         Next
                     </button>
                 </div>
-            </div>
-            {/* Posts */}
-            {isPostLoading &&
-                <Loading />
-            }
-            <div className="grid grid-cols-1 gap-x-4 gap-y-8 px-10 pb-24 md:grid-cols-3">
-                {!isPostLoading && blogPosts && blogPosts.map((post) => (
-                    <BlogCard key={post._id} post={post} />
-                ))}
             </div>
         </div>
     );
