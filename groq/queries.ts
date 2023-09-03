@@ -1,6 +1,6 @@
 import groq from "groq";
 
-export const POSTS_PER_PAGE = 1;
+export const POSTS_PER_PAGE = 6;
 
 export const TOTAL_POSTS = groq`count(*[_type == "post"])`;
 
@@ -30,7 +30,7 @@ export const ALL_POSTS = groq`
 }`;
 
 export const PREVIOUS_PAGE = groq`
-*[_type == "post" && _id < $lastId] | order(_id desc) [0...${POSTS_PER_PAGE}] {
+*[_type == "post" && _id < $lastId] | order(_id) [0...${POSTS_PER_PAGE}] {
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
@@ -39,7 +39,7 @@ export const PREVIOUS_PAGE = groq`
 }`;
 
 export const NEXT_PAGE = groq`
-*[_type == "post" && _id > $lastId] | order(_id, _createdAt) [0...${POSTS_PER_PAGE}] {
+*[_type == "post" && _id > $lastId] | order(_id) [0...${POSTS_PER_PAGE}] {
     ...,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
     author->,
@@ -57,7 +57,7 @@ export const LATEST_POSTS = groq`
 
 
 export const SELECTED_POST = groq`
-*[_type == 'post' && slug.current == $slug][0]
+*[_type == "post" && slug.current == $slug][0]
 {
     ...,
     author->,
@@ -70,12 +70,25 @@ export const SELECTED_POST = groq`
         }
     },
     "blurDataUrl": mainImage.asset->metadata.lqip,
-    "nextPost": *[_type == 'post' && ^._createdAt < _createdAt] | order(_createdAt asc)[0] {
+    "nextPost": *[_type == "post" && ^._createdAt < _createdAt] | order(_createdAt asc)[0] {
         title,slug
     },
-    "prevPost": *[_type == 'post' && ^._createdAt > _createdAt] | order(_createdAt desc)[0] {
+    "prevPost": *[_type == "post" && ^._createdAt > _createdAt] | order(_createdAt desc)[0] {
         title,slug
     }
 }`;
+
+export const SEARCH_FOR_POST_MATCHING_TERM = groq`
+*[(_type == "post" && !(_id in path("drafts.**"))
+	&& title match $search || description match $search)] 
+	| score(boost(title match $search, 3), boost(description match $search, 2))
+	{
+        ...,
+        "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
+        author->,
+        "blurDataUrl": mainImage.asset->metadata.lqip,
+        categories[]->,
+		_score
+    } | order(_score desc) [_score > 0][0...${POSTS_PER_PAGE}]`;
 
 

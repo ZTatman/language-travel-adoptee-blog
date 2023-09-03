@@ -5,6 +5,15 @@ import BlogCard from "./blogCard";
 import SearchBar from "../search/searchBar";
 import { Skeleton } from "../ui/skeleton";
 import { Post } from "@/types";
+import { sanityClient } from "@/lib/sanity.client";
+import { SEARCH_FOR_POST_MATCHING_TERM } from "@/groq/queries";
+
+function getFormValues(form: HTMLFormElement) {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    const isEmpty = [...formData.values()].includes("");
+    return [data, isEmpty];
+}
 
 type Props = {
     posts: Post[];
@@ -66,12 +75,23 @@ export default function BlogList({ posts, pages = 0 }: Props) {
         }
     };
 
-    const onFormSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+    const onFormSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        console.log("*** FORM_DATA ***\n", formData);
-        // console.log(formData.get("search"));
-    
+        const [formData, isDataEmpty] = getFormValues(e.currentTarget);
+        if (isDataEmpty) return;
+        const searchTerm = formData.search;
+
+        try {
+            setIsPostsLoading(true);
+            const posts = await sanityClient.fetch(SEARCH_FOR_POST_MATCHING_TERM, { search: searchTerm });
+            if (posts && posts.length > 0) {
+                setBlogPosts([...posts]);
+            }
+            setIsPostsLoading(false);
+        } catch (error) {
+            console.log(error)
+        }
+
     }, []);
 
     return (
@@ -79,7 +99,7 @@ export default function BlogList({ posts, pages = 0 }: Props) {
             {/* Filters & Pagination */}
             <div className="my-4 flex items-center justify-between px-14">
                 <div>Filters Here</div>
-                <SearchBar onSubmit={onFormSubmit}/>
+                <SearchBar onSubmit={onFormSubmit} />
             </div>
             {/* Posts */}
             {isPostLoading &&

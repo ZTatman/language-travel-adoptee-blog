@@ -18,7 +18,7 @@ export default function Navbar() {
       <nav className="flex w-auto flex-grow items-center justify-between border-b bg-white px-9 py-3 text-center sm:w-auto">
         <div className="flex flex-shrink-0 items-center justify-center sm:mr-6">
           <Link href="/">
-            <Image src={logo} alt="Logo" width={52} height={52} />
+            <Image src={logo} alt="Logo" width={52} height={52} priority />
           </Link>
         </div>
         <div className="text-md hidden sm:block">

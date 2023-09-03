@@ -5,6 +5,7 @@ import Category from "./category";
 import ClientSideRoute from "./clientSideRoute";
 import urlFor from "@/lib/urlFor";
 import { Key } from "react";
+import { Post } from "@/types";
 
 type Props = {
     post: Post;
