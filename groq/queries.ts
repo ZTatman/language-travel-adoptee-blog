@@ -1,6 +1,6 @@
 import groq from "groq";
 
-export const POSTS_PER_PAGE = 6;
+export const POSTS_PER_PAGE = 3;
 
 export const TOTAL_POSTS = groq`count(*[_type == "post"])`;
 
@@ -88,7 +88,8 @@ export const SEARCH_FOR_POST_MATCHING_TERM = groq`
         author->,
         "blurDataUrl": mainImage.asset->metadata.lqip,
         categories[]->,
+        "pages": 1,
 		_score
-    } | order(_score desc) [_score > 0][0...${POSTS_PER_PAGE}]`;
+    } | order(_score desc) [_score > 0]`;
 
 

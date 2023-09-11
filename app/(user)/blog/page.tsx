@@ -4,12 +4,13 @@ import PreviewBlogPostsList from "@/components/blog/previewBlogPostsList";
 import PreviewSuspense from "@/components/blog/previewSuspense";
 import BlogList from "@/components/blog/blogList";
 import { DEFAULT, TOTAL_PAGES, ALL_POSTS } from "@/groq/queries";
+import { Post } from "@/types";
 
 let posts: Post[] = [];
 
 export default async function Blog() {
     posts = await sanityClient.fetch(DEFAULT);
-    const totalPages = await sanityClient.fetch(TOTAL_PAGES);
+    const { totalPages } = await sanityClient.fetch(TOTAL_PAGES);
     const _totalPages = Math.ceil(totalPages);
     if (previewData()) {
         return (
