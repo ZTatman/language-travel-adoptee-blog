@@ -1,13 +1,12 @@
 import { Montserrat, Lora, Cinzel, Comforter } from "next/font/google";
 
 import { Navbar, Footer, NewsletterSignup } from "@/componentIndex";
-import "../../styles/globals.css";
+import "../globals.css";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
     display: "swap",
     weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-    fallback: ["system-ui", "arial"],
     variable: "--font-montserrat",
 });
 
