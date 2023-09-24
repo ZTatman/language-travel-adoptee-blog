@@ -1,41 +1,27 @@
 "use client";
 
 import { FormEvent, useCallback, useState } from "react";
-import BlogCard from "./blogCard";
-import SearchBar from "../search/searchBar";
-import { Skeleton } from "../ui/skeleton";
-import { Post } from "@/types";
+
+import { Category, Post } from "@/types";
 import { sanityClient } from "@/lib/sanity.client";
+import { debounce, getFormValues } from "@/lib/utils";
 import { DEFAULT, SEARCH_FOR_POST_MATCHING_TERM } from "@/groq/queries";
 
-function getFormValues(form: HTMLFormElement) {
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    const isEmpty = [...formData.values()].includes("");
-    return [data, isEmpty];
-}
-
-const debounce = function(func: { apply: (arg0: any, arg1: any) => void; }): (...args: any) => void {
-    let timer: string | number | NodeJS.Timeout | null | undefined;
-    return function(...args: any) {
-        const context = this;
-        if (timer)
-            clearTimeout(timer);
-        timer = setTimeout(() => {
-            timer = null;
-            func.apply(context, args);
-        }, 500);
-    };
-}
+import BlogCard from "./blogCard";
+import SearchBar from "../search/searchBar";
+import DropdownSelect from "../dropdownSelect";
+import { Skeleton } from "../ui/skeleton";
+import { Separator } from "../ui/separator";
 
 type Props = {
     posts: Post[];
+    categories: Category[];
     pages?: number;
 };
 
-export default function BlogList({ posts, pages = 1 }: Props) {
+export default function BlogList({ posts, categories, pages = 1 }: Props) {
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(pages);
+    const [totalPages] = useState(pages);
     const [blogPosts, setBlogPosts] = useState<Post[]>(posts);
     const [isPrevPageDisabled, setIsPrevPageDisabled] = useState(page === 1);
     const [isNextPageDisabled, setIsNextPageDisabled] = useState(page === totalPages || false);
@@ -142,22 +128,26 @@ export default function BlogList({ posts, pages = 1 }: Props) {
 
     return (
         <div>
-            {/* Filters & Pagination */}
-            <div className="my-4 flex items-center justify-between px-14">
-                <div>Filters Here</div>
+            {/* Filters & Search */}
+            <div className="flex items-center justify-between px-11 py-8">
+                <div className="flex h-10 items-center space-x-4">
+                    <button className="text-muted-foreground">View All</button>
+                    <Separator orientation="vertical" />
+                    <DropdownSelect placeholder="Sort by Category" selectLabel="All" selectItems={categories} />
+                </div>
                 <SearchBar onChange={handleChangeDebounced} onSubmit={handleFormSubmit} />
             </div>
-            {/* Posts */}
             {isPostLoading &&
                 <Loading />
             }
+            {/* Posts */}
             <div className="px-10">
                 <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-3">
                     {!isPostLoading && blogPosts.length > 0 && blogPosts.map((post) => (
                         <BlogCard key={post._id} post={post} />
                     ))}
                 </div>
-                <div className="my-8 flex items-center justify-end space-x-8 px-4">
+                <div className="flex items-center justify-end space-x-8 py-8">
                     <button
                         className="rounded-sm bg-sky-600 px-4 py-2 text-white transition duration-150 ease-in-out hover:bg-sky-700 active:bg-sky-800 disabled:bg-sky-600 disabled:opacity-50"
                         onClick={handlePreviousPage}

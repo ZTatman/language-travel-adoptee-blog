@@ -1,12 +1,17 @@
 import groq from "groq";
 
-export const POSTS_PER_PAGE = 3;
+export const POSTS_PER_PAGE = 6;
 
 export const TOTAL_POSTS = groq`count(*[_type == "post"])`;
 
 export const TOTAL_PAGES = groq`
 *[_type == "post"]| order(_id) [0] {
     "totalPages": count(*[_type == "post"]) / ${POSTS_PER_PAGE}
+}`;
+
+export const ALL_CATEGORIES = groq`
+*[_type == "category"] | order(title) {
+  title, _id
 }`;
 
 export const DEFAULT = groq`

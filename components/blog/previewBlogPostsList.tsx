@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePreview } from "@/lib/sanity.preview";
 import BlogList from "./blogList";
+import { Category } from "@/types";
 
 type Props = {
     query: string;
+    categories: Category[];
 };
 
-export default function PreviewBlogPostsList({ query }: Props) {
+export default function PreviewBlogPostsList({ query, categories }: Props) {
     const posts = usePreview(null, query);
     return (
         <div>
@@ -24,7 +26,7 @@ export default function PreviewBlogPostsList({ query }: Props) {
                     &nbsp; to exit preivew mode.
                 </p>
             </div>
-            <BlogList posts={posts} pages={1} />
+            <BlogList posts={posts} categories={categories} pages={1} />
         </div>
     );
 }

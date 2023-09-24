@@ -30,8 +30,9 @@ interface Span {
 }
 
 interface Category extends Base {
+    _id: string;
     title: string;
-    description: string;
+    description?: string;
 }
 
 interface Block {

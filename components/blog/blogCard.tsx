@@ -37,7 +37,7 @@ export default function BlogCard({ post }: Props) {
                             </div>
                         </div>
                     </div>
-                    <CardContent className="space-y-3 p-8">
+                    <CardContent className="space-y-3 px-4 py-8">
                         <CardTitle className="line-clamp-1 font-heading text-xl group-hover:text-sky-500">
                             {post.title}
                         </CardTitle>
@@ -45,7 +45,7 @@ export default function BlogCard({ post }: Props) {
                             {post.description}
                         </CardDescription>
                     </CardContent>
-                    <div className="mt-auto flex flex-row items-center space-x-4 border-t-[1px] px-8 py-2 font-sans text-xs text-gray-600">
+                    <div className="mt-auto flex flex-row items-center space-x-4 border-t-[1px] px-4 py-2 font-sans text-xs text-gray-600">
                         {/* Author */}
                         <div className="flex flex-row items-center gap-2">
                             <Image

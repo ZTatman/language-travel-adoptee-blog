@@ -1,12 +1,15 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import { FormEvent } from "react";
 
 type Props = {
-    onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
-    onChange?: (e: InputEvent<HTMLInputElement>) => void;
+    onChange: (e: string) => void;
+    onSubmit?: ((e: FormEvent<HTMLFormElement>) => void) | undefined;
 }
 
-function SearchBar({ onSubmit = null, onChange = null }: Props) {
+function SearchBar({
+    onChange,
+    onSubmit = undefined,
+}: Props) {
     return (
         <div>
             <form className="flex items-center" onSubmit={onSubmit}>
@@ -24,7 +27,7 @@ function SearchBar({ onSubmit = null, onChange = null }: Props) {
                             name="search"
                             title="No special characters are allowed."
                             pattern="^[A-Za-z0-9]*$"
-                            className="block w-full appearance-none rounded-md border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-slate-700 focus:border-teal-500 focus:outline-none  dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-teal-500 dark:focus:ring-teal-500 invalid:[&:not(:placeholder-shown)]:border-red-500"
+                            className="block w-full appearance-none rounded-md border border-input bg-gray-50 p-2.5 pl-10 text-sm text-slate-700 placeholder:text-muted-foreground focus:border-teal-500  focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:focus:border-teal-500 dark:focus:ring-teal-500 invalid:[&:not(:placeholder-shown)]:border-red-500"
                             placeholder="Search the blog"
                             onChange={(e) => onChange(e.target.value)}
                             required />

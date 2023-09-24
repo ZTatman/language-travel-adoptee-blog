@@ -20,3 +20,24 @@ export function slugify(string: string) {
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, '') // Trim - from end of text
 }
+
+
+export function getFormValues(form: HTMLFormElement) {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    const isEmpty = [...formData.values()].includes("");
+    return [data, isEmpty];
+}
+
+export const debounce = function(func: { apply: (arg0: any, arg1: any) => void; }): (...args: any) => void {
+    let timer: string | number | NodeJS.Timeout | null | undefined;
+    return (...args: any) => {
+        const context = this;
+        if (timer)
+            clearTimeout(timer);
+        timer = setTimeout(() => {
+            timer = null;
+            func.apply(context, args);
+        }, 500);
+    };
+}
