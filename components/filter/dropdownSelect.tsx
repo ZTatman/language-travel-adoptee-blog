@@ -13,7 +13,7 @@ import { SetStateAction } from "react";
 type Props = {
     placeholder: string;
     selectLabel: string;
-    selectItems: Category[];
+    selectItems: Category[] | null;
     onValueChange: any;
     // onValueChange: (event: {
     //     target: { value: SetStateAction<null> };

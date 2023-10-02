@@ -1,36 +1,24 @@
-import { useState, useEffect, SetStateAction } from "react";
+import { memo, useState, useEffect } from "react";
 
 import { Separator } from "../ui/separator";
-import DropdownSelect from "../dropdownSelect";
-import { Category } from "@/types";
-
-type FilterObject = {
-    category?: Category[]
-};
+import DropdownSelect from "./blogListFilters";
+import { AppliedFilters, FilterOptions } from "../types";
 
 type Props = {
-    filters: FilterObject;
-    filterOptions: FilterObject;
-    onFilterChange: React.Dispatch<React.SetStateAction>;
+    filterOptions: FilterOptions;
+    onFilterChange: React.Dispatch<React.SetStateAction<AppliedFilters>>
     onClearFilters: () => void;
 };
 
-function Filters({
-    filters,
+function BlogListFilters({
     filterOptions,
     onFilterChange,
     onClearFilters,
 }: Props) {
-    const [categoryFilter, setCategoryFilter] = useState(null);
+    const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
 
     useEffect(() => {
-        if (filters.category === null) {
-            setCategoryFilter([]);
-        }
-    }, [filters.category])
-
-    useEffect(() => {
-        onFilterChange((prevFilters: FilterObject) => ({ ...prevFilters, category: categoryFilter }));
+        onFilterChange((prevFilters): AppliedFilters => ({ ...prevFilters, category: categoryFilter }));
     }, [categoryFilter])
 
     return (
@@ -48,4 +36,4 @@ function Filters({
     );
 }
 
-export default Filters;
+export default memo(BlogListFilters);

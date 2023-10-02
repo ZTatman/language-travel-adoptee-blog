@@ -10,11 +10,17 @@ import { DEFAULT, SEARCH_FOR_POST_MATCHING_TERM } from "@/groq/queries";
 import BlogCard from "./blogCard";
 import SearchBar from "../search/searchBar";
 import { Skeleton } from "../ui/skeleton";
-import Filters from "./filters";
+import BlogListFilters from "../filter/blogListFilters";
+import { AppliedFilters, FilterOptions } from "../types";
 
-const EMPTY_FILTER_OPTIONS = Object.freeze({
+const EMPTY_FILTER_OPTIONS: FilterOptions = Object.freeze({
     category: null
 });
+
+const EMPTY_FILTERS: AppliedFilters = Object.freeze({
+    category: null
+});
+
 
 type Props = {
     posts: Post[];
@@ -26,8 +32,8 @@ export default function BlogList({ posts, availableCategories, pages = 1 }: Prop
     const [page, setPage] = useState(1);
     const [totalPages] = useState(pages);
     const [blogPosts, setBlogPosts] = useState<Post[]>(posts);
-    const [filters, setFilters] = useState(EMPTY_FILTER_OPTIONS);
-    const [filterOptions, setFilterOptions] = useState(EMPTY_FILTER_OPTIONS);
+    const [filters, setFilters] = useState<AppliedFilters>(EMPTY_FILTERS);
+    const [filterOptions, setFilterOptions] = useState<FilterOptions>(EMPTY_FILTER_OPTIONS);
     const [isPrevPageDisabled, setIsPrevPageDisabled] = useState(page === 1);
     const [isNextPageDisabled, setIsNextPageDisabled] = useState(page === totalPages || false);
     const [isPostLoading, setIsPostsLoading] = useState(false);
@@ -35,10 +41,10 @@ export default function BlogList({ posts, availableCategories, pages = 1 }: Prop
     // TODO: Implement this filtering of blogposts
     // const filteredBlogPosts = useMemo(() => {
     //
-    // }, [])
+    // }, [filters])
 
     const handleClearAllFilters = useCallback(() => {
-        setFilters(EMPTY_FILTER_OPTIONS);
+        setFilters(EMPTY_FILTERS);
     }, []);
 
     const handleSearchChange = async (searchTerm: string) => {
@@ -140,19 +146,23 @@ export default function BlogList({ posts, availableCategories, pages = 1 }: Prop
         };
     };
 
-    // TODO: Find a better way of getting all available categories. Maybe use a promise instead, moving it closer to where its needed in filters.
+    // TODO: find a better way to do this closer to where availableCategories is needed in Filters.tsx
     useEffect(() => {
-        setFilterOptions({ ...filters, category: availableCategories })
+        setFilterOptions({ ...filterOptions, category: availableCategories })
     }, [availableCategories])
 
     // TODO: Remove after done
-    useEffect(() => { console.log(":: filters: ", filters) }, [filters]);
+    // useEffect(() => { console.log(":: filters: ", filters) }, [filters]);
 
     return (
         <div>
             {/* Filters & Search */}
             <div className="flex items-center justify-between px-11 py-8">
-                <Filters filters={filters} filterOptions={filterOptions} onFilterChange={setFilters} onClearFilters={handleClearAllFilters} />
+                <BlogListFilters
+                    filterOptions={filterOptions}
+                    onFilterChange={setFilters}
+                    onClearFilters={handleClearAllFilters}
+                />
                 <SearchBar onChange={handleSearchChangeDebounced} onSubmit={handleSearchFormSubmit} />
             </div>
             {isPostLoading &&

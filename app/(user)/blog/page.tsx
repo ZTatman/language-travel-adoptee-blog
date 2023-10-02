@@ -1,6 +1,6 @@
 import { previewData } from "next/headers";
 import { sanityClient } from "@/lib/sanity.client";
-import PreviewBlogPostsList from "@/components/blog/previewBlogPostsList";
+import PreviewBlogList from "@/components/blog/previewBlogList";
 import PreviewSuspense from "@/components/blog/previewSuspense";
 import BlogList from "@/components/blog/blogList";
 import { DEFAULT, TOTAL_PAGES, ALL_POSTS, ALL_CATEGORIES } from "@/groq/queries";
@@ -19,7 +19,7 @@ export default async function Blog() {
             <PreviewSuspense
                 fallback={<p className="animate-pulse py-4 text-center font-heading text-lg font-bold text-slate-700">Loading Preview Data...</p>}
             >
-                <PreviewBlogPostsList query={ALL_POSTS} availableCategories={categories} />
+                <PreviewBlogList query={ALL_POSTS} availableCategories={categories} />
             </PreviewSuspense>
         );
     }

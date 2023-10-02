@@ -7,10 +7,10 @@ import { Category } from "@/types";
 
 type Props = {
     query: string;
-    categories: Category[];
+    availableCategories: Category[];
 };
 
-export default function PreviewBlogPostsList({ query, categories }: Props) {
+export default function PreviewBlogList({ query, availableCategories: categories }: Props) {
     const posts = usePreview(null, query);
     return (
         <div>
@@ -26,7 +26,7 @@ export default function PreviewBlogPostsList({ query, categories }: Props) {
                     &nbsp; to exit preivew mode.
                 </p>
             </div>
-            <BlogList posts={posts} categories={categories} pages={1} />
+            <BlogList posts={posts} availableCategories={categories} pages={1} />
         </div>
     );
 }
