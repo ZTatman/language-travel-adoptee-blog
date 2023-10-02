@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useState } from "react";
+import { FormEvent, useCallback, useState, useEffect, useMemo } from "react";
 
 import { Category, Post } from "@/types";
 import { sanityClient } from "@/lib/sanity.client";
@@ -9,23 +9,88 @@ import { DEFAULT, SEARCH_FOR_POST_MATCHING_TERM } from "@/groq/queries";
 
 import BlogCard from "./blogCard";
 import SearchBar from "../search/searchBar";
-import DropdownSelect from "../dropdownSelect";
 import { Skeleton } from "../ui/skeleton";
-import { Separator } from "../ui/separator";
+import Filters from "./filters";
+
+const EMPTY_FILTER_OPTIONS = Object.freeze({
+    category: null
+});
 
 type Props = {
     posts: Post[];
-    categories: Category[];
+    availableCategories: Category[];
     pages?: number;
 };
 
-export default function BlogList({ posts, categories, pages = 1 }: Props) {
+export default function BlogList({ posts, availableCategories, pages = 1 }: Props) {
     const [page, setPage] = useState(1);
     const [totalPages] = useState(pages);
     const [blogPosts, setBlogPosts] = useState<Post[]>(posts);
+    const [filters, setFilters] = useState(EMPTY_FILTER_OPTIONS);
+    const [filterOptions, setFilterOptions] = useState(EMPTY_FILTER_OPTIONS);
     const [isPrevPageDisabled, setIsPrevPageDisabled] = useState(page === 1);
     const [isNextPageDisabled, setIsNextPageDisabled] = useState(page === totalPages || false);
     const [isPostLoading, setIsPostsLoading] = useState(false);
+
+    // TODO: Implement this filtering of blogposts
+    // const filteredBlogPosts = useMemo(() => {
+    //
+    // }, [])
+
+    const handleClearAllFilters = useCallback(() => {
+        setFilters(EMPTY_FILTER_OPTIONS);
+    }, []);
+
+    const handleSearchChange = async (searchTerm: string) => {
+        if (searchTerm === "") {
+            try {
+                const posts = await sanityClient.fetch(DEFAULT);
+                if (posts && posts.length > 0) {
+                    setBlogPosts([...posts]);
+                    setPage(1);
+                    setIsPrevPageDisabled(page === 1);
+                    setIsNextPageDisabled(page === totalPages);
+                }
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setIsPostsLoading(false);
+            };
+        }
+        try {
+            setIsPostsLoading(true);
+            const posts = await sanityClient.fetch(SEARCH_FOR_POST_MATCHING_TERM, { search: searchTerm });
+            if (posts && posts.length > 0) {
+                setBlogPosts([...posts]);
+                setIsPrevPageDisabled(true);
+                setIsNextPageDisabled(true);
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsPostsLoading(false);
+        };
+    }
+
+    const handleSearchChangeDebounced = useCallback(debounce(handleSearchChange), []);
+
+    const handleSearchFormSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const [formData, isDataEmpty] = getFormValues(e.currentTarget);
+        if (isDataEmpty) return;
+        const searchTerm = formData.search;
+        try {
+            setIsPostsLoading(true);
+            const posts = await sanityClient.fetch(SEARCH_FOR_POST_MATCHING_TERM, { search: searchTerm });
+            if (posts && posts.length > 0) {
+                setBlogPosts([...posts]);
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsPostsLoading(false);
+        };
+    }, []);
 
     const handleNextPage = async () => {
         const _lastId = blogPosts.length > 0 ? blogPosts[blogPosts.length - 1]._id : null;
@@ -75,67 +140,20 @@ export default function BlogList({ posts, categories, pages = 1 }: Props) {
         };
     };
 
-    const handleChange = async (searchTerm: string) => {
-        if (searchTerm === "") {
-            try {
-                const posts = await sanityClient.fetch(DEFAULT);
-                if (posts && posts.length > 0) {
-                    setBlogPosts([...posts]);
-                    setPage(1);
-                    setIsPrevPageDisabled(page === 1);
-                    setIsNextPageDisabled(page === totalPages);
-                }
-            } catch (error) {
-                console.log(error);
-            } finally {
-                setIsPostsLoading(false);
-            };
-        }
-        try {
-            setIsPostsLoading(true);
-            const posts = await sanityClient.fetch(SEARCH_FOR_POST_MATCHING_TERM, { search: searchTerm });
-            if (posts && posts.length > 0) {
-                setBlogPosts([...posts]);
-                setIsPrevPageDisabled(true);
-                setIsNextPageDisabled(true);
-            }
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setIsPostsLoading(false);
-        };
-    }
+    // TODO: Find a better way of getting all available categories. Maybe use a promise instead, moving it closer to where its needed in filters.
+    useEffect(() => {
+        setFilterOptions({ ...filters, category: availableCategories })
+    }, [availableCategories])
 
-    const handleChangeDebounced = useCallback(debounce(handleChange), []);
-
-    const handleFormSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const [formData, isDataEmpty] = getFormValues(e.currentTarget);
-        if (isDataEmpty) return;
-        const searchTerm = formData.search;
-        try {
-            setIsPostsLoading(true);
-            const posts = await sanityClient.fetch(SEARCH_FOR_POST_MATCHING_TERM, { search: searchTerm });
-            if (posts && posts.length > 0) {
-                setBlogPosts([...posts]);
-            }
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setIsPostsLoading(false);
-        };
-    }, []);
+    // TODO: Remove after done
+    useEffect(() => { console.log(":: filters: ", filters) }, [filters]);
 
     return (
         <div>
             {/* Filters & Search */}
             <div className="flex items-center justify-between px-11 py-8">
-                <div className="flex h-10 items-center space-x-4">
-                    <button className="text-muted-foreground">View All</button>
-                    <Separator orientation="vertical" />
-                    <DropdownSelect placeholder="Sort by Category" selectLabel="All" selectItems={categories} />
-                </div>
-                <SearchBar onChange={handleChangeDebounced} onSubmit={handleFormSubmit} />
+                <Filters filters={filters} filterOptions={filterOptions} onFilterChange={setFilters} onClearFilters={handleClearAllFilters} />
+                <SearchBar onChange={handleSearchChangeDebounced} onSubmit={handleSearchFormSubmit} />
             </div>
             {isPostLoading &&
                 <Loading />
@@ -147,7 +165,7 @@ export default function BlogList({ posts, categories, pages = 1 }: Props) {
                         <BlogCard key={post._id} post={post} />
                     ))}
                 </div>
-                <div className="flex items-center justify-end space-x-8 py-8">
+                <div className="flex items-center justify-between py-8 md:justify-end md:space-x-8">
                     <button
                         className="rounded-sm bg-sky-600 px-4 py-2 text-white transition duration-150 ease-in-out hover:bg-sky-700 active:bg-sky-800 disabled:bg-sky-600 disabled:opacity-50"
                         onClick={handlePreviousPage}

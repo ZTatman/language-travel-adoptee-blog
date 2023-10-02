@@ -19,13 +19,13 @@ export default async function Blog() {
             <PreviewSuspense
                 fallback={<p className="animate-pulse py-4 text-center font-heading text-lg font-bold text-slate-700">Loading Preview Data...</p>}
             >
-                <PreviewBlogPostsList query={ALL_POSTS} categories={categories} />
+                <PreviewBlogPostsList query={ALL_POSTS} availableCategories={categories} />
             </PreviewSuspense>
         );
     }
     return (
         <div>
-            <BlogList posts={posts} categories={categories} pages={_totalPages} />
+            <BlogList posts={posts} availableCategories={categories} pages={_totalPages} />
         </div>
     );
 }

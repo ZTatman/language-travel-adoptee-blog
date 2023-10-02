@@ -26,7 +26,6 @@ const cinzel = Cinzel({
 
 const comforter = Comforter({
     subsets: ["latin"],
-    display: "swap",
     weight: ["400"],
     variable: "--font-comforter",
 });
