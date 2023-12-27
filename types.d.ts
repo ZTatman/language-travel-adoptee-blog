@@ -61,7 +61,7 @@ interface Post extends Base {
     body: Block[];
     categories: Category[];
     mainImage: Image;
-    blurDataUrl: Url;
+    blurDataUrl: string | undefined;
     slug: Slug;
     title: string;
     description: string;
