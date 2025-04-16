@@ -28,7 +28,7 @@
     "eslint-config-next": "13.2.4",
     "get-video-id": "^3.6.5",
     "lucide-react": "^0.193.0",
-    "next": "13.2.4",
+    "next": "14.2.26",
     "next-sanity": "^4.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
